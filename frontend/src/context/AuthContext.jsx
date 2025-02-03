@@ -1,5 +1,4 @@
-// src/context/AuthContext.jsx
-import { createContext, useState, useContext } from 'react';
+import { createContext, useState, useContext, useEffect } from 'react';
 
 const AuthContext = createContext();
 
@@ -9,21 +8,40 @@ return useContext(AuthContext);
 
 export const AuthProvider = ({ children }) => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
-    const [userRole, setUserRole] = useState("user"); // O "admin"
+    const [user, setUser] = useState(null);
+    const [userRole, setUserRole] = useState("user");
 
-    const login = () => {
+    const login = (userData) => {
         setIsAuthenticated(true);
-        console.log("login() llamado");
-        setUserRole("user"); // Cambia según el rol del usuario
+        setUser(userData);
+        setUserRole(userData.rol || "user");
+        localStorage.setItem("user", JSON.stringify(userData));
     };
 
     const logout = () => {
         setIsAuthenticated(false);
+        setUser(null);
         setUserRole(null);
+        localStorage.removeItem("user");
+        localStorage.removeItem("userId");
     };
 
+    useEffect(() => {
+        const storedUser = localStorage.getItem("user");
+        const storedUserId = localStorage.getItem("userId");
+        if (storedUser) {
+                const userData = JSON.parse(storedUser);
+                setUser(userData);
+                setIsAuthenticated(true);
+                setUserRole(userData.rol || "user");
+            } else {
+                setIsAuthenticated(false)
+                setUser(null)
+            }
+        }, []);
+
     return (
-        <AuthContext.Provider value={{ isAuthenticated, userRole, login, logout }}>
+        <AuthContext.Provider value={{ isAuthenticated, userRole, user, login, logout }}>
         {children}
         </AuthContext.Provider>
     );

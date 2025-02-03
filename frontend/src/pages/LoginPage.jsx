@@ -23,7 +23,7 @@ const LoginPage = () => {
       }
 
       // 2. Guardar su ID en localStorage
-      login();
+      login(usuarioEncontrado);
       localStorage.setItem("userId", usuarioEncontrado.id_usuario);
       console.log("userId guardado:", usuarioEncontrado.id_usuario);
 
