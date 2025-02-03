@@ -5,10 +5,8 @@ import { AppProvider } from "./context/AppContext";
 import { AuthProvider } from "./context/AuthContext";
 
 ReactDOM.render(
-    <AuthProvider> {/* Envuelve todo con el AuthProvider */}
     <AppProvider>
       <App />
-    </AppProvider>
-  </AuthProvider>,
+    </AppProvider>,
     document.getElementById("root")
 );

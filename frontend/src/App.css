@@ -66,6 +66,20 @@ html, body {
   align-items: center; /* Centra el texto verticalmente */
 }
 
+.navbar a {
+  color: #f3f3f3; /* Color por defecto de los links */
+  text-decoration: none; /* Eliminar el subrayado por defecto */
+}
+
+.navbar a:hover {
+  color: #000; /* Color cuando el mouse pasa sobre el link */
+}
+
+.navbar .active {
+  color: #1C3224; /* Color cuando el link está activo */
+}
+
+
 .navbar ul {
   list-style: none;
   display: flex;
@@ -120,6 +134,12 @@ button:active {
   transition: transform 0.2s ease-in-out;
   cursor: pointer;
 }
+
+.card-content h2,
+.card-content p {
+  color: black; /* Asegura que el texto dentro de las cards sea negro */
+}
+
 
 .card:hover {
   transform: scale(1.03);

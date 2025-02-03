@@ -1,30 +1,55 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
+import users from "../data/usuarios.json"; // Tu JSON con datos de usuarios
 
 const ProfilePage = () => {
-const [user, setUser] = useState(null);
-const navigate = useNavigate();
+  const { logout } = useAuth();
+  const [user, setUser] = useState(null);
+  const navigate = useNavigate();
 
-useEffect(() => {
-    // Lógica para obtener los datos del usuario (ejemplo, de un API o localStorage)
-    const loggedInUser = { name: "Juan Pérez", email: "juan@email.com" };
-    setUser(loggedInUser);
+  useEffect(() => {
+    const userId = localStorage.getItem("userId");
+    console.log("userId leído en ProfilePage:", userId);
 
-    if (!loggedInUser) {
-    navigate("/login");
+    if (!userId) {
+      navigate("/login");
+      return;
     }
-}, [navigate]);
 
-if (!user) return <div>Cargando...</div>;
+    // Busca el usuario en el JSON; asegúrate de que el ID en el JSON coincide con lo que guardas.
+    const foundUser = users.find((u) => u.id_usuario === userId || u.id_usuario === parseInt(userId));
 
-return (
+    if (!foundUser) {
+      navigate("/login");
+      return;
+    }
+
+    setUser(foundUser);
+  }, [navigate]);
+
+  if (!user) return <div>Cargando...</div>;
+
+  return (
     <div style={{ padding: "20px" }}>
-    <h2>Perfil de Usuario</h2>
-    <p><strong>Nombre:</strong> {user.name}</p>
-    <p><strong>Email:</strong> {user.email}</p>
-    <button onClick={() => navigate("/login")}>Cerrar sesión</button>
+      <h2>Perfil de Usuario</h2>
+      <p>
+        <strong>Nombre:</strong> {user.name}
+      </p>
+      <p>
+        <strong>Email:</strong> {user.email}
+      </p>
+      <button
+        onClick={() => {
+          logout();
+          localStorage.removeItem("userId");
+          navigate("/");
+        }}
+      >
+        Cerrar sesión
+      </button>
     </div>
-);
+  );
 };
 
 export default ProfilePage;

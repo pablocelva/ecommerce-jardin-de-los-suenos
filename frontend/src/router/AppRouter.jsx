@@ -17,8 +17,7 @@ const AppRouter = () => {
     const userRole = "admin"; // Cambia esto según el rol del usuario (ej. admin, user)
 
 return (
-    <Router>
-        <AuthProvider>
+    
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/product/:id" element={<ProductPage />} />
@@ -47,8 +46,7 @@ return (
                 }
                 />
             </Routes>
-        </AuthProvider>
-    </Router>
+      
     );
 };
 
