@@ -1,35 +1,41 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import AppRouter from "./router/AppRouter";
+import Navbar from './components/Navbar';
+import { Layout } from 'antd';
+import './App.css';
+
+const { Header, Sider, Content } = Layout;
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <Layout className="layout">
+      {/* Navbar en la parte superior */}
+      <Header className="navbar" style={{ padding: 0 }}>
+        <Navbar />
+      </Header>
+
+      <Layout style={{ height: 'calc(100vh - 64px)' }}>
+        {/* Sidebar a la izquierda */}
+        <Sider className="sider">
+          <p>Categorías</p>
+          <p>Plantas de Interior</p>
+          <p>Plantas de Exterior</p>
+          <p>Suculentas</p>
+          <p>Cactus</p>
+          <p>Hierbas Aromáticas</p>
+          <p>Flores Ornamentales</p>
+          <p>Bonsáis</p>
+          <p>Orquídeas</p>
+        </Sider>
+
+        {/* Contenido a la derecha del Sider */}
+        <Layout>
+          <Content className="content">
+            <AppRouter /> {/* El contenido de las rutas va aquí */}
+          </Content>
+        </Layout>
+      </Layout>
+    </Layout>
+  );
 }
 
-export default App
+export default App;

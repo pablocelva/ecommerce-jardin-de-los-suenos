@@ -1,42 +1,212 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  font-family: 'Roboto', sans-serif;
+  box-sizing: border-box; /* Para evitar márgenes extra */
+}
+
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  height: 100%;
+  width: 100%;
+}
+
+/* Aseguramos que Layout ocupe todo el alto y ancho de la pantalla */
+.layout {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Aseguramos que el Sider tenga un ancho adecuado */
+.sider {
+  color: white;
+  /* cursor: pointer; */
+  background-color: #1C3224;  /* Un gris claro para el fondo */
+  position: fixed;
+  top: 64px;  /* Para evitar que se superponga con el navbar */
+  left: 0;
+  width: 250px;
+  height: 100%;
+  padding: 16px;
+  overflow-y: auto;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1); /* Sombra ligera para resaltar */
+}
+
+.sider p {
+  padding: 8px 16px;
+  cursor: pointer;
+}
+.sider p:active {
+  color: #24D083;
+}
+.sider p:hover {
+  color: #24D083;
+}
+
+/* Contenido principal con margen izquierdo para dejar espacio al Sider */
+.content {
+  margin-left: 250px;  /* Ahora 250px para que no se sobreponga */
+  padding: 20px;
+  background-color: #fff;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.navbar {
+  background-color: #24D083;
+  color: white;
+  /* padding: 16px; */
+  /* text-align: center; */
+  height: 64px; /* Ajuste de la altura para que no se corte */
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Centra el texto verticalmente */
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.navbar ul li {
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.navbar ul li:active {
+  color: #000;
+}
+
+.navbar ul li:hover {
+  color: #000;
+}
+
+button {
+  background-color: #4CAF50; /* Verde */
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+  background-color: #45a049;
+  transform: scale(1.05);
+}
+
+button:active {
+  background-color: #3e8e41;
+  transform: scale(0.98);
+}
+
+
+.card {
+  width: 100%;
+  max-width: 300px; /* Ajusta según necesites */
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: scale(1.03);
+}
+
+.card-image {
+  width: 100%;
+  height: 180px; /* Ajusta la altura según el diseño */
+  object-fit: cover; /* Evita que la imagen se deforme */
+}
+
+.card-content {
+  padding: 16px;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.card a {
+  color: inherit;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.price {
+  font-size: 18px;
+  font-weight: bold;
+  color: #27ae60;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.buy-button {
+  background-color: #27ae60;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
 }
 
-.card {
-  padding: 2em;
+.buy-button:hover {
+  background-color: #219150;
 }
 
-.read-the-docs {
-  color: #888;
+
+/* Contenedor principal */
+.search-bar-container {
+  width: 100%;
+  padding: 20px;
+  background-color: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Contenedor de la barra de búsqueda */
+.search-bar {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  justify-content: center;
+  width: 100%;
+  max-width: 600px;
+}
+
+/* Estilos del input de búsqueda */
+.search-input {
+  flex-grow: 1;
+  border-radius: 8px;
+  padding: 10px 20px;
+}
+
+/* Estilos del botón de búsqueda */
+.search-button {
+  background-color: #27ae60;
+  border-radius: 8px;
+  color: white;
+  padding: 10px 20px;
+}
+
+/* Estilos del banner */
+.banner-container {
+  width: 100%;
+  max-width: 1200px;
+  height: 120px;
+  overflow: hidden;
+  /* border-radius: 10px; */
+}
+
+.banner-image {
+  width: 100%;
+  object-fit: cover;
+  /* border-radius: 10px; */
 }
