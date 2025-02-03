@@ -32,12 +32,28 @@ const ProfilePage = () => {
 
   return (
     <div style={{ padding: "20px" }}>
+      <img src={user.imagen_perfil} alt="Perfil de usuario" />
       <h2>Perfil de Usuario</h2>
       <p>
-        <strong>Nombre:</strong> {user.name}
+        <strong>Nombre:</strong> {user.nombre}
+      </p>
+      <p>
+        <strong>Apellido:</strong> {user.apellido}
       </p>
       <p>
         <strong>Email:</strong> {user.email}
+      </p>
+      <p>
+        <strong>Dirección:</strong> {user.direccion}
+      </p>
+      <p>
+        <strong>Teléfono:</strong> {user.telefono}
+      </p>
+      <p>
+        <strong>Rol:</strong> {user.rol}
+      </p>
+      <p>
+        <strong>Fecha de creación:</strong> {user.fecha_creacion}
       </p>
       <button
         onClick={() => {

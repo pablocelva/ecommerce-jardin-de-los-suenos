@@ -15,6 +15,8 @@ const Navbar = () => {
         navigate("/");
     };
 
+    
+
     /*useEffect(() => {
         if (!isAuthenticated) {
             navigate("/");
@@ -31,6 +33,11 @@ const Navbar = () => {
                 <button>
                 <NavLink to="/profile" className="nav-link">
                     Mi Perfil
+                </NavLink>
+                </button>
+                <button>
+                <NavLink to="/admin" className="nav-link">
+                    Admin
                 </NavLink>
                 </button>
                 </div>
