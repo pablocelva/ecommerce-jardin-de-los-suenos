@@ -6,6 +6,7 @@ import ProductPage from "../pages/ProductPage";
 import LoginPage from '../pages/LoginPage';
 import RegisterPage from '../pages/RegisterPage';
 import ProfilePage from '../pages/ProfilePage';
+import CartPage from '../pages/CartPage';
 import AdminPanel from '../pages/AdminPanel';
 import PrivateRoute from "../router/PrivateRoute";
 import { AuthProvider } from '../context/AuthContext';  
@@ -43,6 +44,14 @@ return (
                     <PrivateRoute isAuthenticated={isAuthenticated} requiredRole={userRole}>
                     <AdminPanel />
                     </PrivateRoute>
+                }
+                />
+                <Route
+                    path="/cart"
+                    element={
+                        <PrivateRoute>
+                        <CartPage />
+                        </PrivateRoute>
                 }
                 />
             </Routes>

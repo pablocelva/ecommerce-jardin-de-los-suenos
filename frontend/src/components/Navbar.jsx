@@ -28,18 +28,22 @@ const Navbar = () => {
             <h2><a href="/">Jardin de los Sueños</a></h2>
             {isAuthenticated ? (
                 <div>
-
-                <button onClick={handleLogout}>Cerrar sesión</button>
-                <button>
-                <NavLink to="/profile" className="nav-link">
-                    Mi Perfil
-                </NavLink>
-                </button>
-                <button>
-                <NavLink to="/admin" className="nav-link">
-                    Admin
-                </NavLink>
-                </button>
+                    <button>
+                        <NavLink to="/cart" className="nav-link">
+                            Carrito
+                        </NavLink>
+                    </button>
+                    <button>
+                        <NavLink to="/profile" className="nav-link">
+                            Mi Perfil
+                        </NavLink>
+                    </button>
+                    <button>
+                        <NavLink to="/admin" className="nav-link">
+                            Admin
+                        </NavLink>
+                    </button>
+                    <button onClick={handleLogout}>Cerrar sesión</button>
                 </div>
             ) : (
                 <div>
