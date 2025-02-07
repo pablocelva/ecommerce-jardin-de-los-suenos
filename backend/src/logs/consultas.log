@@ -1,0 +1,318 @@
+Ruta consultada: /api/usuarios ; Método: POST ; Fecha: 2024-12-23T01:06:59.463Z ; Ruta sin credenciales
+Ruta consultada: /api/usuarios ; Método: POST ; Fecha: 2024-12-23T01:06:59.464Z ; Parametros Body :  {"email":"admin@softjobs.com","password":"123456","rol":"admin","lenguage":"spanish"} 
+Ruta: /api/usuarios ; Método: POST ; Fecha: 2024-12-23T01:06:59.490Z ; Respuesta: {"id":"errorDelServidor","message":"Error del servidor","description":"Ha ocurrido un error al intentar realizar la operación solicitada"}
+Ruta consultada: /api/usuarios ; Método: POST ; Fecha: 2024-12-23T01:08:17.573Z ; Ruta sin credenciales
+Ruta consultada: /api/usuarios ; Método: POST ; Fecha: 2024-12-23T01:08:17.574Z ; Parametros Body :  {"email":"admin@softjobs.com","password":"123456","rol":"admin","lenguage":"spanish"} 
+Ruta: /api/usuarios ; Método: POST ; Fecha: 2024-12-23T01:08:17.596Z ; Respuesta: {"id":"errorDelServidor","message":"Error del servidor","description":"Ha ocurrido un error al intentar realizar la operación solicitada"}
+Ruta consultada: /api/usuarios ; Método: POST ; Fecha: 2024-12-23T01:09:27.478Z ; Ruta sin credenciales
+Ruta consultada: /api/usuarios ; Método: POST ; Fecha: 2024-12-23T01:09:27.480Z ; Parametros Body :  {"email":"admin@softjobs.com","password":"123456","rol":"admin","lenguage":"spanish"} 
+Ruta: /api/usuarios ; Método: POST ; Fecha: 2024-12-23T01:09:27.500Z ; Respuesta: {"id":"errorDelServidor","message":"Error del servidor","description":"Ha ocurrido un error al intentar realizar la operación solicitada"}
+Ruta: /api/usuarios ; Método: POST ; Fecha: 2024-12-23T01:10:38.080Z ; Respuesta: {"id":"errorDelServidor","message":"Error del servidor","description":"Ha ocurrido un error al intentar realizar la operación solicitada"}
+Ruta consultada: /api/usuarios ; Método: POST ; Fecha: 2024-12-23T01:10:38.054Z ; Ruta sin credenciales
+Ruta consultada: /api/usuarios ; Método: POST ; Fecha: 2024-12-23T01:10:38.055Z ; Parametros Body :  {"email":"admin@softjobs.com","password":"123456","rol":"admin","lenguage":"spanish"} 
+Ruta consultada: /api/usuarios ; Método: POST ; Fecha: 2024-12-23T01:11:41.652Z ; Ruta sin credenciales
+Ruta consultada: /api/usuarios ; Método: POST ; Fecha: 2024-12-23T01:11:41.653Z ; Parametros Body :  {"email":"admin@softjobs.com","password":"123456","rol":"admin","lenguage":"spanish"} 
+Ruta: /api/usuarios ; Método: POST ; Fecha: 2024-12-23T01:11:41.677Z ; Respuesta: {"id":"errorDelServidor","message":"Error del servidor","description":"Ha ocurrido un error al intentar realizar la operación solicitada"}
+Ruta consultada: /api/usuarios ; Método: POST ; Fecha: 2024-12-23T01:14:56.262Z ; Ruta sin credenciales
+Ruta consultada: /api/usuarios ; Método: POST ; Fecha: 2024-12-23T01:14:56.263Z ; Parametros Body :  {"email":"admin@softjobs.com","password":"123456","rol":"admin","lenguage":"spanish"} 
+Ruta: /api/usuarios ; Método: POST ; Fecha: 2024-12-23T01:14:56.289Z ; Respuesta: {"id":"errorDelServidor","message":"Error del servidor","description":"Ha ocurrido un error al intentar realizar la operación solicitada"}
+Ruta consultada: /api/usuarios ; Método: POST ; Fecha: 2024-12-23T01:18:08.442Z ; Ruta sin credenciales
+Ruta consultada: /api/usuarios ; Método: POST ; Fecha: 2024-12-23T01:18:08.443Z ; Parametros Body :  {"email":"admin@softjobs.com","password":"123456","rol":"admin","lenguage":"spanish"} 
+Ruta: /api/usuarios ; Método: POST ; Fecha: 2024-12-23T01:18:08.467Z ; Respuesta: {"id":"errorDelServidor","message":"Error del servidor","description":"Ha ocurrido un error al intentar realizar la operación solicitada"}
+Ruta consultada: /api/usuarios ; Método: POST ; Fecha: 2024-12-23T01:19:07.125Z ; Ruta sin credenciales
+Ruta consultada: /api/usuarios ; Método: POST ; Fecha: 2024-12-23T01:19:07.127Z ; Parametros Body :  {"email":"admin@softjobs.com","password":"123456","rol":"admin","lenguage":"spanish"} 
+Ruta: /api/usuarios ; Método: POST ; Fecha: 2024-12-23T01:19:07.266Z ; Respuesta: {"id":"userNotFound","message":"No se encontró ningún usuario con estos credenciales","description":"No se encontró ningún usuario con estos credenciales"}
+Ruta consultada: /api/usuarios ; Método: POST ; Fecha: 2024-12-23T01:22:37.125Z ; Ruta sin credenciales
+Ruta consultada: /api/usuarios ; Método: POST ; Fecha: 2024-12-23T01:22:37.127Z ; Parametros Body :  {"email":"admin@softjobs.com","password":"123456","rol":"admin","lenguage":"spanish"} 
+Ruta: /api/usuarios ; Método: POST ; Fecha: 2024-12-23T01:22:37.526Z ; Respuesta: {"id":"userNotFound","message":"No se encontró ningún usuario con estos credenciales","description":"No se encontró ningún usuario con estos credenciales"}
+Ruta consultada: /api/usuarios ; Método: POST ; Fecha: 2024-12-23T01:28:44.404Z ; Ruta sin credenciales
+Ruta consultada: /api/usuarios ; Método: POST ; Fecha: 2024-12-23T01:28:44.406Z ; Parametros Body :  {"email":"admin@softjobs.com","password":"123456","rol":"admin","lenguage":"spanish"} 
+Ruta: /api/usuarios ; Método: POST ; Fecha: 2024-12-23T01:28:44.797Z ; Respuesta: {"id":"userNotFound","message":"No se encontró ningún usuario con estos credenciales","description":"No se encontró ningún usuario con estos credenciales"}
+Ruta consultada: /api/usuarios ; Método: GET ; Fecha: 2024-12-23T18:51:47.707Z ; Ruta sin credenciales
+Ruta consultada: /api/usuarios ; Método: GET ; Fecha: 2024-12-23T18:51:47.709Z ; Parametros Body :  {"email":"admin@softjobs.com","password":"123456","rol":"admin","lenguage":"spanish"} 
+Ruta: /api/usuarios ; Método: GET ; Fecha: 2024-12-23T18:51:47.738Z ; Respuesta: {"id":"errorDelServidor","message":"Error del servidor","description":"Ha ocurrido un error al intentar realizar la operación solicitada"}
+Ruta consultada: /api/usuarios ; Método: GET ; Fecha: 2024-12-23T18:59:11.185Z ; Ruta sin credenciales
+Ruta consultada: /api/usuarios ; Método: GET ; Fecha: 2024-12-23T18:59:11.186Z ; Parametros Body :  {"email":"admin@softjobs.com","password":"123456","rol":"admin","lenguage":"spanish"} 
+Ruta: /api/usuarios ; Método: GET ; Fecha: 2024-12-23T18:59:11.213Z ; Respuesta: {"id":"errorDelServidor","message":"Error del servidor","description":"Ha ocurrido un error al intentar realizar la operación solicitada"}
+Ruta consultada: /api/usuarios ; Método: GET ; Fecha: 2024-12-23T18:59:38.082Z ; Ruta sin credenciales
+Ruta consultada: /api/usuarios ; Método: GET ; Fecha: 2024-12-23T18:59:38.083Z ; Parametros Body :  {"email":"admin@softjobs.com","password":"123456","rol":"admin","lenguage":"spanish"} 
+Ruta: /api/usuarios ; Método: GET ; Fecha: 2024-12-23T18:59:38.112Z ; Respuesta: {"id":"errorDelServidor","message":"Error del servidor","description":"Ha ocurrido un error al intentar realizar la operación solicitada"}
+Ruta consultada: /api/usuarios/login ; Método: POST ; Fecha: 2024-12-23T19:01:09.351Z ; Ruta sin credenciales
+Ruta consultada: /api/usuarios/login ; Método: POST ; Fecha: 2024-12-23T19:01:09.353Z ; Parametros Body :  {"email":"admin2@softjobs.com","password":"123456","rol":"admin","lenguage":"Spanish"} 
+Ruta consultada: /api/usuarios ; Método: GET ; Fecha: 2024-12-23T19:01:37.736Z ; Ruta sin credenciales
+Ruta: /api/usuarios ; Método: GET ; Fecha: 2024-12-23T19:01:37.759Z ; Respuesta: {"id":"errorDelServidor","message":"Error del servidor","description":"Ha ocurrido un error al intentar realizar la operación solicitada"}
+Ruta consultada: /api/usuarios ; Método: POST ; Fecha: 2024-12-23T19:58:27.518Z ; Ruta sin credenciales
+Ruta consultada: /api/usuarios ; Método: POST ; Fecha: 2024-12-23T19:58:27.518Z ; Parametros Body :  {"email":"admin@softjobs.com","password":"123456","rol":"admin","lenguage":"spanish"} 
+Ruta: /api/usuarios ; Método: POST ; Fecha: 2024-12-23T19:58:27.869Z ; Respuesta: {"error":"El correo ya existe"}
+Ruta consultada: /api/usuarios ; Método: POST ; Fecha: 2024-12-23T19:58:37.760Z ; Ruta sin credenciales
+Ruta consultada: /api/usuarios ; Método: POST ; Fecha: 2024-12-23T19:58:37.760Z ; Parametros Body :  {"email":"admin2@softjobs.com","password":"123456","rol":"admin","lenguage":"spanish"} 
+Ruta: /api/usuarios ; Método: POST ; Fecha: 2024-12-23T19:58:37.872Z ; Respuesta: {"id":"userNotFound","message":"No se encontró ningún usuario con estos credenciales","description":"No se encontró ningún usuario con estos credenciales"}
+Ruta consultada: /api/usuarios ; Método: POST ; Fecha: 2024-12-23T22:11:28.726Z ; Ruta sin credenciales
+Ruta consultada: /api/usuarios ; Método: POST ; Fecha: 2024-12-23T22:11:28.727Z ; Parametros Body :  {"email":"admin2@softjobs.com","password":"123456","rol":"admin","lenguage":"spanish"} 
+Ruta: /api/usuarios ; Método: POST ; Fecha: 2024-12-23T22:11:28.965Z ; Respuesta: {"id":"userNotFound","message":"No se encontró ningún usuario con estos credenciales","description":"No se encontró ningún usuario con estos credenciales"}
+Ruta consultada: /api/usuarios ; Método: POST ; Fecha: 2024-12-23T22:24:01.208Z ; Ruta sin credenciales
+Ruta consultada: /api/usuarios ; Método: POST ; Fecha: 2024-12-23T22:24:01.209Z ; Parametros Body :  {"email":"admin2@softjobs.com","password":"123456","rol":"admin","lenguage":"spanish"} 
+Ruta: /api/usuarios ; Método: POST ; Fecha: 2024-12-23T22:24:01.438Z ; Respuesta: {"id":"userNotFound","message":"No se encontró ningún usuario con estos credenciales","description":"No se encontró ningún usuario con estos credenciales"}
+Ruta consultada: /api/login ; Método: POST ; Fecha: 2024-12-23T22:24:23.158Z ; Ruta sin credenciales
+Ruta consultada: /api/login ; Método: POST ; Fecha: 2024-12-23T22:24:23.159Z ; Parametros Body :  {"email":"admin@softjobs.com","password":"123456","rol":"admin","lenguage":"spanish"} 
+Ruta: /api/login ; Método: POST ; Fecha: 2024-12-23T22:24:23.270Z ; Respuesta: {"error":"Credenciales incorrectas"}
+Ruta consultada: /api/login ; Método: POST ; Fecha: 2024-12-23T22:25:42.961Z ; Ruta sin credenciales
+Ruta consultada: /api/login ; Método: POST ; Fecha: 2024-12-23T22:25:42.961Z ; Parametros Body :  {"email":"admin@softjobs.com","password":"123456"} 
+Ruta: /api/login ; Método: POST ; Fecha: 2024-12-23T22:25:43.040Z ; Respuesta: {"error":"Credenciales incorrectas"}
+Ruta consultada: /api/login ; Método: POST ; Fecha: 2024-12-23T22:26:28.720Z ; Ruta sin credenciales
+Ruta consultada: /api/login ; Método: POST ; Fecha: 2024-12-23T22:26:28.720Z ; Parametros Body :  {"email":"manager@softjobs.com","password":"abcdefg"} 
+Ruta: /api/login ; Método: POST ; Fecha: 2024-12-23T22:26:28.797Z ; Respuesta: {"error":"Credenciales incorrectas"}
+Ruta consultada: /api/login ; Método: POST ; Fecha: 2024-12-23T22:43:21.945Z ; Ruta sin credenciales
+Ruta consultada: /api/login ; Método: POST ; Fecha: 2024-12-23T22:43:21.946Z ; Parametros Body :  {"email":"manager@softjobs.com","password":"abcdefg"} 
+Ruta: /api/login ; Método: POST ; Fecha: 2024-12-23T22:43:22.047Z ; Respuesta: {"error":"Credenciales incorrectas"}
+Ruta consultada: /api/login ; Método: POST ; Fecha: 2024-12-23T22:43:37.426Z ; Ruta sin credenciales
+Ruta consultada: /api/login ; Método: POST ; Fecha: 2024-12-23T22:43:37.427Z ; Parametros Body :  {"email":"manager@softjobs.com","password":"abcdefg"} 
+Ruta: /api/login ; Método: POST ; Fecha: 2024-12-23T22:43:37.536Z ; Respuesta: {"error":"Credenciales incorrectas"}
+Ruta consultada: /api/login ; Método: POST ; Fecha: 2024-12-23T22:43:42.009Z ; Ruta sin credenciales
+Ruta consultada: /api/login ; Método: POST ; Fecha: 2024-12-23T22:43:42.009Z ; Parametros Body :  {"email":"admin@softjobs.com","password":"123456"} 
+Ruta: /api/login ; Método: POST ; Fecha: 2024-12-23T22:43:42.014Z ; Respuesta: {"error":"Credenciales incorrectas"}
+Ruta consultada: /api/login ; Método: POST ; Fecha: 2024-12-23T22:43:51.497Z ; Ruta sin credenciales
+Ruta consultada: /api/login ; Método: POST ; Fecha: 2024-12-23T22:43:51.497Z ; Parametros Body :  {"email":"manager@softjobs.com","password":"abcdefg"} 
+Ruta: /api/login ; Método: POST ; Fecha: 2024-12-23T22:43:51.501Z ; Respuesta: {"error":"Credenciales incorrectas"}
+Ruta consultada: /api/login ; Método: POST ; Fecha: 2024-12-23T22:45:57.987Z ; Ruta sin credenciales
+Ruta consultada: /api/login ; Método: POST ; Fecha: 2024-12-23T22:45:57.988Z ; Parametros Body :  {"email":"manager@softjobs.com","password":"abcdefg"} 
+Ruta: /api/login ; Método: POST ; Fecha: 2024-12-23T22:45:58.100Z ; Respuesta: {"error":"Credenciales incorrectas"}
+Ruta consultada: /api/login ; Método: POST ; Fecha: 2024-12-23T22:47:09.837Z ; Ruta sin credenciales
+Ruta consultada: /api/login ; Método: POST ; Fecha: 2024-12-23T22:47:09.839Z ; Parametros Body :  {"email":"manager@softjobs.com","password":"abcdefg"} 
+Ruta: /api/login ; Método: POST ; Fecha: 2024-12-23T22:47:09.948Z ; Respuesta: {"error":"Credenciales incorrectas"}
+Ruta consultada: /api/login ; Método: POST ; Fecha: 2024-12-23T22:53:07.256Z ; Ruta sin credenciales
+Ruta consultada: /api/login ; Método: POST ; Fecha: 2024-12-23T22:53:07.258Z ; Parametros Body :  {"email":"manager@softjobs.com","password":"abcdefg"} 
+Ruta: /api/login ; Método: POST ; Fecha: 2024-12-23T22:53:07.365Z ; Respuesta: {"error":"Credenciales incorrectas"}
+Ruta consultada: /api/login ; Método: GET ; Fecha: 2024-12-23T22:53:27.132Z ; Ruta sin credenciales
+Ruta consultada: /api/login ; Método: GET ; Fecha: 2024-12-23T22:53:27.132Z ; Parametros Body :  {"email":"manager@softjobs.com","password":"abcdefg"} 
+Ruta consultada: /api/login ; Método: POST ; Fecha: 2024-12-23T22:53:30.934Z ; Ruta sin credenciales
+Ruta consultada: /api/login ; Método: POST ; Fecha: 2024-12-23T22:53:30.934Z ; Parametros Body :  {"email":"manager@softjobs.com","password":"abcdefg"} 
+Ruta: /api/login ; Método: POST ; Fecha: 2024-12-23T22:53:31.118Z ; Respuesta: {"error":"Credenciales incorrectas"}
+Ruta consultada: /api/usuarios ; Método: POST ; Fecha: 2024-12-23T22:55:54.813Z ; Ruta sin credenciales
+Ruta consultada: /api/usuarios ; Método: POST ; Fecha: 2024-12-23T22:55:54.813Z ; Parametros Body :  {"email":"manager@softjobs.com","password":"abcdefg"} 
+Ruta: /api/usuarios ; Método: POST ; Fecha: 2024-12-23T22:55:54.815Z ; Respuesta: {"error":"Rol inválido"}
+Ruta consultada: /api/usuarios ; Método: POST ; Fecha: 2024-12-23T22:56:01.895Z ; Ruta sin credenciales
+Ruta consultada: /api/usuarios ; Método: POST ; Fecha: 2024-12-23T22:56:01.895Z ; Parametros Body :  {"email":"admin@softjobs.com","password":"123456","rol":"admin","lenguage":"spanish"} 
+Ruta: /api/usuarios ; Método: POST ; Fecha: 2024-12-23T22:56:02.081Z ; Respuesta: {"error":"El correo ya existe"}
+Ruta consultada: /api/usuarios ; Método: POST ; Fecha: 2024-12-23T22:56:14.529Z ; Ruta sin credenciales
+Ruta consultada: /api/usuarios ; Método: POST ; Fecha: 2024-12-23T22:56:14.529Z ; Parametros Body :  {"email":"admin2@softjobs.com","password":"123456","rol":"admin","lenguage":"spanish"} 
+Ruta: /api/usuarios ; Método: POST ; Fecha: 2024-12-23T22:56:14.785Z ; Respuesta: {"id":3,"email":"admin2@softjobs.com","password":"$2a$10$I6srAksCDhDHjtdcw96JMuA2r7n0z4izOjhyv93TlmRuIqaISHd8a","rol":"admin","lenguage":"spanish"}
+Ruta consultada: /api/login ; Método: POST ; Fecha: 2024-12-23T23:00:03.421Z ; Ruta sin credenciales
+Ruta consultada: /api/login ; Método: POST ; Fecha: 2024-12-23T23:00:03.421Z ; Parametros Body :  {"email":"admin2@softjobs.com","password":"123456","rol":"admin","lenguage":"spanish"} 
+Ruta: /api/login ; Método: POST ; Fecha: 2024-12-23T23:00:03.685Z ; Respuesta: {"error":"Credenciales incorrectas"}
+Ruta consultada: /api/login ; Método: POST ; Fecha: 2024-12-23T23:00:11.071Z ; Ruta sin credenciales
+Ruta consultada: /api/login ; Método: POST ; Fecha: 2024-12-23T23:00:11.071Z ; Parametros Body :  {"email":"admin2@softjobs.com","password":"123456"} 
+Ruta: /api/login ; Método: POST ; Fecha: 2024-12-23T23:00:11.165Z ; Respuesta: {"error":"Credenciales incorrectas"}
+Ruta consultada: /api/login ; Método: POST ; Fecha: 2024-12-24T00:52:18.220Z ; Ruta sin credenciales
+Ruta consultada: /api/login ; Método: POST ; Fecha: 2024-12-24T00:52:18.221Z ; Parametros Body :  {"email":"admin2@softjobs.com","password":"123456"} 
+Ruta: /api/login ; Método: POST ; Fecha: 2024-12-24T00:52:18.672Z ; Respuesta: {"error":"Credenciales incorrectas"}
+Ruta consultada: /api/login ; Método: POST ; Fecha: 2024-12-24T00:52:48.073Z ; Ruta sin credenciales
+Ruta consultada: /api/login ; Método: POST ; Fecha: 2024-12-24T00:52:48.075Z ; Parametros Body :  {"email":"admin2@softjobs.com","password":"123456"} 
+Ruta: /api/login ; Método: POST ; Fecha: 2024-12-24T00:52:48.380Z ; Respuesta: {"error":"Credenciales incorrectas"}
+Ruta consultada: /api/login ; Método: POST ; Fecha: 2024-12-24T00:53:31.302Z ; Ruta sin credenciales
+Ruta consultada: /api/login ; Método: POST ; Fecha: 2024-12-24T00:53:31.303Z ; Parametros Body :  {"email":"admin2@softjobs.com","password":"123456"} 
+Ruta: /api/login ; Método: POST ; Fecha: 2024-12-24T00:53:31.606Z ; Respuesta: {"error":"Credenciales incorrectas"}
+Ruta consultada: /api/login ; Método: POST ; Fecha: 2024-12-24T00:53:56.061Z ; Ruta sin credenciales
+Ruta consultada: /api/login ; Método: POST ; Fecha: 2024-12-24T00:53:56.061Z ; Parametros Body :  {"email":"admin@softjobs.com","password":"123456"} 
+Ruta: /api/login ; Método: POST ; Fecha: 2024-12-24T00:53:56.224Z ; Respuesta: {"error":"Credenciales incorrectas"}
+Ruta consultada: /api/login ; Método: POST ; Fecha: 2024-12-24T00:57:04.073Z ; Ruta sin credenciales
+Ruta consultada: /api/login ; Método: POST ; Fecha: 2024-12-24T00:57:04.073Z ; Parametros Body :  {"email":"admin2@softjobs.com","password":"123456"} 
+Ruta: /api/login ; Método: POST ; Fecha: 2024-12-24T00:57:04.452Z ; Respuesta: {"error":"Credenciales incorrectas"}
+Ruta consultada: /api/login ; Método: POST ; Fecha: 2024-12-24T00:57:36.844Z ; Ruta sin credenciales
+Ruta consultada: /api/login ; Método: POST ; Fecha: 2024-12-24T00:57:36.845Z ; Parametros Body :  {"email":"admin2@softjobs.com","password":"123456"} 
+Ruta: /api/login ; Método: POST ; Fecha: 2024-12-24T00:57:37.059Z ; Respuesta: {"error":"Credenciales incorrectas"}
+Ruta consultada: /api/usuarios ; Método: POST ; Fecha: 2024-12-24T01:06:05.578Z ; Ruta sin credenciales
+Ruta consultada: /api/usuarios ; Método: POST ; Fecha: 2024-12-24T01:06:05.578Z ; Parametros Body :  {"email":"admin@softjobs.com","password":"123456"} 
+Ruta: /api/usuarios ; Método: POST ; Fecha: 2024-12-24T01:06:05.581Z ; Respuesta: {"error":"Rol inválido"}
+Ruta consultada: /api/usuarios ; Método: POST ; Fecha: 2024-12-24T01:06:14.347Z ; Ruta sin credenciales
+Ruta consultada: /api/usuarios ; Método: POST ; Fecha: 2024-12-24T01:06:14.347Z ; Parametros Body :  {"email":"admin@softjobs.com","password":"123456","rol":"admin","lenguage":"spanish"} 
+Ruta: /api/usuarios ; Método: POST ; Fecha: 2024-12-24T01:06:14.594Z ; Respuesta: {"id":1,"email":"admin@softjobs.com","password":"$2a$10$SvpTpTGPGkssXguOgbL3CuACcYD1Ki58D8gVRc6e8gVWbc0bCh4gK","rol":"admin","lenguage":"spanish"}
+Ruta consultada: /api/usuarios ; Método: POST ; Fecha: 2024-12-24T01:06:42.640Z ; Ruta sin credenciales
+Ruta consultada: /api/usuarios ; Método: POST ; Fecha: 2024-12-24T01:06:42.640Z ; Parametros Body :  {"email":"manager@softjobs.com","password":"abcdeg","rol":"manager","lenguage":"spanish"} 
+Ruta: /api/usuarios ; Método: POST ; Fecha: 2024-12-24T01:06:42.896Z ; Respuesta: {"id":2,"email":"manager@softjobs.com","password":"$2a$10$SvpTpTGPGkssXguOgbL3CukPyBqxQMinEj0ikxmXLYvkSpCtyAXoy","rol":"manager","lenguage":"spanish"}
+Ruta consultada: /api/login ; Método: POST ; Fecha: 2024-12-24T01:07:10.168Z ; Ruta sin credenciales
+Ruta consultada: /api/login ; Método: POST ; Fecha: 2024-12-24T01:07:10.168Z ; Parametros Body :  {"email":"manager@softjobs.com","password":"abcdeg","rol":"manager","lenguage":"spanish"} 
+Ruta: /api/login ; Método: POST ; Fecha: 2024-12-24T01:07:10.329Z ; Respuesta: {"error":"Credenciales incorrectas"}
+Ruta consultada: /api/login ; Método: POST ; Fecha: 2024-12-24T01:07:20.988Z ; Ruta sin credenciales
+Ruta consultada: /api/login ; Método: POST ; Fecha: 2024-12-24T01:07:20.988Z ; Parametros Body :  {"email":"manager@softjobs.com","password":"abcdeg"} 
+Ruta: /api/login ; Método: POST ; Fecha: 2024-12-24T01:07:21.156Z ; Respuesta: {"error":"Credenciales incorrectas"}
+Ruta consultada: /api/login ; Método: POST ; Fecha: 2024-12-24T01:09:35.746Z ; Ruta sin credenciales
+Ruta consultada: /api/login ; Método: POST ; Fecha: 2024-12-24T01:09:35.748Z ; Parametros Body :  {"email":"manager@softjobs.com","password":"abcdeg"} 
+Ruta: /api/login ; Método: POST ; Fecha: 2024-12-24T01:09:35.975Z ; Respuesta: {"token":"eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hbmFnZXJAc29mdGpvYnMuY29tIiwiaWF0IjoxNzM1MDAyNTc1LCJleHAiOjE3MzUwODg5NzV9.WXZ-zvBVoEjtRZO2vY1TrKU2YI8V5Ruyy5UlJGKLWX3kDc2xKHp8nTyEX-xYENIE","email":"manager@softjobs.com","rol":"manager","lenguage":"spanish"}
+Ruta consultada: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T01:16:24.378Z ; Ruta con credenciales: Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hbmFnZXJAc29mdGpvYnMuY29tIiwiaWF0IjoxNzM1MDAyNTc1LCJleHAiOjE3MzUwODg5NzV9.WXZ-zvBVoEjtRZO2vY1TrKU2YI8V5Ruyy5UlJGKLWX3kDc2xKHp8nTyEX-xYENIE
+Ruta: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T01:16:24.392Z ; Respuesta: {"id":"errorDelServidor","message":"Error del servidor","description":"Ha ocurrido un error al intentar realizar la operación solicitada"}
+Ruta consultada: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T01:16:57.588Z ; Ruta con credenciales: eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hbmFnZXJAc29mdGpvYnMuY29tIiwiaWF0IjoxNzM1MDAyNTc1LCJleHAiOjE3MzUwODg5NzV9.WXZ-zvBVoEjtRZO2vY1TrKU2YI8V5Ruyy5UlJGKLWX3kDc2xKHp8nTyEX-xYENIE
+Ruta: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T01:16:57.599Z ; Respuesta: {"id":"errorDelServidor","message":"Error del servidor","description":"Ha ocurrido un error al intentar realizar la operación solicitada"}
+Ruta consultada: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T01:17:10.656Z ; Ruta con credenciales: Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hbmFnZXJAc29mdGpvYnMuY29tIiwiaWF0IjoxNzM1MDAyNTc1LCJleHAiOjE3MzUwODg5NzV9.WXZ-zvBVoEjtRZO2vY1TrKU2YI8V5Ruyy5UlJGKLWX3kDc2xKHp8nTyEX-xYENIE
+Ruta: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T01:17:10.664Z ; Respuesta: {"id":"errorDelServidor","message":"Error del servidor","description":"Ha ocurrido un error al intentar realizar la operación solicitada"}
+Ruta consultada: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T01:17:19.620Z ; Ruta con credenciales: Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hbmFnZXJAc29mdGpvYnMuY29tIiwiaWF0IjoxNzM1MDAyNTc1LCJleHAiOjE3MzUwODg5NzV9.WXZ-zvBVoEjtRZO2vY1TrKU2YI8V5Ruyy5UlJGKLWX3kDc2xKHp8nTyEX-xYENIE
+Ruta: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T01:17:19.628Z ; Respuesta: {"id":"errorDelServidor","message":"Error del servidor","description":"Ha ocurrido un error al intentar realizar la operación solicitada"}
+Ruta consultada: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T01:18:18.271Z ; Ruta con credenciales: Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hbmFnZXJAc29mdGpvYnMuY29tIiwiaWF0IjoxNzM1MDAyNTc1LCJleHAiOjE3MzUwODg5NzV9.WXZ-zvBVoEjtRZO2vY1TrKU2YI8V5Ruyy5UlJGKLWX3kDc2xKHp8nTyEX-xYENIE
+Ruta: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T01:18:18.280Z ; Respuesta: {"id":"errorDelServidor","message":"Error del servidor","description":"Ha ocurrido un error al intentar realizar la operación solicitada"}
+Ruta consultada: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T01:19:21.862Z ; Ruta con credenciales: Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hbmFnZXJAc29mdGpvYnMuY29tIiwiaWF0IjoxNzM1MDAyNTc1LCJleHAiOjE3MzUwODg5NzV9.WXZ-zvBVoEjtRZO2vY1TrKU2YI8V5Ruyy5UlJGKLWX3kDc2xKHp8nTyEX-xYENIE
+Ruta: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T01:19:21.872Z ; Respuesta: {"id":"errorDelServidor","message":"Error del servidor","description":"Ha ocurrido un error al intentar realizar la operación solicitada"}
+Ruta consultada: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T01:22:19.155Z ; Ruta con credenciales: Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hbmFnZXJAc29mdGpvYnMuY29tIiwiaWF0IjoxNzM1MDAyNTc1LCJleHAiOjE3MzUwODg5NzV9.WXZ-zvBVoEjtRZO2vY1TrKU2YI8V5Ruyy5UlJGKLWX3kDc2xKHp8nTyEX-xYENIE
+Ruta: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T01:22:19.174Z ; Respuesta: {"id":"errorDelServidor","message":"Error del servidor","description":"Ha ocurrido un error al intentar realizar la operación solicitada"}
+Ruta consultada: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T01:25:22.182Z ; Ruta con credenciales: Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hbmFnZXJAc29mdGpvYnMuY29tIiwiaWF0IjoxNzM1MDAyNTc1LCJleHAiOjE3MzUwODg5NzV9.WXZ-zvBVoEjtRZO2vY1TrKU2YI8V5Ruyy5UlJGKLWX3kDc2xKHp8nTyEX-xYENIE
+Ruta: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T01:25:22.208Z ; Respuesta: {"id":"errorDelServidor","message":"Error del servidor","description":"Ha ocurrido un error al intentar realizar la operación solicitada"}
+Ruta consultada: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T01:27:45.002Z ; Ruta con credenciales: Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hbmFnZXJAc29mdGpvYnMuY29tIiwiaWF0IjoxNzM1MDAyNTc1LCJleHAiOjE3MzUwODg5NzV9.WXZ-zvBVoEjtRZO2vY1TrKU2YI8V5Ruyy5UlJGKLWX3kDc2xKHp8nTyEX-xYENIE
+Ruta: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T01:27:45.119Z ; Respuesta: {"id":"errorDelServidor","message":"Error del servidor","description":"Ha ocurrido un error al intentar realizar la operación solicitada"}
+Ruta consultada: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T01:29:36.913Z ; Ruta con credenciales: Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hbmFnZXJAc29mdGpvYnMuY29tIiwiaWF0IjoxNzM1MDAyNTc1LCJleHAiOjE3MzUwODg5NzV9.WXZ-zvBVoEjtRZO2vY1TrKU2YI8V5Ruyy5UlJGKLWX3kDc2xKHp8nTyEX-xYENIE
+Ruta: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T01:29:37.013Z ; Respuesta: {"id":"errorDelServidor","message":"Error del servidor","description":"Ha ocurrido un error al intentar realizar la operación solicitada"}
+Ruta consultada: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T01:30:53.594Z ; Ruta con credenciales: Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hbmFnZXJAc29mdGpvYnMuY29tIiwiaWF0IjoxNzM1MDAyNTc1LCJleHAiOjE3MzUwODg5NzV9.WXZ-zvBVoEjtRZO2vY1TrKU2YI8V5Ruyy5UlJGKLWX3kDc2xKHp8nTyEX-xYENIE
+Ruta: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T01:30:53.699Z ; Respuesta: {"id":"errorDelServidor","message":"Error del servidor","description":"Ha ocurrido un error al intentar realizar la operación solicitada"}
+Ruta consultada: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T01:32:01.951Z ; Ruta con credenciales: Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hbmFnZXJAc29mdGpvYnMuY29tIiwiaWF0IjoxNzM1MDAyNTc1LCJleHAiOjE3MzUwODg5NzV9.WXZ-zvBVoEjtRZO2vY1TrKU2YI8V5Ruyy5UlJGKLWX3kDc2xKHp8nTyEX-xYENIE
+Ruta: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T01:32:01.976Z ; Respuesta: {"id":"errorDelServidor","message":"Error del servidor","description":"Ha ocurrido un error al intentar realizar la operación solicitada"}
+Ruta consultada: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T01:48:31.787Z ; Ruta con credenciales: Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hbmFnZXJAc29mdGpvYnMuY29tIiwiaWF0IjoxNzM1MDAyNTc1LCJleHAiOjE3MzUwODg5NzV9.WXZ-zvBVoEjtRZO2vY1TrKU2YI8V5Ruyy5UlJGKLWX3kDc2xKHp8nTyEX-xYENIE
+Ruta: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T01:48:31.803Z ; Respuesta: {"id":"errorDelServidor","message":"Error del servidor","description":"Ha ocurrido un error al intentar realizar la operación solicitada"}
+Ruta consultada: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T01:48:36.440Z ; Ruta con credenciales: Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hbmFnZXJAc29mdGpvYnMuY29tIiwiaWF0IjoxNzM1MDAyNTc1LCJleHAiOjE3MzUwODg5NzV9.WXZ-zvBVoEjtRZO2vY1TrKU2YI8V5Ruyy5UlJGKLWX3kDc2xKHp8nTyEX-xYENIE
+Ruta: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T01:48:36.454Z ; Respuesta: {"id":"errorDelServidor","message":"Error del servidor","description":"Ha ocurrido un error al intentar realizar la operación solicitada"}
+Ruta consultada: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T02:04:16.041Z ; Ruta con credenciales: Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hbmFnZXJAc29mdGpvYnMuY29tIiwiaWF0IjoxNzM1MDAyNTc1LCJleHAiOjE3MzUwODg5NzV9.WXZ-zvBVoEjtRZO2vY1TrKU2YI8V5Ruyy5UlJGKLWX3kDc2xKHp8nTyEX-xYENIE
+Ruta: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T02:04:16.071Z ; Respuesta: {"id":"errorDelServidor","message":"Error del servidor","description":"Ha ocurrido un error al intentar realizar la operación solicitada"}
+Ruta consultada: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T02:05:16.238Z ; Ruta con credenciales: Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hbmFnZXJAc29mdGpvYnMuY29tIiwiaWF0IjoxNzM1MDAyNTc1LCJleHAiOjE3MzUwODg5NzV9.WXZ-zvBVoEjtRZO2vY1TrKU2YI8V5Ruyy5UlJGKLWX3kDc2xKHp8nTyEX-xYENIE
+Ruta: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T02:05:16.352Z ; Respuesta: {"id":"errorDelServidor","message":"Error del servidor","description":"Ha ocurrido un error al intentar realizar la operación solicitada"}
+Ruta consultada: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T02:10:35.817Z ; Ruta con credenciales: Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hbmFnZXJAc29mdGpvYnMuY29tIiwiaWF0IjoxNzM1MDAyNTc1LCJleHAiOjE3MzUwODg5NzV9.WXZ-zvBVoEjtRZO2vY1TrKU2YI8V5Ruyy5UlJGKLWX3kDc2xKHp8nTyEX-xYENIE
+Ruta: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T02:10:35.844Z ; Respuesta: {"id":"errorDelServidor","message":"Error del servidor","description":"Ha ocurrido un error al intentar realizar la operación solicitada"}
+Ruta consultada: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T02:11:31.281Z ; Ruta con credenciales: Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hbmFnZXJAc29mdGpvYnMuY29tIiwiaWF0IjoxNzM1MDAyNTc1LCJleHAiOjE3MzUwODg5NzV9.WXZ-zvBVoEjtRZO2vY1TrKU2YI8V5Ruyy5UlJGKLWX3kDc2xKHp8nTyEX-xYENIE
+Ruta: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T02:11:31.296Z ; Respuesta: {"id":"errorDelServidor","message":"Error del servidor","description":"Ha ocurrido un error al intentar realizar la operación solicitada"}
+Ruta consultada: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T02:12:52.661Z ; Ruta con credenciales: Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hbmFnZXJAc29mdGpvYnMuY29tIiwiaWF0IjoxNzM1MDAyNTc1LCJleHAiOjE3MzUwODg5NzV9.WXZ-zvBVoEjtRZO2vY1TrKU2YI8V5Ruyy5UlJGKLWX3kDc2xKHp8nTyEX-xYENIE
+Ruta: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T02:12:52.683Z ; Respuesta: {"id":"errorDelServidor","message":"Error del servidor","description":"Ha ocurrido un error al intentar realizar la operación solicitada"}
+Ruta consultada: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T02:13:50.269Z ; Ruta con credenciales: Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hbmFnZXJAc29mdGpvYnMuY29tIiwiaWF0IjoxNzM1MDAyNTc1LCJleHAiOjE3MzUwODg5NzV9.WXZ-zvBVoEjtRZO2vY1TrKU2YI8V5Ruyy5UlJGKLWX3kDc2xKHp8nTyEX-xYENIE
+Ruta: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T02:13:50.293Z ; Respuesta: {"id":"errorDelServidor","message":"Error del servidor","description":"Ha ocurrido un error al intentar realizar la operación solicitada"}
+Ruta consultada: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T02:20:01.328Z ; Ruta con credenciales: Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hbmFnZXJAc29mdGpvYnMuY29tIiwiaWF0IjoxNzM1MDAyNTc1LCJleHAiOjE3MzUwODg5NzV9.WXZ-zvBVoEjtRZO2vY1TrKU2YI8V5Ruyy5UlJGKLWX3kDc2xKHp8nTyEX-xYENIE
+Ruta: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T02:20:01.352Z ; Respuesta: {"id":"errorDelServidor","message":"Error del servidor","description":"Ha ocurrido un error al intentar realizar la operación solicitada"}
+Ruta consultada: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T02:20:21.346Z ; Ruta con credenciales: Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hbmFnZXJAc29mdGpvYnMuY29tIiwiaWF0IjoxNzM1MDAyNTc1LCJleHAiOjE3MzUwODg5NzV9.WXZ-zvBVoEjtRZO2vY1TrKU2YI8V5Ruyy5UlJGKLWX3kDc2xKHp8nTyEX-xYENIE
+Ruta: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T02:20:21.372Z ; Respuesta: {"id":"errorDelServidor","message":"Error del servidor","description":"Ha ocurrido un error al intentar realizar la operación solicitada"}
+Ruta consultada: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T02:24:57.749Z ; Ruta con credenciales: Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hbmFnZXJAc29mdGpvYnMuY29tIiwiaWF0IjoxNzM1MDAyNTc1LCJleHAiOjE3MzUwODg5NzV9.WXZ-zvBVoEjtRZO2vY1TrKU2YI8V5Ruyy5UlJGKLWX3kDc2xKHp8nTyEX-xYENIE
+Ruta: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T02:24:57.775Z ; Respuesta: {"id":"errorDelServidor","message":"Error del servidor","description":"Ha ocurrido un error al intentar realizar la operación solicitada"}
+Ruta consultada: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T02:25:22.234Z ; Ruta con credenciales: Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hbmFnZXJAc29mdGpvYnMuY29tIiwiaWF0IjoxNzM1MDAyNTc1LCJleHAiOjE3MzUwODg5NzV9.WXZ-zvBVoEjtRZO2vY1TrKU2YI8V5Ruyy5UlJGKLWX3kDc2xKHp8nTyEX-xYENIE
+Ruta: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T02:25:22.260Z ; Respuesta: {"id":"errorDelServidor","message":"Error del servidor","description":"Ha ocurrido un error al intentar realizar la operación solicitada"}
+Ruta consultada: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T02:30:06.707Z ; Ruta con credenciales: Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hbmFnZXJAc29mdGpvYnMuY29tIiwiaWF0IjoxNzM1MDAyNTc1LCJleHAiOjE3MzUwODg5NzV9.WXZ-zvBVoEjtRZO2vY1TrKU2YI8V5Ruyy5UlJGKLWX3kDc2xKHp8nTyEX-xYENIE
+Ruta: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T02:30:06.733Z ; Respuesta: {"id":"errorDelServidor","message":"Error del servidor","description":"Ha ocurrido un error al intentar realizar la operación solicitada"}
+Ruta consultada: /api/usuarios ; Método: POST ; Fecha: 2024-12-24T02:30:15.958Z ; Ruta con credenciales: Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hbmFnZXJAc29mdGpvYnMuY29tIiwiaWF0IjoxNzM1MDAyNTc1LCJleHAiOjE3MzUwODg5NzV9.WXZ-zvBVoEjtRZO2vY1TrKU2YI8V5Ruyy5UlJGKLWX3kDc2xKHp8nTyEX-xYENIE
+Ruta: /api/usuarios ; Método: POST ; Fecha: 2024-12-24T02:30:15.961Z ; Respuesta: {"error":"Formato de correo inválido"}
+Ruta: /api/login ; Método: POST ; Fecha: 2024-12-24T02:30:26.705Z ; Respuesta: {"error":"Formato de correo inválido"}
+Ruta consultada: /api/login ; Método: POST ; Fecha: 2024-12-24T02:30:26.703Z ; Ruta con credenciales: Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hbmFnZXJAc29mdGpvYnMuY29tIiwiaWF0IjoxNzM1MDAyNTc1LCJleHAiOjE3MzUwODg5NzV9.WXZ-zvBVoEjtRZO2vY1TrKU2YI8V5Ruyy5UlJGKLWX3kDc2xKHp8nTyEX-xYENIE
+Ruta consultada: /api/login ; Método: POST ; Fecha: 2024-12-24T02:30:36.868Z ; Ruta con credenciales: Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hbmFnZXJAc29mdGpvYnMuY29tIiwiaWF0IjoxNzM1MDAyNTc1LCJleHAiOjE3MzUwODg5NzV9.WXZ-zvBVoEjtRZO2vY1TrKU2YI8V5Ruyy5UlJGKLWX3kDc2xKHp8nTyEX-xYENIE
+Ruta consultada: /api/login ; Método: POST ; Fecha: 2024-12-24T02:30:36.868Z ; Parametros Body :  {"email":"manager@softjobs.com","password":"abcdeg","rol":"manager","lenguage":"spanish"} 
+Ruta: /api/login ; Método: POST ; Fecha: 2024-12-24T02:30:37.085Z ; Respuesta: {"error":"Credenciales incorrectas"}
+Ruta consultada: /api/login ; Método: POST ; Fecha: 2024-12-24T02:30:44.288Z ; Ruta con credenciales: Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hbmFnZXJAc29mdGpvYnMuY29tIiwiaWF0IjoxNzM1MDAyNTc1LCJleHAiOjE3MzUwODg5NzV9.WXZ-zvBVoEjtRZO2vY1TrKU2YI8V5Ruyy5UlJGKLWX3kDc2xKHp8nTyEX-xYENIE
+Ruta consultada: /api/login ; Método: POST ; Fecha: 2024-12-24T02:30:44.288Z ; Parametros Body :  {"email":"manager@softjobs.com","password":"abcdeg"} 
+Ruta: /api/login ; Método: POST ; Fecha: 2024-12-24T02:30:44.379Z ; Respuesta: {"error":"Credenciales incorrectas"}
+Ruta consultada: /api/login ; Método: POST ; Fecha: 2024-12-24T02:31:00.580Z ; Ruta con credenciales: Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hbmFnZXJAc29mdGpvYnMuY29tIiwiaWF0IjoxNzM1MDAyNTc1LCJleHAiOjE3MzUwODg5NzV9.WXZ-zvBVoEjtRZO2vY1TrKU2YI8V5Ruyy5UlJGKLWX3kDc2xKHp8nTyEX-xYENIE
+Ruta consultada: /api/login ; Método: POST ; Fecha: 2024-12-24T02:31:00.582Z ; Parametros Body :  {"email":"manager@softjobs.com","password":"abcdeg"} 
+Ruta: /api/login ; Método: POST ; Fecha: 2024-12-24T02:31:00.805Z ; Respuesta: {"token":"eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hbmFnZXJAc29mdGpvYnMuY29tIiwiaWF0IjoxNzM1MDA3NDYwLCJleHAiOjE3MzUwOTM4NjB9.qVzFRPWk7fRSbB8eXrWbXygf2D2NIQhb_Mq3MqvYDVY00ZGs5Msps3T730NEnaNx","email":"manager@softjobs.com","rol":"manager","lenguage":"spanish"}
+Ruta consultada: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T02:31:31.115Z ; Ruta con credenciales: Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hbmFnZXJAc29mdGpvYnMuY29tIiwiaWF0IjoxNzM1MDAyNTc1LCJleHAiOjE3MzUwODg5NzV9.WXZ-zvBVoEjtRZO2vY1TrKU2YI8V5Ruyy5UlJGKLWX3kDc2xKHp8nTyEX-xYENIE
+Ruta consultada: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T02:31:31.115Z ; Parametros Body :  {"email":"manager@softjobs.com","password":"abcdeg"} 
+Ruta: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T02:31:31.134Z ; Respuesta: {"id":"errorDelServidor","message":"Error del servidor","description":"Ha ocurrido un error al intentar realizar la operación solicitada"}
+Ruta consultada: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T02:45:02.628Z ; Ruta con credenciales: Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hbmFnZXJAc29mdGpvYnMuY29tIiwiaWF0IjoxNzM1MDAyNTc1LCJleHAiOjE3MzUwODg5NzV9.WXZ-zvBVoEjtRZO2vY1TrKU2YI8V5Ruyy5UlJGKLWX3kDc2xKHp8nTyEX-xYENIE
+Ruta consultada: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T02:45:02.629Z ; Parametros Body :  {"email":"manager@softjobs.com","password":"abcdeg"} 
+Ruta: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T02:45:02.657Z ; Respuesta: {"id":"errorDelServidor","message":"Error del servidor","description":"Ha ocurrido un error al intentar realizar la operación solicitada"}
+Ruta consultada: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T02:48:06.537Z ; Ruta con credenciales: Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hbmFnZXJAc29mdGpvYnMuY29tIiwiaWF0IjoxNzM1MDAyNTc1LCJleHAiOjE3MzUwODg5NzV9.WXZ-zvBVoEjtRZO2vY1TrKU2YI8V5Ruyy5UlJGKLWX3kDc2xKHp8nTyEX-xYENIE
+Ruta consultada: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T02:48:06.539Z ; Parametros Body :  {"email":"manager@softjobs.com","password":"abcdeg"} 
+Ruta: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T02:48:06.747Z ; Respuesta: [{"email":"manager@softjobs.com","rol":"manager","lenguage":"spanish"}]
+Ruta consultada: /api/usuarios ; Método: POST ; Fecha: 2024-12-24T02:55:49.411Z ; Ruta con credenciales: Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hbmFnZXJAc29mdGpvYnMuY29tIiwiaWF0IjoxNzM1MDAyNTc1LCJleHAiOjE3MzUwODg5NzV9.WXZ-zvBVoEjtRZO2vY1TrKU2YI8V5Ruyy5UlJGKLWX3kDc2xKHp8nTyEX-xYENIE
+Ruta consultada: /api/usuarios ; Método: POST ; Fecha: 2024-12-24T02:55:49.412Z ; Parametros Body :  {"email":"admin2@softjobs.com","password":"123456","rol":"admin","lenguage":"english"} 
+Ruta: /api/usuarios ; Método: POST ; Fecha: 2024-12-24T02:55:49.717Z ; Respuesta: {"id":3,"email":"admin2@softjobs.com","password":"$2a$10$u6/8oMqI5ESjHPmEeVHWdepe.CRVicA10fcv/TcgJwLnEHYLSmV.m","rol":"admin","lenguage":"english"}
+Ruta consultada: /api/login ; Método: POST ; Fecha: 2024-12-24T02:56:24.991Z ; Ruta con credenciales: Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hbmFnZXJAc29mdGpvYnMuY29tIiwiaWF0IjoxNzM1MDAyNTc1LCJleHAiOjE3MzUwODg5NzV9.WXZ-zvBVoEjtRZO2vY1TrKU2YI8V5Ruyy5UlJGKLWX3kDc2xKHp8nTyEX-xYENIE
+Ruta consultada: /api/login ; Método: POST ; Fecha: 2024-12-24T02:56:24.991Z ; Parametros Body :  {"email":"admin2@softjobs.com","password":"123456"} 
+Ruta: /api/login ; Método: POST ; Fecha: 2024-12-24T02:56:25.157Z ; Respuesta: {"token":"eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluMkBzb2Z0am9icy5jb20iLCJpYXQiOjE3MzUwMDg5ODUsImV4cCI6MTczNTA5NTM4NX0.rI7LQ8dg-P8YxxCMgoJIyFYYq3iIKZiYuqUB_MrecXJXBRVdBYR81Ybqw4pdrb_k","email":"admin2@softjobs.com","rol":"admin","lenguage":"english"}
+Ruta consultada: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T02:57:54.111Z ; Ruta con credenciales: Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluMkBzb2Z0am9icy5jb20iLCJpYXQiOjE3MzUwMDg5ODUsImV4cCI6MTczNTA5NTM4NX0.rI7LQ8dg-P8YxxCMgoJIyFYYq3iIKZiYuqUB_MrecXJXBRVdBYR81Ybqw4pdrb_k", "email": "admin2@softjobs.com
+Ruta: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T02:57:54.124Z ; Respuesta: {"error":"Token inválido"}
+Ruta consultada: /api/login ; Método: POST ; Fecha: 2024-12-24T02:58:31.708Z ; Ruta con credenciales: Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluMkBzb2Z0am9icy5jb20iLCJpYXQiOjE3MzUwMDg5ODUsImV4cCI6MTczNTA5NTM4NX0.rI7LQ8dg-P8YxxCMgoJIyFYYq3iIKZiYuqUB_MrecXJXBRVdBYR81Ybqw4pdrb_k", "email": "admin2@softjobs.com
+Ruta consultada: /api/login ; Método: POST ; Fecha: 2024-12-24T02:58:31.708Z ; Parametros Body :  {"email":"admin2@softjobs.com","password":"123456"} 
+Ruta: /api/login ; Método: POST ; Fecha: 2024-12-24T02:58:31.982Z ; Respuesta: {"token":"eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluMkBzb2Z0am9icy5jb20iLCJpYXQiOjE3MzUwMDkxMTEsImV4cCI6MTczNTA5NTUxMX0.RwfgcK8Jww9Zvs81wbN0i25neixzUtDeTrxg_nIDp8ySe_a0a6nCkx5VZh70fXhQ","email":"admin2@softjobs.com","rol":"admin","lenguage":"english"}
+Ruta consultada: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T02:58:53.345Z ; Ruta con credenciales: Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluMkBzb2Z0am9icy5jb20iLCJpYXQiOjE3MzUwMDkxMTEsImV4cCI6MTczNTA5NTUxMX0.RwfgcK8Jww9Zvs81wbN0i25neixzUtDeTrxg_nIDp8ySe_a0a6nCkx5VZh70fXhQ
+Ruta consultada: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T02:58:53.345Z ; Parametros Body :  {"email":"admin2@softjobs.com","password":"123456"} 
+Ruta: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T02:58:53.424Z ; Respuesta: [{"email":"admin2@softjobs.com","rol":"admin","lenguage":"english"}]
+Ruta consultada: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T02:59:12.654Z ; Ruta con credenciales: Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluMkBzb2Z0am9icy5jb20iLCJpYXQiOjE3MzUwMDkxMTEsImV4cCI6MTczNTA5NTUxMX0.RwfgcK8Jww9Zvs81wbN0i25neixzUtDeTrxg_nIDp8ySe_a0a6nCkx5VZh70fXhQ
+Ruta: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T02:59:12.835Z ; Respuesta: [{"email":"admin2@softjobs.com","rol":"admin","lenguage":"english"}]
+Ruta consultada: /api/usuarios ; Método: POST ; Fecha: 2024-12-24T03:00:39.369Z ; Ruta con credenciales: Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluMkBzb2Z0am9icy5jb20iLCJpYXQiOjE3MzUwMDkxMTEsImV4cCI6MTczNTA5NTUxMX0.RwfgcK8Jww9Zvs81wbN0i25neixzUtDeTrxg_nIDp8ySe_a0a6nCkx5VZh70fXhQ
+Ruta consultada: /api/usuarios ; Método: POST ; Fecha: 2024-12-24T03:00:39.369Z ; Parametros Body :  {"email":"admin3@softjobs.com","password":"123456","rol":"admin","lenguage":"english"} 
+Ruta: /api/usuarios ; Método: POST ; Fecha: 2024-12-24T03:00:39.617Z ; Respuesta: {"id":4,"email":"admin3@softjobs.com","password":"$2a$10$u6/8oMqI5ESjHPmEeVHWdepe.CRVicA10fcv/TcgJwLnEHYLSmV.m","rol":"admin","lenguage":"english"}
+Ruta consultada: /api/login ; Método: POST ; Fecha: 2024-12-24T03:00:55.329Z ; Ruta con credenciales: Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluMkBzb2Z0am9icy5jb20iLCJpYXQiOjE3MzUwMDkxMTEsImV4cCI6MTczNTA5NTUxMX0.RwfgcK8Jww9Zvs81wbN0i25neixzUtDeTrxg_nIDp8ySe_a0a6nCkx5VZh70fXhQ
+Ruta consultada: /api/login ; Método: POST ; Fecha: 2024-12-24T03:00:55.329Z ; Parametros Body :  {"email":"admin3@softjobs.com","password":"123456"} 
+Ruta: /api/login ; Método: POST ; Fecha: 2024-12-24T03:00:55.485Z ; Respuesta: {"token":"eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluM0Bzb2Z0am9icy5jb20iLCJpYXQiOjE3MzUwMDkyNTUsImV4cCI6MTczNTA5NTY1NX0.8H4iB50uyffxvJFssPT46nI4okDLrMOfNVFbcnFhTm2bRWD4w6RmLIKaE27XcJeN","email":"admin3@softjobs.com","rol":"admin","lenguage":"english"}
+Ruta consultada: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T03:01:22.629Z ; Ruta con credenciales: Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluM0Bzb2Z0am9icy5jb20iLCJpYXQiOjE3MzUwMDkyNTUsImV4cCI6MTczNTA5NTY1NX0.8H4iB50uyffxvJFssPT46nI4okDLrMOfNVFbcnFhTm2bRWD4w6RmLIKaE27XcJeN
+Ruta: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T03:01:22.708Z ; Respuesta: [{"email":"admin3@softjobs.com","rol":"admin","lenguage":"english"}]
+Ruta consultada: /usuarios ; Método: POST ; Fecha: 2024-12-24T03:05:28.339Z ; Ruta sin credenciales
+Ruta consultada: /usuarios ; Método: POST ; Fecha: 2024-12-24T03:05:28.339Z ; Parametros Body :  {"email":"docente@desafiolatam.com","password":"123456","rol":"Full Stack Developer","lenguage":"JavaScript"} 
+Ruta consultada: /usuarios ; Método: POST ; Fecha: 2024-12-24T03:05:48.367Z ; Ruta sin credenciales
+Ruta consultada: /usuarios ; Método: POST ; Fecha: 2024-12-24T03:05:48.367Z ; Parametros Body :  {"email":"pablo2@test.com","password":"456456789","rol":"Full Stack Developer","lenguage":"JavaScript"} 
+Ruta consultada: /api/usuarios ; Método: POST ; Fecha: 2024-12-24T03:07:12.434Z ; Ruta sin credenciales
+Ruta consultada: /api/usuarios ; Método: POST ; Fecha: 2024-12-24T03:07:12.434Z ; Parametros Body :  {"email":"pablo2@test.com","password":"456456789","rol":"Full Stack Developer","lenguage":"JavaScript"} 
+Ruta: /api/usuarios ; Método: POST ; Fecha: 2024-12-24T03:07:12.682Z ; Respuesta: {"id":5,"email":"pablo2@test.com","password":"$2a$10$u6/8oMqI5ESjHPmEeVHWdeiPADwAdbR0rCpV3fgBRj1.uq/ib2Rwm","rol":"Full Stack Developer","lenguage":"JavaScript"}
+Ruta consultada: /api/login ; Método: POST ; Fecha: 2024-12-24T03:07:20.791Z ; Ruta sin credenciales
+Ruta consultada: /api/login ; Método: POST ; Fecha: 2024-12-24T03:07:20.792Z ; Parametros Body :  {"email":"docente@desafiolatam.com","password":"123456"} 
+Ruta: /api/login ; Método: POST ; Fecha: 2024-12-24T03:07:20.795Z ; Respuesta: {"error":"Correo NO Registrado"}
+Ruta consultada: /api/login ; Método: POST ; Fecha: 2024-12-24T03:07:27.307Z ; Ruta sin credenciales
+Ruta consultada: /api/login ; Método: POST ; Fecha: 2024-12-24T03:07:27.307Z ; Parametros Body :  {"email":"pablo2@test.com","password":"456456789"} 
+Ruta: /api/login ; Método: POST ; Fecha: 2024-12-24T03:07:27.408Z ; Respuesta: {"token":"eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBhYmxvMkB0ZXN0LmNvbSIsImlhdCI6MTczNTAwOTY0NywiZXhwIjoxNzM1MDk2MDQ3fQ.aMAlGwDUO3z7Q7Vps6dV3fAsPkIV44ldNkUiEAe-2Eyp3b7lw7_17fbzpWYqxk8-","email":"pablo2@test.com","rol":"Full Stack Developer","lenguage":"JavaScript"}
+Ruta consultada: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T03:07:31.203Z ; Ruta con credenciales: Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBhYmxvMkB0ZXN0LmNvbSIsImlhdCI6MTczNTAwOTY0NywiZXhwIjoxNzM1MDk2MDQ3fQ.aMAlGwDUO3z7Q7Vps6dV3fAsPkIV44ldNkUiEAe-2Eyp3b7lw7_17fbzpWYqxk8-
+Ruta: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T03:07:31.208Z ; Respuesta: [{"email":"pablo2@test.com","rol":"Full Stack Developer","lenguage":"JavaScript"}]
+Ruta consultada: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T03:07:31.214Z ; Ruta con credenciales: Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBhYmxvMkB0ZXN0LmNvbSIsImlhdCI6MTczNTAwOTY0NywiZXhwIjoxNzM1MDk2MDQ3fQ.aMAlGwDUO3z7Q7Vps6dV3fAsPkIV44ldNkUiEAe-2Eyp3b7lw7_17fbzpWYqxk8-
+Ruta: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T03:07:31.220Z ; Respuesta: [{"email":"pablo2@test.com","rol":"Full Stack Developer","lenguage":"JavaScript"}]
+Ruta consultada: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T03:07:43.830Z ; Ruta con credenciales: Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBhYmxvMkB0ZXN0LmNvbSIsImlhdCI6MTczNTAwOTY0NywiZXhwIjoxNzM1MDk2MDQ3fQ.aMAlGwDUO3z7Q7Vps6dV3fAsPkIV44ldNkUiEAe-2Eyp3b7lw7_17fbzpWYqxk8-
+Ruta: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T03:07:43.913Z ; Respuesta: [{"email":"pablo2@test.com","rol":"Full Stack Developer","lenguage":"JavaScript"}]
+Ruta consultada: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T03:07:43.917Z ; Ruta con credenciales: Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBhYmxvMkB0ZXN0LmNvbSIsImlhdCI6MTczNTAwOTY0NywiZXhwIjoxNzM1MDk2MDQ3fQ.aMAlGwDUO3z7Q7Vps6dV3fAsPkIV44ldNkUiEAe-2Eyp3b7lw7_17fbzpWYqxk8-
+Ruta: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T03:07:43.923Z ; Respuesta: [{"email":"pablo2@test.com","rol":"Full Stack Developer","lenguage":"JavaScript"}]
+Ruta consultada: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T03:07:45.374Z ; Ruta con credenciales: Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBhYmxvMkB0ZXN0LmNvbSIsImlhdCI6MTczNTAwOTY0NywiZXhwIjoxNzM1MDk2MDQ3fQ.aMAlGwDUO3z7Q7Vps6dV3fAsPkIV44ldNkUiEAe-2Eyp3b7lw7_17fbzpWYqxk8-
+Ruta: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T03:07:45.379Z ; Respuesta: [{"email":"pablo2@test.com","rol":"Full Stack Developer","lenguage":"JavaScript"}]
+Ruta consultada: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T03:07:45.384Z ; Ruta con credenciales: Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBhYmxvMkB0ZXN0LmNvbSIsImlhdCI6MTczNTAwOTY0NywiZXhwIjoxNzM1MDk2MDQ3fQ.aMAlGwDUO3z7Q7Vps6dV3fAsPkIV44ldNkUiEAe-2Eyp3b7lw7_17fbzpWYqxk8-
+Ruta: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T03:07:45.390Z ; Respuesta: [{"email":"pablo2@test.com","rol":"Full Stack Developer","lenguage":"JavaScript"}]
+Ruta consultada: /api/login ; Método: POST ; Fecha: 2024-12-24T03:08:01.715Z ; Ruta sin credenciales
+Ruta consultada: /api/login ; Método: POST ; Fecha: 2024-12-24T03:08:01.715Z ; Parametros Body :  {"email":"pablo2@test.com","password":"456456789"} 
+Ruta: /api/login ; Método: POST ; Fecha: 2024-12-24T03:08:01.888Z ; Respuesta: {"token":"eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBhYmxvMkB0ZXN0LmNvbSIsImlhdCI6MTczNTAwOTY4MSwiZXhwIjoxNzM1MDk2MDgxfQ.8QoXaegCTOhs9kYObiwz8MnrphnIRzGdzXuhQTWmofNkO5DfCqq-i53ddptMKs_h","email":"pablo2@test.com","rol":"Full Stack Developer","lenguage":"JavaScript"}
+Ruta consultada: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T03:08:05.070Z ; Ruta con credenciales: Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBhYmxvMkB0ZXN0LmNvbSIsImlhdCI6MTczNTAwOTY4MSwiZXhwIjoxNzM1MDk2MDgxfQ.8QoXaegCTOhs9kYObiwz8MnrphnIRzGdzXuhQTWmofNkO5DfCqq-i53ddptMKs_h
+Ruta: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T03:08:05.075Z ; Respuesta: [{"email":"pablo2@test.com","rol":"Full Stack Developer","lenguage":"JavaScript"}]
+Ruta consultada: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T03:08:05.080Z ; Ruta con credenciales: Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBhYmxvMkB0ZXN0LmNvbSIsImlhdCI6MTczNTAwOTY4MSwiZXhwIjoxNzM1MDk2MDgxfQ.8QoXaegCTOhs9kYObiwz8MnrphnIRzGdzXuhQTWmofNkO5DfCqq-i53ddptMKs_h
+Ruta: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T03:08:05.086Z ; Respuesta: [{"email":"pablo2@test.com","rol":"Full Stack Developer","lenguage":"JavaScript"}]
+Ruta consultada: /api/login ; Método: POST ; Fecha: 2024-12-24T03:21:43.744Z ; Ruta sin credenciales
+Ruta consultada: /api/login ; Método: POST ; Fecha: 2024-12-24T03:21:43.744Z ; Parametros Body :  {"email":"pablo2@test.com","password":"456456789"} 
+Ruta: /api/login ; Método: POST ; Fecha: 2024-12-24T03:21:43.961Z ; Respuesta: {"token":"eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBhYmxvMkB0ZXN0LmNvbSIsImlhdCI6MTczNTAxMDUwMywiZXhwIjoxNzM1MDk2OTAzfQ.eYMk4-t2aO8AtOfhBLOqRI3l3GrrANypBpkO-RI5sAChflnH04gpLYlT-bckZ5ZM","email":"pablo2@test.com","rol":"Full Stack Developer","lenguage":"JavaScript"}
+Ruta consultada: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T03:21:46.400Z ; Ruta con credenciales: Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBhYmxvMkB0ZXN0LmNvbSIsImlhdCI6MTczNTAxMDUwMywiZXhwIjoxNzM1MDk2OTAzfQ.eYMk4-t2aO8AtOfhBLOqRI3l3GrrANypBpkO-RI5sAChflnH04gpLYlT-bckZ5ZM
+Ruta: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T03:21:46.411Z ; Respuesta: [{"email":"pablo2@test.com","rol":"Full Stack Developer","lenguage":"JavaScript"}]
+Ruta consultada: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T03:21:46.419Z ; Ruta con credenciales: Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBhYmxvMkB0ZXN0LmNvbSIsImlhdCI6MTczNTAxMDUwMywiZXhwIjoxNzM1MDk2OTAzfQ.eYMk4-t2aO8AtOfhBLOqRI3l3GrrANypBpkO-RI5sAChflnH04gpLYlT-bckZ5ZM
+Ruta: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T03:21:46.427Z ; Respuesta: [{"email":"pablo2@test.com","rol":"Full Stack Developer","lenguage":"JavaScript"}]
+Ruta consultada: /api/usuarios ; Método: POST ; Fecha: 2024-12-24T03:22:22.135Z ; Ruta sin credenciales
+Ruta consultada: /api/usuarios ; Método: POST ; Fecha: 2024-12-24T03:22:22.135Z ; Parametros Body :  {"email":"pablo@test.com","password":"456456","rol":"Backend Developer","lenguage":"Python"} 
+Ruta: /api/usuarios ; Método: POST ; Fecha: 2024-12-24T03:22:22.393Z ; Respuesta: {"id":6,"email":"pablo@test.com","password":"$2a$10$vIahEUzUvmc7yCbTU9Rdbernk.8sa/URdsc9OZw83av0nGOel61/S","rol":"Backend Developer","lenguage":"Python"}
+Ruta consultada: /api/login ; Método: POST ; Fecha: 2024-12-24T03:22:32.076Z ; Ruta sin credenciales
+Ruta consultada: /api/login ; Método: POST ; Fecha: 2024-12-24T03:22:32.076Z ; Parametros Body :  {"email":"pablo2@test.com","password":"456456789"} 
+Ruta: /api/login ; Método: POST ; Fecha: 2024-12-24T03:22:32.166Z ; Respuesta: {"token":"eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBhYmxvMkB0ZXN0LmNvbSIsImlhdCI6MTczNTAxMDU1MiwiZXhwIjoxNzM1MDk2OTUyfQ.Rt9s4P_ahTq8oZGzqyMNkTu3sQBqARS_3QB5B-UXDT_zsG1UuewVZs28QckDlMez","email":"pablo2@test.com","rol":"Full Stack Developer","lenguage":"JavaScript"}
+Ruta consultada: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T03:22:34.645Z ; Ruta con credenciales: Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBhYmxvMkB0ZXN0LmNvbSIsImlhdCI6MTczNTAxMDU1MiwiZXhwIjoxNzM1MDk2OTUyfQ.Rt9s4P_ahTq8oZGzqyMNkTu3sQBqARS_3QB5B-UXDT_zsG1UuewVZs28QckDlMez
+Ruta: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T03:22:34.653Z ; Respuesta: [{"email":"pablo2@test.com","rol":"Full Stack Developer","lenguage":"JavaScript"}]
+Ruta consultada: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T03:22:34.663Z ; Ruta con credenciales: Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBhYmxvMkB0ZXN0LmNvbSIsImlhdCI6MTczNTAxMDU1MiwiZXhwIjoxNzM1MDk2OTUyfQ.Rt9s4P_ahTq8oZGzqyMNkTu3sQBqARS_3QB5B-UXDT_zsG1UuewVZs28QckDlMez
+Ruta: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T03:22:34.670Z ; Respuesta: [{"email":"pablo2@test.com","rol":"Full Stack Developer","lenguage":"JavaScript"}]
+Ruta consultada: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T03:23:00.473Z ; Ruta con credenciales: Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBhYmxvMkB0ZXN0LmNvbSIsImlhdCI6MTczNTAxMDU1MiwiZXhwIjoxNzM1MDk2OTUyfQ.Rt9s4P_ahTq8oZGzqyMNkTu3sQBqARS_3QB5B-UXDT_zsG1UuewVZs28QckDlMez
+Ruta: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T03:23:00.666Z ; Respuesta: [{"email":"pablo2@test.com","rol":"Full Stack Developer","lenguage":"JavaScript"}]
+Ruta consultada: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T03:23:00.670Z ; Ruta con credenciales: Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBhYmxvMkB0ZXN0LmNvbSIsImlhdCI6MTczNTAxMDU1MiwiZXhwIjoxNzM1MDk2OTUyfQ.Rt9s4P_ahTq8oZGzqyMNkTu3sQBqARS_3QB5B-UXDT_zsG1UuewVZs28QckDlMez
+Ruta: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T03:23:00.677Z ; Respuesta: [{"email":"pablo2@test.com","rol":"Full Stack Developer","lenguage":"JavaScript"}]
+Ruta consultada: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T03:23:02.972Z ; Ruta con credenciales: Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBhYmxvMkB0ZXN0LmNvbSIsImlhdCI6MTczNTAxMDU1MiwiZXhwIjoxNzM1MDk2OTUyfQ.Rt9s4P_ahTq8oZGzqyMNkTu3sQBqARS_3QB5B-UXDT_zsG1UuewVZs28QckDlMez
+Ruta: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T03:23:02.978Z ; Respuesta: [{"email":"pablo2@test.com","rol":"Full Stack Developer","lenguage":"JavaScript"}]
+Ruta consultada: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T03:23:02.983Z ; Ruta con credenciales: Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBhYmxvMkB0ZXN0LmNvbSIsImlhdCI6MTczNTAxMDU1MiwiZXhwIjoxNzM1MDk2OTUyfQ.Rt9s4P_ahTq8oZGzqyMNkTu3sQBqARS_3QB5B-UXDT_zsG1UuewVZs28QckDlMez
+Ruta: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T03:23:02.991Z ; Respuesta: [{"email":"pablo2@test.com","rol":"Full Stack Developer","lenguage":"JavaScript"}]
+Ruta consultada: /api/login ; Método: POST ; Fecha: 2024-12-24T03:23:13.430Z ; Ruta sin credenciales
+Ruta consultada: /api/login ; Método: POST ; Fecha: 2024-12-24T03:23:13.430Z ; Parametros Body :  {"email":"pablo@test.com","password":"456456"} 
+Ruta: /api/login ; Método: POST ; Fecha: 2024-12-24T03:23:13.696Z ; Respuesta: {"token":"eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBhYmxvQHRlc3QuY29tIiwiaWF0IjoxNzM1MDEwNTkzLCJleHAiOjE3MzUwOTY5OTN9.UK_YP8LFMfhAfWisxG4UmVNGKo0lMiOysl9tsKIuKJenWFqT8izxXkVKFGiHqaDD","email":"pablo@test.com","rol":"Backend Developer","lenguage":"Python"}
+Ruta consultada: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T03:23:15.577Z ; Ruta con credenciales: Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBhYmxvQHRlc3QuY29tIiwiaWF0IjoxNzM1MDEwNTkzLCJleHAiOjE3MzUwOTY5OTN9.UK_YP8LFMfhAfWisxG4UmVNGKo0lMiOysl9tsKIuKJenWFqT8izxXkVKFGiHqaDD
+Ruta: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T03:23:15.584Z ; Respuesta: [{"email":"pablo@test.com","rol":"Backend Developer","lenguage":"Python"}]
+Ruta consultada: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T03:23:15.591Z ; Ruta con credenciales: Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBhYmxvQHRlc3QuY29tIiwiaWF0IjoxNzM1MDEwNTkzLCJleHAiOjE3MzUwOTY5OTN9.UK_YP8LFMfhAfWisxG4UmVNGKo0lMiOysl9tsKIuKJenWFqT8izxXkVKFGiHqaDD
+Ruta: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T03:23:15.600Z ; Respuesta: [{"email":"pablo@test.com","rol":"Backend Developer","lenguage":"Python"}]
+Ruta consultada: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T03:23:19.895Z ; Ruta con credenciales: Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBhYmxvQHRlc3QuY29tIiwiaWF0IjoxNzM1MDEwNTkzLCJleHAiOjE3MzUwOTY5OTN9.UK_YP8LFMfhAfWisxG4UmVNGKo0lMiOysl9tsKIuKJenWFqT8izxXkVKFGiHqaDD
+Ruta: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T03:23:19.900Z ; Respuesta: [{"email":"pablo@test.com","rol":"Backend Developer","lenguage":"Python"}]
+Ruta consultada: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T03:23:19.906Z ; Ruta con credenciales: Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBhYmxvQHRlc3QuY29tIiwiaWF0IjoxNzM1MDEwNTkzLCJleHAiOjE3MzUwOTY5OTN9.UK_YP8LFMfhAfWisxG4UmVNGKo0lMiOysl9tsKIuKJenWFqT8izxXkVKFGiHqaDD
+Ruta: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T03:23:19.912Z ; Respuesta: [{"email":"pablo@test.com","rol":"Backend Developer","lenguage":"Python"}]
+Ruta consultada: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T03:23:21.103Z ; Ruta con credenciales: Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBhYmxvQHRlc3QuY29tIiwiaWF0IjoxNzM1MDEwNTkzLCJleHAiOjE3MzUwOTY5OTN9.UK_YP8LFMfhAfWisxG4UmVNGKo0lMiOysl9tsKIuKJenWFqT8izxXkVKFGiHqaDD
+Ruta: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T03:23:21.110Z ; Respuesta: [{"email":"pablo@test.com","rol":"Backend Developer","lenguage":"Python"}]
+Ruta consultada: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T03:23:21.117Z ; Ruta con credenciales: Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBhYmxvQHRlc3QuY29tIiwiaWF0IjoxNzM1MDEwNTkzLCJleHAiOjE3MzUwOTY5OTN9.UK_YP8LFMfhAfWisxG4UmVNGKo0lMiOysl9tsKIuKJenWFqT8izxXkVKFGiHqaDD
+Ruta: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T03:23:21.122Z ; Respuesta: [{"email":"pablo@test.com","rol":"Backend Developer","lenguage":"Python"}]
+Ruta consultada: /api/login ; Método: POST ; Fecha: 2024-12-24T03:23:43.899Z ; Ruta sin credenciales
+Ruta consultada: /api/login ; Método: POST ; Fecha: 2024-12-24T03:23:43.899Z ; Parametros Body :  {"email":"pablo@test.com","password":"456456"} 
+Ruta: /api/login ; Método: POST ; Fecha: 2024-12-24T03:23:44.121Z ; Respuesta: {"token":"eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBhYmxvQHRlc3QuY29tIiwiaWF0IjoxNzM1MDEwNjI0LCJleHAiOjE3MzUwOTcwMjR9.vspmPEuIoUpfc7rbRo6D3WIRTEOlNuExDZz1s3OW48UeUsbFxse1pvv1K7GuHgbA","email":"pablo@test.com","rol":"Backend Developer","lenguage":"Python"}
+Ruta consultada: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T03:23:46.045Z ; Ruta con credenciales: Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBhYmxvQHRlc3QuY29tIiwiaWF0IjoxNzM1MDEwNjI0LCJleHAiOjE3MzUwOTcwMjR9.vspmPEuIoUpfc7rbRo6D3WIRTEOlNuExDZz1s3OW48UeUsbFxse1pvv1K7GuHgbA
+Ruta: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T03:23:46.057Z ; Respuesta: [{"email":"pablo@test.com","rol":"Backend Developer","lenguage":"Python"}]
+Ruta consultada: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T03:23:46.065Z ; Ruta con credenciales: Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBhYmxvQHRlc3QuY29tIiwiaWF0IjoxNzM1MDEwNjI0LCJleHAiOjE3MzUwOTcwMjR9.vspmPEuIoUpfc7rbRo6D3WIRTEOlNuExDZz1s3OW48UeUsbFxse1pvv1K7GuHgbA
+Ruta: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T03:23:46.070Z ; Respuesta: [{"email":"pablo@test.com","rol":"Backend Developer","lenguage":"Python"}]
+Ruta consultada: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T03:24:18.110Z ; Ruta con credenciales: Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluM0Bzb2Z0am9icy5jb20iLCJpYXQiOjE3MzUwMDkyNTUsImV4cCI6MTczNTA5NTY1NX0.8H4iB50uyffxvJFssPT46nI4okDLrMOfNVFbcnFhTm2bRWD4w6RmLIKaE27XcJeN
+Ruta: /api/usuarios ; Método: GET ; Fecha: 2024-12-24T03:24:18.192Z ; Respuesta: [{"email":"admin3@softjobs.com","rol":"admin","lenguage":"english"}]

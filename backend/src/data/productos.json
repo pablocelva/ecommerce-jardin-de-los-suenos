@@ -1,0 +1,134 @@
+[
+    {
+    "id_producto": 1,
+    "nombre_producto": "Monstera Deliciosa",
+    "descripcion": "Planta de interior popular con hojas grandes y vistosas.",
+    "precio": 25.99,
+    "stock": 10,
+    "categoria": "interior,monstera",
+    "imagen_producto": ["https://images.unsplash.com/photo-1530049478161-0780526964f4?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"],
+    "fecha_creacion": "2025-01-28T12:00:00",
+    "id_categoria": 1
+    },
+    {
+    "id_producto": 2,
+    "nombre_producto": "Suculenta Jade",
+    "descripcion": "Planta suculenta de bajo mantenimiento.",
+    "precio": 12.99,
+    "stock": 30,
+    "categoria": "interior,suculenta",
+    "imagen_producto": ["https://images.unsplash.com/photo-1594336874658-6110582818bd?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"],
+    "fecha_creacion": "2025-01-28T12:05:00",
+    "id_categoria": 3
+    },
+    {
+    "id_producto": 3,
+    "nombre_producto": "Cactus Echinopsis",
+    "descripcion": "Cactus ornamental con flores vistosas.",
+    "precio": 9.99,
+    "stock": 50,
+    "categoria": "exterior,cactus",
+    "imagen_producto": ["https://images.unsplash.com/photo-1628748243729-d4c0cd38b70c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"],
+    "fecha_creacion": "2025-01-28T12:10:00",
+    "id_categoria": 4
+    },
+    {
+    "id_producto": 4,
+    "nombre_producto": "Lavanda",
+    "descripcion": "Hierba aromática ideal para jardines y decoraciones.",
+    "precio": 14.99,
+    "stock": 20,
+    "categoria": "exterior,hierba",
+    "imagen_producto": ["https://images.unsplash.com/photo-1627976435198-05d4fce10b4f?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"],
+    "fecha_creacion": "2025-01-28T12:15:00",
+    "id_categoria": 5
+    },
+    {
+    "id_producto": 5,
+    "nombre_producto": "Hiedra Inglesa",
+    "descripcion": "Planta trepadora ideal para decoración de interiores y exteriores.",
+    "precio": 18.99,
+    "stock": 15,
+    "categoria": "interior,trepadora",
+    "imagen_producto": ["https://images.unsplash.com/photo-1648212947389-06dd0acf060a?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"],
+    "fecha_creacion": "2025-01-28T12:20:00",
+    "id_categoria": 6
+    },
+    {
+    "id_producto": 6,
+    "nombre_producto": "Rosa Roja",
+    "descripcion": "Flor ornamental perfecta para regalar.",
+    "precio": 7.99,
+    "stock": 100,
+    "categoria": "exterior,flor",
+    "imagen_producto": ["https://images.unsplash.com/photo-1559563362-c667ba5f5480?q=80&w=1001&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"],
+    "fecha_creacion": "2025-01-28T12:25:00",
+    "id_categoria": 7
+    },
+    {
+    "id_producto": 7,
+    "nombre_producto": "Bonsái de Pino",
+    "descripcion": "Bonsái con estilo japonés tradicional.",
+    "precio": 49.99,
+    "stock": 5,
+    "categoria": "interior,bonsai",
+    "imagen_producto": ["https://images.unsplash.com/photo-1526397751294-331021109fbd?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"],
+    "fecha_creacion": "2025-01-28T12:30:00",
+    "id_categoria": 8
+    },
+    {
+    "id_producto": 8,
+    "nombre_producto": "Palma Areca",
+    "descripcion": "Palma ideal para interiores y decoración.",
+    "precio": 29.99,
+    "stock": 8,
+    "categoria": "interior,palma",
+    "imagen_producto": ["https://plus.unsplash.com/premium_photo-1681256187605-2d66160926a2?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"],
+    "fecha_creacion": "2025-01-28T12:35:00",
+    "id_categoria": 9
+    },
+    {
+    "id_producto": 9,
+    "nombre_producto": "Orquídea Phalaenopsis",
+    "descripcion": "Orquídea ornamental de fácil cuidado.",
+    "precio": 19.99,
+    "stock": 12,
+    "categoria": "interior,orquidea",
+    "imagen_producto": ["https://images.unsplash.com/photo-1561120560-94e54f4f68b0?q=80&w=1138&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"],
+    "fecha_creacion": "2025-01-28T12:40:00",
+    "id_categoria": 10
+    },
+    {
+    "id_producto": 10,
+    "nombre_producto": "Helecho Boston",
+    "descripcion": "Planta ideal para decoración de interiores.",
+    "precio": 15.99,
+    "stock": 18,
+    "categoria": "interior,helechos",
+    "imagen_producto": ["https://images.unsplash.com/photo-1727636914828-9c7288d0a3b9?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"],
+    "fecha_creacion": "2025-01-28T12:45:00",
+    "id_categoria": 1
+    },
+    {
+    "id_producto": 11,
+    "nombre_producto": "Cactus San Pedro",
+    "descripcion": "Cactus de crecimiento rápido, ideal para exteriores.",
+    "precio": 15.99,
+    "stock": 25,
+    "categoria": "exterior,cactus",
+    "imagen_producto": ["https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?q=80&w=948&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"],
+    "fecha_creacion": "2025-01-28T12:50:00",
+    "id_categoria": 4
+    },
+    {
+    "id_producto": 12,
+    "nombre_producto": "Aloe Vera",
+    "descripcion": "Planta suculenta medicinal de fácil cuidado.",
+    "precio": 10.99,
+    "stock": 40,
+    "categoria": "suculenta,interior",
+    "imagen_producto": ["https://images.unsplash.com/photo-1569745358610-b01866003860?q=80&w=1035&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"],
+    "fecha_creacion": "2025-01-28T12:55:00",
+    "id_categoria": 3
+    }
+]

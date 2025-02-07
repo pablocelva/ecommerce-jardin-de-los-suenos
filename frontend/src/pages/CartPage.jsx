@@ -23,7 +23,7 @@ const CartPage = () => {
         ) : (
         cart.map((product) => (
             <div key={product.id} style={{ border: "1px solid black", margin: "10px", padding: "10px" }}>
-            <img src="https://via.placeholder.com/150" alt={product.nombre_producto} />
+            <img src={product.imagen_producto} alt="${product.nombre_producto}" style={{ width: "200px" }} />
             <h4>{product.nombre_producto}</h4>
             <p>Cantidad: {product.quantity}</p>
             <p>Precio: ${product.precio}</p>

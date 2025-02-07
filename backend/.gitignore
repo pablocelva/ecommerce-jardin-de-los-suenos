@@ -1,0 +1,5 @@
+#npm
+node_modules
+.env
+package-lock.json
+./logs/consultas.log

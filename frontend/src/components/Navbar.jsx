@@ -25,7 +25,11 @@ const Navbar = () => {
     
     return (
         <Header className="navbar">
-            <h2><a href="/">Jardin de los Sueños</a></h2>
+            <button>
+                <NavLink to="/" className="nav-link-home">
+                    Jardin de los Sueños
+                </NavLink>
+            </button>
             {isAuthenticated ? (
                 <div>
                     <button>
