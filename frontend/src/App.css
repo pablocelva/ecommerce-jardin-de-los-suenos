@@ -26,11 +26,15 @@ html, body {
   /* cursor: pointer; */
   background-color: #1C3224;  /* Un gris claro para el fondo */
   position: fixed;
-  top: 64px;  /* Para evitar que se superponga con el navbar */
+  /* position: sticky; */
+  top: 64px; 
   left: 0;
+  z-index: 1;
   width: 250px;
-  height: 100%;
-  padding: 16px;
+  /* height: 100%; */
+  height: 100vh;
+  padding: 8px 40px;
+  font-size: 14px;
   overflow-y: auto;
   box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1); /* Sombra ligera para resaltar */
 }
@@ -48,11 +52,13 @@ html, body {
 
 /* Contenido principal con margen izquierdo para dejar espacio al Sider */
 .content {
-  margin-left: 250px;  /* Ahora 250px para que no se sobreponga */
-  padding: 20px;
+  /* margin-left: 250px;   */
+  flex: 1;
+  /* padding: 0 20px; */
   background-color: #fff;
   height: 100%;
   overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .navbar {
@@ -60,10 +66,11 @@ html, body {
   color: white;
   /* padding: 16px; */
   /* text-align: center; */
-  height: 64px; /* Ajuste de la altura para que no se corte */
+  height: 64px; 
   display: flex;
-  justify-content: space-between;
-  align-items: center; /* Centra el texto verticalmente */
+  /* gap: 250px; */
+  justify-content: space-around;
+  align-items: center; 
 }
 
 .navbar a {
@@ -100,6 +107,11 @@ html, body {
   color: #000;
 }
 
+.nav-link {
+  color: #fff;
+  background-color: transparent;
+}
+
 button {
   background-color: #4CAF50; /* Verde */
   color: white;
@@ -118,6 +130,24 @@ button:hover {
   transform: scale(1.05);
 }
 
+.navbar button {
+  background-color: transparent; /* Verde */
+  color: white;
+  padding: 12px;
+  /* border: none; */
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: none;
+}
+
+.navbar button:hover {
+  /* background-color: #45a049; */
+  transform: scale(1.05);
+}
+
 button:active {
   background-color: #3e8e41;
   transform: scale(0.98);
@@ -125,7 +155,8 @@ button:active {
 
 
 .card {
-  width: 100%;
+  margin: 16px;
+  width: 80% auto;
   max-width: 300px; /* Ajusta según necesites */
   border: 1px solid #ddd;
   border-radius: 10px;
@@ -229,4 +260,13 @@ button:active {
   width: 100%;
   object-fit: cover;
   /* border-radius: 10px; */
+}
+
+.footer {
+  z-index: 2;
+  text-align: center;
+  background: #219150;
+  color: white;
+  padding: 15px;
+  font-size: 14px;
 }

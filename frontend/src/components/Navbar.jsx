@@ -30,40 +30,43 @@ const Navbar = () => {
                     Jardin de los Sueños
                 </NavLink>
             </button>
-            {isAuthenticated ? (
-                <div>
+            <div>
+
+                {isAuthenticated ? (
+                    <div>
+                        <button>
+                            <NavLink to="/cart" className="nav-link">
+                                Carrito
+                            </NavLink>
+                        </button>
+                        <button>
+                            <NavLink to="/profile" className="nav-link">
+                                Mi Perfil
+                            </NavLink>
+                        </button>
+                        <button>
+                            <NavLink to="/admin" className="nav-link">
+                                Admin
+                            </NavLink>
+                        </button>
+                        <button onClick={handleLogout}>Cerrar sesión</button>
+                    </div>
+                ) : (
+                    <div>
                     <button>
-                        <NavLink to="/cart" className="nav-link">
-                            Carrito
-                        </NavLink>
+                    <NavLink to="/login" className="nav-link">
+                        Iniciar Sesión
+                    </NavLink>
                     </button>
+        
                     <button>
-                        <NavLink to="/profile" className="nav-link">
-                            Mi Perfil
-                        </NavLink>
+                    <NavLink to="/register">
+                        Registrarse
+                    </NavLink>
                     </button>
-                    <button>
-                        <NavLink to="/admin" className="nav-link">
-                            Admin
-                        </NavLink>
-                    </button>
-                    <button onClick={handleLogout}>Cerrar sesión</button>
                 </div>
-            ) : (
-                <div>
-                <button>
-                <NavLink to="/login" className="nav-link">
-                    Iniciar Sesión
-                </NavLink>
-                </button>
-    
-                <button>
-                <NavLink to="/register">
-                    Registrarse
-                </NavLink>
-                </button>
+                )}
             </div>
-            )}
         </Header>
     );
 };

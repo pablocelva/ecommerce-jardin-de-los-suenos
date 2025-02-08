@@ -17,7 +17,7 @@ const AdminPanel = () => {
     }
 
     return (
-        <div style={{ padding: "20px" }}>
+        <div style={{ padding: "20px", display: "flex", flexDirection: "column", alignItems: "center" }}>
             <img src={user.imagen_perfil} alt="Perfil de usuario" />
             <h2>Panel de Administrador</h2>
             <p>Bienvenido, administrador.</p>

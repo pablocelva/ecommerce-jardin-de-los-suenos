@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import productos from "../data/productos.json";
 import { useCart } from "../context/CartContext";
+import AppFooter from "../components/Footer";
 
 const ProductPage = () => {
     // Obtener el ID del producto desde la URL
@@ -17,13 +18,16 @@ const ProductPage = () => {
     }
 
     return (
-        <div style={{ padding: "20px" }}>
-        <h2>{producto.nombre_producto}</h2>
-        <img src={producto.imagen_producto} alt={producto.nombre_producto} style={{ width: "100%", maxWidth: "600px" }} />
-        <p>{producto.descripcion}</p>
-        <p><strong>Precio: ${producto.precio}</strong></p>
-        <button onClick={() => addToCart(producto)}>Añadir al carrito</button>
-        </div>
+        <>
+            <div style={{ padding: "20px", display: "flex", flexDirection: "column", alignItems: "center" }}>
+                <h2>{producto.nombre_producto}</h2>
+                <img src={producto.imagen_producto} alt={producto.nombre_producto} style={{ width: "100%", maxWidth: "600px", borderRadius: "8px", maxHeight: "400px", objectFit: "cover" }} />
+                <p>{producto.descripcion}</p>
+                <p><strong>Precio: ${producto.precio}</strong></p>
+                <button onClick={() => addToCart(producto)}>Añadir al carrito</button>
+            </div>
+            <AppFooter />
+        </>
     );
 };
 

@@ -26,7 +26,7 @@ const RegisterPage = () => {
   };
 
   return (
-    <div style={{ padding: "20px" }}>
+    <div style={{ padding: "20px", display: "flex", flexDirection: "column", alignItems: "center" }}>
       <h2>Registrarse</h2>
       <Form onFinish={handleSubmit}>
         <Form.Item label="Email" name="email">

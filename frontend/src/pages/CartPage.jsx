@@ -16,7 +16,7 @@ const CartPage = () => {
     //const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
 
     return (
-        <div>
+        <div style={{ padding: "20px", display: "flex", flexDirection: "column", alignItems: "center" }}>
         <h2>Carrito de Compras</h2>
         {cart.length === 0 ? (
         <p>El carrito está vacío</p>

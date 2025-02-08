@@ -31,7 +31,7 @@ const ProfilePage = () => {
   if (!user) return <div>Cargando...</div>;
 
   return (
-    <div style={{ padding: "20px" }}>
+    <div style={{ padding: "20px",  display: "flex", flexDirection: "column", alignItems: "center" }}>
       <img src={user.imagen_perfil} alt="Perfil de usuario" />
       <h2>Perfil de Usuario</h2>
       <p>
