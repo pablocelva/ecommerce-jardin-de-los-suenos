@@ -27,15 +27,32 @@ const getOrdersByUserId = async (id_usuario) => {
     }
 }
 
+const getOrderByOrderId = async (id_compra) => {
+    try {
+        const SQLQuery = format(`
+                SELECT * FROM orders
+                WHERE id_compra = %L
+                `,
+                id_compra
+            )
+
+        const { rows: [order] } = await DB.query(SQLQuery)
+        return order
+    } catch (error) {
+        throw error
+    }
+}
+
 const createOrder = async (id_usuario, precio_total, detalle, direccion, estado = 'pending') => {
     try {
         const SQLQuery = format(`
-                INSERT INTO orders 
-                VALUES (DEFAULT, %L, %L, %L, %L) RETURNING *
+                INSERT INTO orders (id_usuario, precio_total, detalle, direccion, estado)
+                VALUES (%L, %L, %L::jsonb, %L, %L)
+                RETURNING *
                 `,
-                id_usuario,
+                id_usuario || null,
                 precio_total,
-                detalle,
+                JSON.stringify(detalle),
                 direccion,
                 estado
             )
@@ -52,12 +69,14 @@ const updateOrderStatus = async (id_compra, estado) => {
         const SQLQuery = format(`
                 UPDATE orders
                 SET estado = %L,
-                fecha_envio = CASE 
-                WHEN $1 = 'shipped' THEN NOW() 
-                ELSE fecha_envio END
+                    fecha_envio = CASE 
+                        WHEN %L = 'shipped' THEN now()
+                        ELSE fecha_envio 
+                    END
                 WHERE id_compra = %L
                 RETURNING *
                 `,
+                estado,
                 estado,
                 id_compra
             )
@@ -69,22 +88,42 @@ const updateOrderStatus = async (id_compra, estado) => {
     }
 }
 
-const deleteOrder = async (id_compra, id_usuario) => {
+const deleteOrder = async (id_compra) => {
     try {
         const SQLQuery = format(`
                 DELETE FROM orders
-                WHERE id_compra = %L AND id_usuario = %L
+                WHERE id_compra = %L 
                 RETURNING *
                 `,
                 id_compra,
-                id_usuario
             )
+        /*let SQLQuery;
+
+        if (isAdmin) {
+            // Si es admin, puede eliminar cualquier orden
+            SQLQuery = format(`
+                DELETE FROM orders
+                WHERE id_compra = %L
+                RETURNING *
+                `, id_compra);
+        } else {
+            // Si no es admin, solo puede eliminar sus propias órdenes
+            SQLQuery = format(`
+                DELETE FROM orders
+                WHERE id_compra = %L AND id_usuario = %L
+                RETURNING *
+                `, id_compra, id_usuario);
+        }*/
 
         const { rows: [order] } = await DB.query(SQLQuery)
+
+        if (!order) {
+            throw new Error('No se encontró la orden')
+        }
         return order
     } catch (error) {
         throw error
     }
 }
 
-module.exports = { getAllOrders, getOrdersByUserId, createOrder, updateOrderStatus, deleteOrder }
+module.exports = { getAllOrders, getOrdersByUserId,getOrderByOrderId, createOrder, updateOrderStatus, deleteOrder }
