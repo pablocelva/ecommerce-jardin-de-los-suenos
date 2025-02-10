@@ -6,10 +6,7 @@
     "start": "nodemon index.js",
     "dev": "nodemon index.js",
     "prod": "node index.js",
-    "test:unit": "jest",
-    "test:integration": "jest --testPathPattern=integration",
-    "test:watch": "jest --watch",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "keywords": [],
   "author": "",

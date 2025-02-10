@@ -20,23 +20,24 @@ const getOrdersByUserId = async (id_usuario) => {
                 id_usuario
             )
 
-        const { rows: [order] } = await DB.query(SQLQuery)
-        return order
+        const { rows } = await DB.query(SQLQuery)
+        return rows
     } catch (error) {
         throw error
     }
 }
 
-const createOrder = async (id_usuario, precio_total, detalle, direccion) => {
+const createOrder = async (id_usuario, precio_total, detalle, direccion, estado = 'pending') => {
     try {
         const SQLQuery = format(`
-                INSERT INTO orders
+                INSERT INTO orders 
                 VALUES (DEFAULT, %L, %L, %L, %L) RETURNING *
                 `,
                 id_usuario,
                 precio_total,
                 detalle,
-                direccion
+                direccion,
+                estado
             )
 
         const { rows: [order] } = await DB.query(SQLQuery)
@@ -55,6 +56,7 @@ const updateOrderStatus = async (id_compra, estado) => {
                 WHEN $1 = 'shipped' THEN NOW() 
                 ELSE fecha_envio END
                 WHERE id_compra = %L
+                RETURNING *
                 `,
                 estado,
                 id_compra
@@ -72,6 +74,7 @@ const deleteOrder = async (id_compra, id_usuario) => {
         const SQLQuery = format(`
                 DELETE FROM orders
                 WHERE id_compra = %L AND id_usuario = %L
+                RETURNING *
                 `,
                 id_compra,
                 id_usuario

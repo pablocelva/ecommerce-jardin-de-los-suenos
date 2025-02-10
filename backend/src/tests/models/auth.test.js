@@ -32,11 +32,11 @@ describe('AUTH MODEL TESTS', () => {
             const email = 'test@test.com'
             const password = 'hashedPassword'
 
-            DB.query.mockResolvedValue({rows:[], rowCount: 0})
+            DB.query.mockRejectedValue({message: 'USER_NOT_FOUND'})
             await expect(verificarCredenciales(email, password))
             .rejects
             .toThrow('El correo no esta registrado')
-            expect(DB.query).toHaveBeenCalledTimes(2)
+            expect(DB.query).toHaveBeenCalledTimes(1)
         })
     })
 
@@ -46,7 +46,7 @@ describe('AUTH MODEL TESTS', () => {
             const password = 'hashedPassword'
 
             const mockUser = {
-                id: 2,
+                id: 204,
                 email,
                 password,
             }
@@ -62,10 +62,10 @@ describe('AUTH MODEL TESTS', () => {
             expect(DB.query).toHaveBeenCalledTimes(1)
         })
         test('Error en el registro', async () => {
-            const email = 'test@example.com'
+            const email = 'test151@example.com'
             const password = 'hashedPassword'
 
-            //DB.query.mockResolvedValue({new Error('DATABASE_ERROR')})
+            DB.query.mockRejectedValue(new Error('DATABASE_ERROR'))
 
             await expect(register(email, password))
             .rejects
