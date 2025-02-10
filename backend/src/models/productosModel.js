@@ -1,4 +1,5 @@
 const { DB } = require('../config/db')
+const format = require('pg-format')
 
 const getAllProducts = async () => {
     try {
@@ -11,16 +12,12 @@ const getAllProducts = async () => {
 
 const getProductById = async (id) => {
     try {
-        const result = await DB.query('SELECT * FROM productos WHERE id = $1', [id])
+        const result = await DB.query('SELECT * FROM productos WHERE id_producto = $1', [id])
         const product = result.rows[0];
 
-        if (!product) {
-            return res.status(404).json({ error: 'Producto no encontrado' });
-        }
-        res.status(200).json({ product });
-
+        return product
         } catch (error) {
-        res.status(500).json({ error: 'Error al obtener producto' });
+        throw error
     }
 }
 
@@ -52,7 +49,8 @@ const updateProduct = async (id, nombre_producto, descripcion, precio, stock) =>
                 descripcion = %L,
                 precio = %L,
                 stock = %L
-                WHERE id = %L
+                WHERE id_producto = %L
+                RETURNING *
                 `,
                 nombre_producto,
                 descripcion,
@@ -72,7 +70,8 @@ const deleteProduct = async (id) => {
     try {
         const SQLQuery = format(`
                 DELETE FROM productos
-                WHERE id = %L
+                WHERE id_producto = %L
+                RETURNING id_producto
                 `,
                 id
             )

@@ -1,6 +1,6 @@
 const { Router } = require('express')
 const { handleCreateProduct, handleGetAllProducts, handleGetProductById, handleUpdateProduct, handleDeleteProduct } = require('../controllers/productos.controller')
-const { verifyToken, verifyTokenMiddleware } = require('../helpers/jwt')
+const { verifyTokenMiddleware } = require('../helpers/jwt')
 
 
 const router = Router()
