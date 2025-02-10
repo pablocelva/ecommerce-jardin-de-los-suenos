@@ -1,5 +1,5 @@
 const { hashPassword, verifyPassword } = require('../helpers/bcrypt')
-const { signToken, verifyToken, decodeToken, getHeadersToken } = require('../helpers/jwt')
+const { signToken } = require('../helpers/jwt')
 const usuarios = require('../models/usuariosModel')
 const { validateEmail } = require('../helpers/validateEmail')
 
@@ -27,8 +27,10 @@ const handleLogin = async (req, res, next) => {
         return res.status(200).json({
             token,
             email: user.email,
-            rol: user.rol,
-            lenguage: user.lenguage,
+            nombre: user.nombre,
+            apellido: user.apellido,
+            direccion: user.direccion,
+            telefono: user.telefono
         });
         
     } catch (error) {
@@ -39,7 +41,7 @@ const handleLogin = async (req, res, next) => {
 
 const handleRegister = async (req, res, next) => {
     try {
-        const { email, password, rol, lenguage } = req.body
+        const { email, password, nombre, apellido, direccion, telefono } = req.body
 
         // Verificaciones
         if (!validateEmail(email)) {
@@ -50,17 +52,25 @@ const handleRegister = async (req, res, next) => {
             return res.status(400).json({ error: 'password inválido' })
         }
 
-        if (!rol || rol === 'Seleccione un rol') {
-            return res.status(400).json({ error: 'Rol inválido' })
+        if (!nombre || nombre === 'Nombre inválido') {
+            return res.status(400).json({ error: 'Nombre inválido' })
         }
 
-        if (!lenguage || lenguage === 'Seleccione un Lenguage') {
-            return res.status(400).json({ error: 'Lenguage inválido' })
+        if (!apellido || apellido === 'Apellido inválido') {
+            return res.status(400).json({ error: 'Apellido inválido' })
+        }
+
+        if (!direccion || direccion === 'Dirección inválida') {
+            return res.status(400).json({ error: 'Dirección inválida' })
+        }
+
+        if (!telefono || telefono === 'Teléfono inválido') {
+            return res.status(400).json({ error: 'Teléfono inválido' })
         }
 
         const passwordHashed = hashPassword(password)
 
-        const newUser = await usuarios.register(email, passwordHashed, rol, lenguage)
+        const newUser = await usuarios.register(email, passwordHashed, nombre, apellido, direccion, telefono)
 
         res.status(201).json(newUser)
         
@@ -81,8 +91,10 @@ const getUser = async (req, res, next) => {
 
         res.status(200).json([{
             email: userData.email,
-            rol: userData.rol,
-            lenguage: userData.lenguage
+            nombre: userData.nombre,
+            apellido: userData.apellido,
+            direccion: userData.direccion,
+            telefono: userData.telefono
         }]);
 
     } catch (error) {

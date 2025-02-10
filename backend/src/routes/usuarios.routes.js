@@ -3,7 +3,7 @@ const { handleLogin, handleRegister, getUser } = require('../controllers/usuario
 const { verifyToken, verifyTokenMiddleware } = require('../helpers/jwt')
 const router = Router()
 
-router.post('/usuarios', handleRegister)
+router.post('/registro', handleRegister)
 router.post('/login', handleLogin)
 router.get('/usuarios', verifyTokenMiddleware, getUser)
 

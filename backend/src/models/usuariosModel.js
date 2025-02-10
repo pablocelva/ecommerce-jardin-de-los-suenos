@@ -42,7 +42,7 @@ const exists = async (email) => {
     }
 }
 
-const register = async (email, password, rol, lenguage) => {
+const register = async (email, password, nombre, apellido, direccion, telefono) => {
     try {
         
         const existingUser = await exists(email)
@@ -55,12 +55,15 @@ const register = async (email, password, rol, lenguage) => {
 
         const SQLQuery = format(`
                 INSERT INTO usuarios
-                VALUES (DEFAULT, %L, %L, %L, %L) RETURNING *
+                VALUES (DEFAULT, %L, %L, %L, %L, %L, %L) RETURNING *
                 `,
                 email,
                 passwordHashed,
-                rol,
-                lenguage)
+                nombre,
+                apellido,
+                direccion,
+                telefono
+            )
 
         const { rows: [user] } = await DB.query(SQLQuery)
         return user
