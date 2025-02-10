@@ -25,14 +25,27 @@ const verificarCredenciales = async (email, password) => {
     }
 }
 
-const exists = async (email) => {
+const exists = async (identifier) => {
     try {
-        const SQLQuery = format(`
+        /*const SQLQuery = format(`
                 SELECT * FROM usuarios 
                 WHERE email = %L
                 `,
                 email
-            )
+            )*/
+                let SQLQuery;
+        
+                if (isNaN(identifier)) { // Si no es un número, buscar por email
+                    SQLQuery = format(`
+                        SELECT * FROM usuarios 
+                        WHERE email = %L
+                    `, identifier);
+                } else { // Si es un número, buscar por id
+                    SQLQuery = format(`
+                        SELECT * FROM usuarios 
+                        WHERE id_usuario = %L
+                    `, identifier);
+                }
 
         const { rows: [user], rowCount } = await DB.query(SQLQuery)
 
@@ -87,4 +100,64 @@ const getUser = async (req, res) => {
         }
 };
 
-module.exports = { verificarCredenciales, exists, register, getUser }
+const getAllUsers = async () => {
+    try {
+        const { rows } = await DB.query('SELECT * FROM usuarios')
+        return rows
+    } catch (error) {
+        throw error
+    }
+}
+
+const updateUser = async (id, email, password, nombre, apellido, direccion, telefono) => {
+    try {
+        const SQLQuery = format(`
+                UPDATE usuarios
+                SET email = %L,
+                password = %L,
+                nombre = %L,
+                apellido = %L,
+                direccion = %L,
+                telefono = %L
+                WHERE id_usuario = %L
+                RETURNING *
+                `,
+                email,
+                password,
+                nombre,
+                apellido,
+                direccion,
+                telefono,
+                id
+            )
+
+        const { rows: [user] } = await DB.query(SQLQuery)
+        return user
+    } catch (error) {
+        throw error
+    }
+}
+
+const deleteUser = async (id) => {
+    try {
+        const SQLQuery = format(`
+                DELETE FROM usuarios
+                WHERE id_usuario = %L
+                RETURNING *
+                `,
+                id
+            )
+
+        const { rows } = await DB.query(SQLQuery)
+
+        if (!rows.length === 0) {
+            return null
+        }
+
+        return rows[0]
+    } catch (error) {
+        throw error
+    }
+}
+
+module.exports = { verificarCredenciales, exists, register, getUser, getAllUsers, updateUser, deleteUser }

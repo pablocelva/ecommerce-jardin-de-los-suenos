@@ -80,10 +80,12 @@ const handleRegister = async (req, res, next) => {
     }
 }
 
-const getUser = async (req, res, next) => {
+const handleGetUserById = async (req, res, next) => {
     try {
-        const { email } = req.user
-        const userData = await usuarios.exists(email)
+        //const { email } = req.user
+        //const userData = await usuarios.exists(email)
+        const { id } = req.params
+        const userData = await usuarios.exists(id)
 
         if (!userData) {
             return res.status(404).json({ error: 'Usuario no encontrado' });
@@ -107,4 +109,60 @@ const getUser = async (req, res, next) => {
     }
 }
 
-module.exports = { handleLogin, handleRegister, getUser }
+const handleGetUsers = async (req, res, next) => {
+    try {
+        const users = await usuarios.getAllUsers()
+        res.status(200).json(users)
+    } catch (error) {
+        next(error)
+    }
+}
+
+const handleUpdateUser = async (req, res, next) => {
+    try {
+        const { id } = req.params
+        const { email, password, nombre, apellido, direccion, telefono } = req.body
+
+        if (!email || !password || !nombre || !apellido || !direccion || !telefono) {
+            return res.status(400).json({ error: 'Faltan datos' })
+        }
+
+        const user = await usuarios.updateUser(id, email, password, nombre, apellido, direccion, telefono)
+
+        console.log(user)
+        if (!user) {
+            return res.status(404).json({ error: 'Usuario no encontrado' });
+        }
+
+        //res.status(200).json(user)
+        return res.status(200).json({
+            message: 'Usuario actualizado correctamente',
+            user: {
+                email: user.email,
+                nombre: user.nombre,
+                apellido: user.apellido,
+                direccion: user.direccion,
+                telefono: user.telefono
+            }
+        });
+    } catch (error) {
+        next(error)
+    }
+}
+
+const handleDeleteUser = async (req, res, next) => {
+    try {
+        const { id } = req.params
+        const result = await usuarios.deleteUser(id)
+
+        if (!result) {
+            return res.status(404).json({ error: 'Usuario no encontrado' });
+        }
+
+        res.status(200).json({ message: 'Usuario eliminado correctamente' })
+    } catch (error) {
+        next(error)
+    }
+}
+
+module.exports = { handleLogin, handleRegister, handleGetUserById, handleGetUsers, handleUpdateUser, handleDeleteUser }
