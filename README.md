@@ -59,3 +59,18 @@ cp .env.example .env
 ```bash
 npm run dev
 ```
+
+## Acceso al proyecto
+
+Para acceder al proyecto, sigue los siguientes pasos:
+
+1. Abra el navegador web en http://localhost:3000
+2. Inicie sesión con la cuenta de cliente con las siguientes credenciales:
+
+- Email: cliente1@example.com
+- Contraseña: cliente1@example.com
+
+- Email: admin@example.com
+- Contraseña: admin@example.com
+
+> Nota: Esta cuenta es solo para la configuración del proyecto y no tiene ninguna funcionalidad real.
