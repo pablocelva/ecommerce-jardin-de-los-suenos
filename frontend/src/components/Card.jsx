@@ -9,7 +9,7 @@ const Card = ({ title, description, image, price }) => {
         <h2>{title}</h2>
         <p>{description}</p>
         <p className="price">Precio: ${price}</p>
-        <button className="buy-button">Comprar</button>
+        <button >Ver Detalle</button>
         </div>
     </div>
     );

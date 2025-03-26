@@ -1,8 +1,8 @@
 [
     {
         "id_orden": 1,
-        "id_cliente": 101,
-        "nombre_cliente": "Ana Martínez",
+        "id_usuario": 2,
+        "nombre_cliente": "Juan Pérez",
         "productos": [
         {
             "id_producto": 1,
@@ -25,8 +25,8 @@
     },
     {
         "id_orden": 2,
-        "id_cliente": 102,
-        "nombre_cliente": "Carlos Rodríguez",
+        "id_usuario": 2,
+        "nombre_cliente": "Juan Pérez",
         "productos": [
         {
             "id_producto": 4,
@@ -49,8 +49,8 @@
     },
     {
         "id_orden": 3,
-        "id_cliente": 103,
-        "nombre_cliente": "María Fernández",
+        "id_usuario": 3,
+        "nombre_cliente": "Ana Martínez",
         "productos": [
         {
             "id_producto": 8,
@@ -80,7 +80,7 @@
     },
     {
         "id_orden": 4,
-        "id_cliente": 104,
+        "id_usuario": 4,
         "nombre_cliente": "Luis Gómez",
         "productos": [
         {
@@ -97,8 +97,8 @@
     },
     {
         "id_orden": 5,
-        "id_cliente": 105,
-        "nombre_cliente": "Laura Sánchez",
+        "id_usuario": 5,
+        "nombre_cliente": "Maria López",
         "productos": [
         {
             "id_producto": 7,

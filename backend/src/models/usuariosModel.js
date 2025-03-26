@@ -7,21 +7,20 @@ const verificarCredenciales = async (email, password) => {
     
     const user = await exists(email)
     if (!user) {
-        return { error: 'El correo no esta registrado' };
+        //return { error: 'El correo no esta registrado' };
+        throw new Error('El correo no está registrado')
     }
     
     const isPasswordValid = verifyPassword(password, user.password)
     if (!isPasswordValid) {
-        return { error: 'Credenciales incorrectas' };
+        //return { error: 'Credenciales incorrectas' };
+        throw new Error('Credenciales incorrectas')
     }
 
     return user
 
     } catch (error) {
-        if (error.message === 'USER_NOT_FOUND') {
-            return { error: 'Usuario no encontrado' };  // Puedes personalizar este mensaje
-        }
-        throw error;
+        throw error
     }
 }
 
@@ -61,7 +60,8 @@ const register = async (email, password, nombre, apellido, direccion, telefono) 
         const existingUser = await exists(email)
 
         if (existingUser) {
-            return { error: 'El correo ya existe' }
+            //return { error: 'El correo ya existe' }
+            throw new Error('El correo ya existe') 
         }
 
         const passwordHashed = hashPassword(password)

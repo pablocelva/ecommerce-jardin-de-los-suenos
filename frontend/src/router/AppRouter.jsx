@@ -7,9 +7,10 @@ import LoginPage from '../pages/LoginPage';
 import RegisterPage from '../pages/RegisterPage';
 import ProfilePage from '../pages/ProfilePage';
 import CartPage from '../pages/CartPage';
+import CheckoutPage from '../pages/CheckoutPage';
 import AdminPanel from '../pages/AdminPanel';
-import PrivateRoute from "../router/PrivateRoute";
-import { AuthProvider } from '../context/AuthContext';  
+import PrivateRoute from "./PrivateRoute";
+import { AuthProvider, useAuth } from '../context/AuthContext';  
 
 const AppRouter = () => {
     
@@ -17,45 +18,53 @@ const AppRouter = () => {
     const isAuthenticated = true; // Cambia esto según tu lógica de autenticación
     const userRole = "admin"; // Cambia esto según el rol del usuario (ej. admin, user)
 
-return (
-    
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/product/:id" element={<ProductPage />} />
-                {/* <Route path="/about" element={<About />} /> */}
-                <Route path="*" element={<NotFound />} />
-                <Route path="/login" element={<LoginPage />} />
-                <Route path="/register" element={<RegisterPage />} />
-                
-                {/* Protegiendo la ruta de Perfil */}
-                <Route
-                path="/profile"
+    return (
+        
+        <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/product/:id" element={<ProductPage />} />
+            {/* <Route path="/about" element={<About />} /> */}
+            <Route path="*" element={<NotFound />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<RegisterPage />} />
+            
+            {/* Rutas protegidas para clientes */}
+            <Route
+            path="/profile"
+            element={
+                <PrivateRoute requiredRole="cliente">
+                <ProfilePage />
+                </PrivateRoute>
+            }
+            />
+            <Route
+                path="/cart"
                 element={
-                    <PrivateRoute isAuthenticated={isAuthenticated}>
-                    <ProfilePage />
+                    <PrivateRoute requiredRole="cliente">
+                    <CartPage />
                     </PrivateRoute>
-                }
-                />
+            }
+            />
+            <Route
+                path="/checkout"
+                element={
+                    <PrivateRoute requiredRole="cliente">
+                    <CheckoutPage />
+                    </PrivateRoute>
+            }
+            />
 
-                {/* Protegiendo la ruta de Admin */}
-                <Route
-                path="/admin"
-                element={
-                    <PrivateRoute isAuthenticated={isAuthenticated} requiredRole={userRole}>
-                    <AdminPanel />
-                    </PrivateRoute>
-                }
-                />
-                <Route
-                    path="/cart"
-                    element={
-                        <PrivateRoute>
-                        <CartPage />
-                        </PrivateRoute>
-                }
-                />
-            </Routes>
-      
+            {/* Ruta protegida para admin */}
+            <Route
+            path="/admin"
+            element={
+                <PrivateRoute requiredRole="admin">
+                <AdminPanel />
+                </PrivateRoute>
+            }
+            />
+            
+        </Routes>
     );
 };
 

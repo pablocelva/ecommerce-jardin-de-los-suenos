@@ -43,26 +43,52 @@ const getOrderByOrderId = async (id_compra) => {
     }
 }
 
-const createOrder = async (id_usuario, precio_total, detalle, direccion, estado = 'pending') => {
-    try {
-        const SQLQuery = format(`
-                INSERT INTO orders (id_usuario, precio_total, detalle, direccion, estado)
-                VALUES (%L, %L, %L::jsonb, %L, %L)
-                RETURNING *
-                `,
-                id_usuario || null,
-                precio_total,
-                JSON.stringify(detalle),
-                direccion,
-                estado
-            )
+const createOrder = async (orderData) => {
+    const { 
+        id_usuario, 
+        nombre_cliente, 
+        email_cliente, 
+        productos, 
+        total, 
+        fecha_orden, 
+        estado, 
+        direccion_envio 
+    } = orderData;
 
-        const { rows: [order] } = await DB.query(SQLQuery)
-        return order
+    try {
+        const query = `
+            INSERT INTO ordenes (
+                id_usuario, 
+                nombre_cliente, 
+                email_cliente, 
+                productos, 
+                total, 
+                fecha_orden, 
+                estado, 
+                direccion_envio
+            ) 
+            VALUES ($1, $2, $3, $4, $5, $6, $7, $8) 
+            RETURNING *
+        `;
+
+        const values = [
+            id_usuario,
+            nombre_cliente,
+            email_cliente,
+            JSON.stringify(productos),
+            total,
+            fecha_orden,
+            estado,
+            JSON.stringify(direccion_envio)
+        ];
+
+        const result = await DB.query(query, values);
+        return result.rows[0];
     } catch (error) {
-        throw error
+        console.error('Error en createOrder:', error);
+        throw new Error('Error al crear el pedido en la base de datos');
     }
-}
+};
 
 const updateOrderStatus = async (id_compra, estado) => {
     try {

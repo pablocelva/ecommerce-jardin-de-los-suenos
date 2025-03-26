@@ -1,4 +1,14 @@
-const { getAllProducts, getProductById, createProduct, updateProduct, deleteProduct } = require('../models/productosModel')
+const { 
+    getAllProducts, 
+    getProductById, 
+    createProduct, 
+    updateProduct, 
+    deleteProduct, 
+    getAllImagenes,
+    getImagenesByIdProducto,
+    getAllCategorias,
+    getProductsByCategoria
+} = require('../models/productosModel')
 
 const handleGetAllProducts = async (req, res, next) => {
     try {
@@ -78,4 +88,52 @@ const handleDeleteProduct = async (req, res, next) => {
     }
 }
 
-module.exports = { handleCreateProduct, handleGetAllProducts, handleGetProductById, handleUpdateProduct, handleDeleteProduct }
+const handleGetImagenes = async (req, res, next) => {
+    try {
+        const imagenes = await getAllImagenes()
+        res.status(200).json(imagenes)
+    } catch (error) {
+        next(error)
+    }
+}
+
+const handleGetImagenesByIdProducto = async (req, res, next) => {
+    const { id } = req.params
+    try {
+        const imagenes = await getImagenesByIdProducto(id)
+        res.status(200).json(imagenes)
+    } catch (error) {
+        next(error)
+    }
+}
+
+const handleGetProductsByCategoria = async (req, res, next) => {
+    const { id } = req.params
+    try {
+        const productos = await getProductsByCategoria(id)
+        res.status(200).json(productos)
+    } catch (error) {
+        next(error)
+    }
+}
+
+const handleGetAllCategorias = async (req, res, next) => {
+    try {
+        const categorias = await getAllCategorias()
+        res.status(200).json(categorias)
+    } catch (error) {
+        next(error)
+    }
+}
+
+module.exports = { 
+    handleCreateProduct, 
+    handleGetAllProducts, 
+    handleGetProductById, 
+    handleUpdateProduct, 
+    handleDeleteProduct,
+    handleGetImagenes,
+    handleGetImagenesByIdProducto,
+    handleGetProductsByCategoria,
+    handleGetAllCategorias
+}

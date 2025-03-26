@@ -11,7 +11,7 @@ describe('AUTH MODEL TESTS', () => {
 
     describe('Verificar credenciales', () => {
         test('Usuario encontrado', async () => {
-            const email = 'test@test.com'
+            const email = 'testjest@test.com'
             const password = 'hashedPassword'
 
             const userMock = {
@@ -29,20 +29,21 @@ describe('AUTH MODEL TESTS', () => {
             expect(DB.query).toHaveBeenCalledTimes(1)
         })
         test('Usuario no encontrado', async () => {
-            const email = 'test@test.com'
+            const email = 'testjest@test.com'
             const password = 'hashedPassword'
 
-            DB.query.mockRejectedValue({message: 'USER_NOT_FOUND'})
+            DB.query.mockResolvedValue({rows:[], rowCount: 0})
+            //DB.query.mockRejectedValue({message: 'USER_NOT_FOUND'})
             await expect(verificarCredenciales(email, password))
-            .rejects
-            .toThrow('El correo no esta registrado')
+                .rejects
+                .toThrowError(new Error('El correo no está registrado'))
             expect(DB.query).toHaveBeenCalledTimes(1)
         })
     })
 
     describe('Register', () => {
         test('Registro exitoso', async () => {
-            const email = 'test@example.com'
+            const email = 'testjest@example.com'
             const password = 'hashedPassword'
 
             const mockUser = {
@@ -68,8 +69,8 @@ describe('AUTH MODEL TESTS', () => {
             DB.query.mockRejectedValue(new Error('DATABASE_ERROR'))
 
             await expect(register(email, password))
-            .rejects
-            .toThrow('DATABASE_ERROR')
+                .rejects
+                .toThrow('DATABASE_ERROR')
         })
     })
     describe('exists', () => {
@@ -98,9 +99,12 @@ describe('AUTH MODEL TESTS', () => {
                 rowCount: 0,
                 rows:[]
             })
-            await expect(exists(email))
+            const user = await exists(email)
+            expect(user).toBeNull()
+
+            /*await expect(exists(email))
             .rejects
-            .toThrow('USER_NOT_FOUND')
+            .toThrow('USER_NOT_FOUND')*/
             //expect(DB.query).toHaveBeenCalledTimes(1)
         })
     })

@@ -1,4 +1,5 @@
 const { getAllOrders, getOrdersByUserId, getOrderByOrderId, createOrder, updateOrderStatus, deleteOrder } = require('../models/orderModel')
+const pool = require('../db/connection')
 
 const handleGetAllOrders = async (req, res, next) => {
     try {
@@ -42,18 +43,73 @@ const handleGetOrderByOrderId = async (req, res, next) => {
     }
 }
 
-const handleCreateOrder = async (req, res, next) => {
-    const { id_usuario,precio_total, detalle, direccion } = req.body
-
-    if (!detalle || !detalle.length) return res.status(400).json({ message: 'El pedido no puede estar vacío' });
-
+const handleCreateOrder = async (req, res) => {
     try {
-        const order = await createOrder(id_usuario, precio_total, detalle, direccion)
-        res.status(201).json({ message: 'Orden de compra creada exitosamente', order })
+        // Verificar que req.body existe
+        if (!req.body) {
+            return res.status(400).json({ error: 'No se recibieron datos' });
+        }
+
+        // Extraer los datos del body
+        const {
+            id_usuario,
+            nombre_cliente,
+            email_cliente,
+            productos,
+            total,
+            fecha_orden,
+            estado,
+            direccion_envio
+        } = req.body;
+
+        // Validar que todos los campos requeridos estén presentes
+        if (!id_usuario || !nombre_cliente || !email_cliente || !productos || !total || !direccion_envio) {
+            return res.status(400).json({
+                error: 'Faltan campos requeridos para crear el pedido'
+            });
+        }
+
+        // Crear el pedido en la base de datos
+        const query = `
+            INSERT INTO ordenes (
+                id_usuario,
+                nombre_cliente,
+                email_cliente,
+                productos,
+                total,
+                fecha_orden,
+                estado,
+                direccion_envio
+            )
+            VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+            RETURNING *
+        `;
+
+        const values = [
+            id_usuario,
+            nombre_cliente,
+            email_cliente,
+            JSON.stringify(productos),
+            total,
+            fecha_orden || new Date(),
+            estado || 'pendiente',
+            JSON.stringify(direccion_envio)
+        ];
+
+        const result = await pool.query(query, values);
+        
+        res.status(201).json({
+            message: 'Pedido creado exitosamente',
+            order: result.rows[0]
+        });
+
     } catch (error) {
-        next(error)
+        console.error('Error en handleCreateOrder:', error);
+        res.status(500).json({
+            error: 'Error al crear el pedido'
+        });
     }
-}
+};
 
 const handleUpdateOrderStatus = async (req, res, next) => {
     const { id_compra } = req.params

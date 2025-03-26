@@ -118,7 +118,7 @@
 ### **2. Rutas Privadas**
 
 #### **2.1. Carrito de Compras**
-- **GET** `/clientes/carrito`
+- **GET** `/pedidos/pedido/{id_compra}`
 - **Descripción:** Devuelve los productos que el cliente ha agregado a su carrito.
 - **Headers:** `Authorization: Bearer <jwt_token>`
 - **Respuesta exitosa:** `200 OK`
@@ -136,7 +136,7 @@
   ```
 
 #### **2.2. Checkout**
-- **POST** `/clientes/checkout`
+- **POST** `/pedidos`
 - **Descripción:** Permite realizar la compra del carrito y generar una nueva orden.
 - **Headers:** `Authorization: Bearer <jwt_token>`
 - **Body:**
@@ -156,7 +156,7 @@
   ```
 
 #### **2.3. Historial de Compras del Cliente**
-- **GET** `/clientes/historial`
+- **GET** `/pedidos/usuario/{id_usuario}`
 - **Descripción:** Devuelve el historial de compras del cliente autenticado.
 - **Headers:** `Authorization: Bearer <jwt_token>`
 - **Respuesta exitosa:** `200 OK`
@@ -187,7 +187,7 @@
 ### **3. Rutas de Admin**
 
 #### **3.1. Subir Productos**
-- **POST** `/admin/plantas`
+- **POST** `/productos`
 - **Descripción:** Permite al administrador subir un nuevo producto a la tienda.
 - **Headers:** `Authorization: Bearer <jwt_token>`
 - **Body:**
@@ -228,7 +228,7 @@
     ```
 
 #### **3.2. Historial de Ventas**
-- **GET** `/admin/historial-ventas`
+- **GET** `/pedidos/`
 - **Descripción:** Devuelve un historial de ventas con información de todas las órdenes completadas.
 - **Headers:** `Authorization: Bearer <jwt_token>`
 - **Respuesta exitosa:** `200 OK`

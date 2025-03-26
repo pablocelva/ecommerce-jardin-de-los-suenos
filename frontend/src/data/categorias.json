@@ -8,5 +8,7 @@
     { "id_categoria": 7, "nombre_categoria": "Flores Ornamentales" },
     { "id_categoria": 8, "nombre_categoria": "Bonsáis" },
     { "id_categoria": 9, "nombre_categoria": "Palmas" },
-    { "id_categoria": 10, "nombre_categoria": "Orquídeas" }
+    { "id_categoria": 10, "nombre_categoria": "Orquídeas" },
+    { "id_categoria": 11, "nombre_categoria": "Monsteras" },
+    { "id_categoria": 12, "nombre_categoria": "Helechos" }
 ]

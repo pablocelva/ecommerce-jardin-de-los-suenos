@@ -83,4 +83,71 @@ const deleteProduct = async (id) => {
     }
 }
 
-module.exports = { getAllProducts, getProductById, createProduct, updateProduct, deleteProduct }
+const getAllImagenes = async () => {
+    try {
+        const SQLQuery = format(`
+            SELECT * FROM imagenes_producto
+            `);
+        const { rows } = await DB.query(SQLQuery)
+        return rows
+    } catch (error) {
+        throw error
+    }
+}
+
+const getImagenesByIdProducto = async (id) => {
+    try {
+        const SQLQuery = format(`
+            SELECT * FROM imagenes_producto WHERE id_producto = %L
+            `,
+            id
+        )
+        const { rows } = await DB.query(SQLQuery)
+        return rows
+    } catch (error) {
+        throw error
+    }
+}
+
+const getAllCategorias = async () => {
+    try {
+        const SQLQuery = format(`
+            SELECT * FROM categorias_productos
+            `);
+        const { rows } = await DB.query(SQLQuery)
+        return rows
+    } catch (error) {
+        throw error
+    }
+}
+
+const getProductsByCategoria = async (id) => {
+    try {
+        const SQLQuery = format(`
+            SELECT p.* 
+            FROM productos p
+            JOIN categorias_productos cp ON p.id_producto = cp.id_producto
+            JOIN categorias c ON cp.id_categoria = c.id_categoria
+            WHERE c.id_categoria = %L
+            `,
+            id
+        )
+        const { rows } = await DB.query(SQLQuery)
+        return rows
+    } catch (error) {
+        throw error
+    }
+}
+
+
+module.exports = { 
+    getAllProducts, 
+    getProductById, 
+    createProduct, 
+    updateProduct, 
+    deleteProduct,
+    getAllImagenes,
+    getImagenesByIdProducto,
+    getAllCategorias,
+    getProductsByCategoria
+}
