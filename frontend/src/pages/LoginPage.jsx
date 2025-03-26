@@ -45,11 +45,12 @@ const LoginPage = () => {
       <h3 style={{ borderBottom: "2px solid #1F7D53" }}>Iniciar Sesión</h3>
       <Form onFinish={handleSubmit} style={{ width: "360px" }}>
         <Form.Item 
-          //</Form>label="Email" 
+          //label="Email" 
             name="email">
           <Input
             type="email"
             value={email}
+            placeholder="Correo electrónico"
             onChange={(e) => setEmail(e.target.value)}
             required
             style={{ borderRadius: "0" }}
@@ -60,6 +61,7 @@ const LoginPage = () => {
           name="password">
           <Input.Password
             value={password}
+            placeholder="Contraseña"
             onChange={(e) => setPassword(e.target.value)}
             required
             style={{ borderRadius: "0" }}

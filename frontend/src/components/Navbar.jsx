@@ -37,6 +37,13 @@ const Navbar = () => {
                         {userRole === "cliente" && (
                             <>
                                 <NavLink 
+                                    to="/"     
+                                    className="nav-link" 
+                                    style={{ color: "white" }}
+                                >
+                                    Tienda
+                                </NavLink>
+                                <NavLink 
                                     to="/cart"     
                                     className="nav-link" 
                                     style={{ color: "white" }}
@@ -72,6 +79,13 @@ const Navbar = () => {
                     </div>
                 ) : (
                     <div style={{ display: "flex", gap: "20px" }}>
+                        <NavLink 
+                            to="/" 
+                            className="nav-link" 
+                            style={{ color: "white" }}
+                        >
+                            Tienda
+                        </NavLink>
                         <NavLink 
                             to="/login" 
                             className="nav-link" 

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Input, Button, Form } from "antd";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import AppFooter from "../components/Footer";
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 
@@ -34,11 +34,45 @@ const RegisterPage = () => {
       <Form onFinish={handleSubmit} style={{ width: "360px" }}>
         <Form.Item 
           //label="Email" 
+          name="nombre">
+          <Input
+            //value={nombre}
+            placeholder="Nombre"
+            //onChange={(e) => setEmail(e.target.value)}
+            required
+            style={{ borderRadius: "0" }}
+          />
+        </Form.Item>
+        <Form.Item 
+          //label="Email" 
+          name="apellido">
+          <Input
+            //value={apellido}
+            placeholder="Apellido"
+            //onChange={(e) => setEmail(e.target.value)}
+            required
+            style={{ borderRadius: "0" }}
+          />
+        </Form.Item>
+        <Form.Item 
+          //label="Email" 
           name="email">
           <Input
             type="email"
             value={email}
+            placeholder="Correo electrónico"
             onChange={(e) => setEmail(e.target.value)}
+            required
+            style={{ borderRadius: "0" }}
+          />
+        </Form.Item>
+        <Form.Item 
+          //label="Email" 
+          name="direccion">
+          <Input
+            //value={direccion}
+            placeholder="Dirección"
+            //onChange={(e) => setEmail(e.target.value)}
             required
             style={{ borderRadius: "0" }}
           />
@@ -48,17 +82,47 @@ const RegisterPage = () => {
           name="password">
           <Input.Password
             value={password}
+            placeholder="Contraseña"
             onChange={(e) => setPassword(e.target.value)}
             required
             style={{ borderRadius: "0" }}
           />
         </Form.Item>
         <Form.Item 
-          style={{ display: "flex", justifyContent: "flex-end" }}
+          //label="Contraseña" 
+          name="passwordconfirm">
+          <Input.Password
+            //value={passwordconfirm}
+            placeholder="Confirmar Contraseña"
+            //onChange={(e) => setPassword(e.target.value)}
+            required
+            style={{ borderRadius: "0" }}
+          />
+        </Form.Item>
+        <Form.Item 
+          //label="Telefono"
+          name="telefono">
+          <Input.Password
+            //value={passwordconfirm}
+            placeholder="Numero de teléfono"
+            //onChange={(e) => setPassword(e.target.value)}
+            required
+            style={{ borderRadius: "0" }}
+          />
+        </Form.Item>
+        <Form.Item 
+          style={{ display: "flex", justifyContent: "center" }}
           >
-          <button htmlType="submit" style={{ display: "flex", gap: "8px", alignItems: "center", padding: "12px 32px 12px 12px", width: "360px", justifyContent: "center" }}>
+          <button htmltype="submit" style={{ display: "flex", gap: "8px", alignItems: "center", padding: "12px 32px 12px 12px", justifyContent: "center", width: "360px" }}>
             <PersonAddIcon style={{ fontSize: "20px" }} />
             Registrarse
+          </button>
+          <br />
+          <button style={{ display: "flex", alignItems: "center", padding: "12px 12px 12px 12px", justifyContent: "center", backgroundColor: "transparent", color: "#1F7D53", border: "2px solid #1F7D53", width: "360px" }}>
+            {/* <PersonAddIcon style={{ fontSize: "20px" }} /> */}
+            <Link style={{ color: "#1F7D53", textDecoration: "none" }} to="/login">
+            Ya tengo cuenta
+            </Link>
           </button>
         </Form.Item>
       </Form>
