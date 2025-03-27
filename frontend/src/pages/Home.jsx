@@ -1,4 +1,4 @@
-//import productos from "../data/productos.json";
+import productosJSON from "../data/productos.json";
 import { ProductContext } from "../context/ProductContext";
 import ImagenesContext from "../context/ImagenesContext";
 import categorias from "../data/categorias.json";
@@ -14,7 +14,7 @@ import GrassIcon from "@mui/icons-material/Grass";
 const { Sider, Content } = Layout;
 
 const Home = () => {
-  const { productos } = useContext(ProductContext);
+  const { productos, categorias } = useContext(ProductContext);
   const { imagenes } = useContext(ImagenesContext);
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
