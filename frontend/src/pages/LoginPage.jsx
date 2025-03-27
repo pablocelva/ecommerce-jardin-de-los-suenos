@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Input, Button, Form } from "antd";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import users from "../data/usuarios.json"; // Importamos la data de usuarios
 import AppFooter from "../components/Footer";
@@ -74,6 +74,14 @@ const LoginPage = () => {
           <button htmlType="submit" style={{ display: "flex", gap: "8px", alignItems: "center", padding: "12px 32px 12px 12px", width: "360px", justifyContent: "center" }}>
             <LoginIcon style={{ fontSize: "20px" }} />
             Iniciar Sesión
+          </button>
+        </Form.Item>
+        <Form.Item>
+          <button style={{ display: "flex", alignItems: "center", padding: "12px 12px 12px 12px", justifyContent: "center", backgroundColor: "transparent", color: "#1F7D53", border: "2px solid #1F7D53", width: "360px" }}>
+            {/* <PersonAddIcon style={{ fontSize: "20px" }} /> */}
+            <Link style={{ color: "#1F7D53", textDecoration: "none" }} to="/register">
+            Crear cuenta
+            </Link>
           </button>
         </Form.Item>
       </Form>

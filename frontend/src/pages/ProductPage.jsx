@@ -47,7 +47,7 @@ const ProductPage = () => {
                                         width: "100px",
                                         height: "100px",
                                         objectFit: "cover",
-                                        borderRadius: "8px",
+                                        borderRadius: "2px",
                                         cursor: "pointer",
                                         boxShadow: "0 4px 10px rgba(0,0,0,0.2)"
                                     }}
@@ -60,7 +60,7 @@ const ProductPage = () => {
                             alt={producto.nombre_producto} 
                             style={{ 
                                 width: "100%", 
-                                borderRadius: "12px", 
+                                borderRadius: "2px",
                                 maxHeight: "400px", 
                                 objectFit: "cover",
                                 boxShadow: "0 4px 10px rgba(0,0,0,0.2)"
@@ -78,10 +78,16 @@ const ProductPage = () => {
                     <p style={{ fontSize: "16px", lineHeight: "1.5", color: "#555", marginBottom: "20px" }}>
                         Cuidados: {producto.cuidado}
                     </p>
+
                     <p style={{ fontSize: "20px", fontWeight: "bold", marginBottom: "20px" }}>
                         Precio: ${producto.precio}
                     </p>
-
+                    <button 
+                        onClick={() => navigate(-1)}
+                        style={{ padding: "12px 20px", fontSize: "16px", background: "transparent", color: "#1F7D53", border: "#1F7D53 solid 2px", borderRadius: "0", cursor: "pointer", transition: "background 0.3s", marginRight: "10px" }}
+                    >
+                        ⬅ Volver
+                    </button>
                     <button 
                         onClick={() => addToCart(producto)}
                         style={{ transition: "background 0.3s", marginRight: "10px" }}
@@ -90,16 +96,10 @@ const ProductPage = () => {
                         🛒 Añadir al carrito
                     </button>
 
-                    <button 
-                        onClick={() => navigate(-1)}
-                        style={{ padding: "12px 20px", fontSize: "16px", background: "transparent", color: "#1F7D53", border: "#1F7D53 solid 2px", borderRadius: "0", cursor: "pointer", transition: "background 0.3s", marginRight: "10px" }}
-                    >
-                        ⬅ Volver
-                    </button>
 
-                    <p style={{ fontSize: "16px", lineHeight: "1.5", color: "#555", marginBottom: "20px" }}>
+                    {/* <p style={{ fontSize: "16px", lineHeight: "1.5", color: "#555", marginBottom: "20px" }}>
                         Tags: {producto.tags}
-                    </p>
+                    </p> */}
                 </div>
             </div>
             

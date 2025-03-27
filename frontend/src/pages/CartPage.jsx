@@ -72,7 +72,7 @@ const CartPage = () => {
                                     <tr key={product.id_producto} style={{ borderBottom: "1px solid #ddd" }}>
                                         <td style={{ padding: "10px", textAlign: "center" }}>
                                             {productoImagen ? (
-                                                <img src={productoImagen} alt={product.nombre_producto} style={{ width: "100px", height: "100px", objectFit: "cover", borderRadius: "8px" }} />
+                                                <img src={productoImagen} alt={product.nombre_producto} style={{ width: "80px", height: "80px", objectFit: "cover", borderRadius: "4px" }} />
                                             ) : (
                                                 <p>No disponible</p>
                                             )}
@@ -96,7 +96,7 @@ const CartPage = () => {
 
                     <div style={{ marginTop: "20px", fontSize: "20px", fontWeight: "bold", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                         <p>Total: 💲{totalPrice.toFixed(2)}</p>
-                        <button onClick={() => navigate("/checkout")} style={checkoutButtonStyle}>
+                        <button onClick={() => navigate("/checkout")} style={{ display: "flex", gap: "8px", alignItems: "center", padding: "12px 24px 12px 12px", justifyContent: "center", color: "white"  }}>
                             <ShoppinCartIcon style={{ fontSize: "20px" }} />
                             Proceder a Pago</button>
                     </div>
@@ -104,7 +104,9 @@ const CartPage = () => {
             )}
 
             {/* Botón de volver a la tienda */}
-            <button onClick={() => navigate("/")} style={backButtonStyle}>⬅ Volver a la Tienda</button>
+            <br />
+            <br />
+            <button onClick={() => navigate("/")} >⬅ Volver a la Tienda</button>
         </div>
         <AppFooter />
         </>
@@ -113,21 +115,21 @@ const CartPage = () => {
 
 // Estilos en línea para los botones
 const buttonStyle = {
-    padding: "5px 10px",
-    background: "#ffc107",
+    padding: "4px 8px",
+    //background: "#ffc107",
     color: "white",
     border: "none",
-    borderRadius: "8px",
+    borderRadius: "2px",
     cursor: "pointer",
     transition: "background 0.3s"
 };
 
 const removeButtonStyle = {
-    padding: "5px 10px",
+    padding: "8px 12px",
     background: "#dc3545",
     color: "white",
     border: "none",
-    borderRadius: "8px",
+    borderRadius: "2px",
     cursor: "pointer",
     transition: "background 0.3s"
 };

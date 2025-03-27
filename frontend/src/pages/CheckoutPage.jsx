@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import { useAuth } from "../context/AuthContext";
 import ImagenesContext from "../context/ImagenesContext";
@@ -228,8 +228,9 @@ const CheckoutPage = () => {
                 justifyContent: "center",
                 gap: "20px"
             }}>
+                
                 {isEditing ? (
-                    <button style={{ display: "flex", gap: "8px", alignItems: "center" }} onClick={() => setIsEditing(false)}>
+                    <button style={{ display: "flex", gap: "8px", alignItems: "center", background: "transparent", color: "#1F7D53", border: "2px solid #1F7D53" }} onClick={() => setIsEditing(false)}>
                         <SaveIcon style={{ fontSize: "20px" }} />
                         Guardar Cambios
                     </button>
@@ -245,6 +246,14 @@ const CheckoutPage = () => {
                     Confirmar Compra
                 </button>
             </div>
+            <br />
+            <br />
+            <button style={{ display: "flex", gap: "8px", alignItems: "center", background: "transparent", color: "#1F7D53", border: "2px solid #1F7D53" }}>
+                    <ShoppinCartIcon style={{ fontSize: "20px" }} />
+                    <Link to="/cart" style={{ color: "#1F7D53", textDecoration: "none" }}>
+                    Volver al Carrito
+                    </Link>
+                </button>
         </div>
         <AppFooter />
         </>
