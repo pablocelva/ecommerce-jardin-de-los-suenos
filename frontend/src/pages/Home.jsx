@@ -28,57 +28,59 @@ const Home = () => {
 
   const handleCategoryClick = async (categoria) => {
     setSelectedCategory(categoria);
-
-    let url = "http://localhost:3000/api/productos";
+    
+    let url = "http://localhost:3000/api/productos/";
     
     if (categoria) {
-        url = `http://localhost:3000/api/productos/categorias/${categoria.id_categoria}`;
+      url = `http://localhost:3000/api/productos/categorias/${categoria.id_categoria}`;
     }
-
+    
+    
     try {
-        const response = await fetch(url);
-        const data = await response.json();
-
-        if (!Array.isArray(data)) {
-            console.error("La API no devolvió un array de productos:", data);
-            setFilteredData([]);
-            return;
-        }
-
-        // Guardamos los datos de la categoría
-        setData(data);
-        
-        // Aplicamos el término de búsqueda actual si existe
-        if (searchTerm) {
-          const filtered = data.filter((producto) =>
-            producto.nombre_producto.toLowerCase().includes(searchTerm.toLowerCase())
-          );
-          setFilteredData(filtered);
-        } else {
-          setFilteredData(data);
-        }
+      const response = await fetch(url);
+      const data = await response.json();
+      
+      if (!Array.isArray(data)) {
+        console.error("La API no devolvió un array de productos:", data);
+        setFilteredData([]);
+        return;
+      }
+      
+      // Guardamos los datos de la categoría
+      setData(data);
+      
+      // Aplicamos el término de búsqueda actual si existe
+      if (searchTerm) {
+        const filtered = data.filter((producto) =>
+          producto.nombre_producto.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+      setFilteredData(filtered);
+    } else {
+      setFilteredData(data);
+    }
 
     } catch (error) {
-        console.error("Error al obtener los productos:", error);
-        setFilteredData([]);
+      console.error("Error al obtener los productos:", error);
+      setFilteredData([]);
     }
   };
-
+  
   const handleSearch = (search) => {
     setSearchTerm(search);
     
     if (search) {
       const filtered = data.filter((producto) =>
         producto.nombre_producto.toLowerCase().includes(search.toLowerCase())
-      );
-      setFilteredData(filtered);
-    } else {
-      setFilteredData(data);
-    }
-  };
+    );
+    setFilteredData(filtered);
+  } else {
+    setFilteredData(data);
+  }
+};
 
-  return (
-    <Layout style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+//console.log("Categorías en el Sider:", categorias);
+return (
+  <Layout style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
       <Layout style={{ flex: 1 }}>
         {/* Sidebar con categorías */}
         <Sider className="sider" width={250}>

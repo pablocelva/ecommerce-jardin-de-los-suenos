@@ -13,15 +13,13 @@ export const ProductProvider = ({ children }) => {
             try {
                 // Obtener todos los productos
                 const resProductos = await fetch("http://localhost:3000/api/productos");
-    
                 if (!resProductos.ok) throw new Error("Error al cargar los productos");
     
                 const productos = await resProductos.json();
-    
                 if (!Array.isArray(productos)) throw new Error("Formato de productos inválido");
     
                 // Obtener las categorías de cada producto en paralelo
-                const productosConCategorias = await Promise.all(
+                /*const productosConCategorias = await Promise.all(
                     productos.map(async (producto) => {
                         const resCategorias = await fetch(`http://localhost:3000/api/productos/categorias/${producto.id_producto}`);
     
@@ -37,10 +35,20 @@ export const ProductProvider = ({ children }) => {
                             categorias: Array.isArray(categorias) ? categorias.map((c) => c.id_categoria) : [],
                         };
                     })
-                );
+                );*/
+
+                // Obtener categorías
+                const resCategorias = await fetch("http://localhost:3000/api/categorias");
+                if (!resCategorias.ok) throw new Error("Error al cargar las categorías");
+
+                const categorias = await resCategorias.json();
+                if (!Array.isArray(categorias)) throw new Error("Formato de categorías inválido");
+
     
                 // Guardar los productos en el estado
-                setProductos(productosConCategorias);
+                //setProductos(productosConCategorias);
+                setProductos(productos);
+                setCategorias(categorias);
             } catch (error) {
                 console.error("Error al obtener los datos:", error);
                 setProductos(productosJSON);
@@ -57,3 +65,6 @@ export const ProductProvider = ({ children }) => {
         </ProductContext.Provider>
     );
 };
+
+
+
