@@ -112,7 +112,7 @@ const getImagenesByIdProducto = async (id) => {
 const getAllCategorias = async () => {
     try {
         const SQLQuery = format(`
-            SELECT * FROM categorias_productos
+            SELECT * FROM categorias
             `);
         const { rows } = await DB.query(SQLQuery)
         return rows

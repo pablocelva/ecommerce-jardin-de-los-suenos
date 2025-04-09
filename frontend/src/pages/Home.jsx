@@ -10,6 +10,7 @@ import SearchBar from "../components/SearchBar";
 import { Layout } from "antd";
 import AppFooter from "../components/Footer";
 import GrassIcon from "@mui/icons-material/Grass";
+import Carousel from "../components/Carousel";
 
 const { Sider, Content } = Layout;
 
@@ -113,6 +114,7 @@ return (
         {/* Contenido principal */}
         <Layout>
           <Content className="content" style={{ marginLeft: "250px", paddingBottom: "40px" }}>
+            <Carousel />
             <SearchBar onSearch={handleSearch} />
             <h3 style={{ textAlign: "center", marginBottom: "4px" }}>
               Catálogo de Productos

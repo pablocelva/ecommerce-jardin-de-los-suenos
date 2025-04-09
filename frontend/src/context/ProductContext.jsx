@@ -38,7 +38,7 @@ export const ProductProvider = ({ children }) => {
                 );*/
 
                 // Obtener categorías
-                const resCategorias = await fetch("http://localhost:3000/api/categorias");
+                const resCategorias = await fetch("http://localhost:3000/api/productos/categorias");
                 if (!resCategorias.ok) throw new Error("Error al cargar las categorías");
 
                 const categorias = await resCategorias.json();
@@ -51,8 +51,8 @@ export const ProductProvider = ({ children }) => {
                 setCategorias(categorias);
             } catch (error) {
                 console.error("Error al obtener los datos:", error);
-                setProductos(productosJSON);
-                setCategorias(categoriasJSON);
+                //setProductos(productosJSON);
+                //setCategorias(categoriasJSON);
             }
         };
     

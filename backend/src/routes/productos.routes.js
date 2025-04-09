@@ -17,10 +17,10 @@ const router = Router()
 
 router.get('/', handleGetAllProducts)
 router.get('/imagenes', handleGetImagenes)
-router.get('/:id/imagenes', handleGetImagenesByIdProducto)
-router.get('/:id', handleGetProductById)
 router.get('/categorias', handleGetAllCategorias)
 router.get('/categorias/:id', handleGetProductsByCategoria)
+router.get('/:id/imagenes', handleGetImagenesByIdProducto)
+router.get('/:id', handleGetProductById)
 //incroporar autenticacion admin
 router.post('/', verifyTokenMiddleware, handleCreateProduct)
 router.put('/:id', verifyTokenMiddleware, handleUpdateProduct)
