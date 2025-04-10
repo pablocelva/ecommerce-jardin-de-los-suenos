@@ -26,11 +26,15 @@ const handleLogin = async (req, res, next) => {
 
         return res.status(200).json({
             token,
-            email: user.email,
-            nombre: user.nombre,
-            apellido: user.apellido,
-            direccion: user.direccion,
-            telefono: user.telefono
+            usuario: {
+                id_usuario: user.id_usuario,
+                email: user.email,
+                nombre: user.nombre,
+                apellido: user.apellido,
+                direccion: user.direccion,
+                telefono: user.telefono,
+                rol: user.rol || 'cliente'
+            }
         });
         
     } catch (error) {
@@ -49,7 +53,7 @@ const handleRegister = async (req, res, next) => {
         }
 
         if (!password) {
-            return res.status(400).json({ error: 'password inválido' })
+            return res.status(400).json({ error: 'Password inválido' })
         }
 
         if (!nombre || nombre === 'Nombre inválido') {
@@ -72,9 +76,30 @@ const handleRegister = async (req, res, next) => {
 
         const newUser = await usuarios.register(email, passwordHashed, nombre, apellido, direccion, telefono)
 
-        res.status(201).json(newUser)
+        // Generar token
+        const token = signToken({ email: newUser.email })
+
+        // Respuesta con token y datos del usuario
+        return res.status(201).json({
+            token,
+            usuario: {
+                id_usuario: newUser.id_usuario,
+                email: newUser.email,
+                nombre: newUser.nombre,
+                apellido: newUser.apellido,
+                direccion: newUser.direccion,
+                telefono: newUser.telefono,
+                rol: newUser.rol || 'cliente'
+            }
+        })
         
     } catch (error) {
+        if (error.message === 'Correo ya registrado') {
+            return res.status(409).json({
+                id: 'correoDuplicado',
+                message: 'El correo ya está registrado'
+            })
+        }
         console.log(error)
         next(error)
     }
@@ -86,18 +111,18 @@ const handleGetUserById = async (req, res, next) => {
         //const userData = await usuarios.exists(email)
         const { id } = req.params
         const userData = await usuarios.exists(id)
-
+        console.log(userData);
         if (!userData) {
             return res.status(404).json({ error: 'Usuario no encontrado' });
         }
 
-        res.status(200).json([{
+        res.status(200).json({
             email: userData.email,
             nombre: userData.nombre,
             apellido: userData.apellido,
             direccion: userData.direccion,
             telefono: userData.telefono
-        }]);
+        });
 
     } catch (error) {
         if (error.name === 'TokenExpiredError') {

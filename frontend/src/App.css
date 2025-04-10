@@ -79,7 +79,7 @@ html, body {
   color: #1C3224;
 }
 
-button {
+button, .Button {
   /* background-color: #1F7D53; */
   background-color: #046224; 
   color: white;

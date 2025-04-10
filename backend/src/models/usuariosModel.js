@@ -56,12 +56,10 @@ const exists = async (identifier) => {
 
 const register = async (email, password, nombre, apellido, direccion, telefono) => {
     try {
-        
         const existingUser = await exists(email)
 
         if (existingUser) {
-            //return { error: 'El correo ya existe' }
-            throw new Error('El correo ya existe') 
+            throw new Error('Correo ya registrado')
         }
 
         const passwordHashed = hashPassword(password)
@@ -80,7 +78,6 @@ const register = async (email, password, nombre, apellido, direccion, telefono) 
 
         const { rows: [user] } = await DB.query(SQLQuery)
         return user
-
     } catch (error) {
         throw error
     }

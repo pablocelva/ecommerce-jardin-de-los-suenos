@@ -13,8 +13,8 @@ module.exports = {
     },
     USER_NOT_FOUND: {
         id: "userNotFound",
-        statuCode: 404,
+        statusCode: 404, // Corregido de "statuCode" a "statusCode"
         message: 'No se encontró ningún usuario con estos credenciales',
-        description: 'No se encontró ningún usuario con estos credenciales' ,
+        description: 'No se encontró ningún usuario con estos credenciales',
     },
 }

@@ -1,14 +1,16 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
-import { Layout, Table, Typography, Button, Modal, Form, Input, InputNumber } from "antd";
-import users from "../data/usuarios.json"; 
-import orders from "../data/ordenes.json"; 
+import { Layout, Table, Input } from "antd";
+import axios from "axios";
+//import users from "../data/usuarios.json"; 
+//import orders from "../data/ordenes.json"; 
 import AppFooter from "../components/Footer";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import EditIcon from '@mui/icons-material/Edit';
 import LogoutIcon from '@mui/icons-material/Logout';
 import SaveIcon from '@mui/icons-material/Save';
+import { use } from "react";
 
 const { Sider, Content } = Layout;
 
@@ -19,6 +21,7 @@ const ProfilePage = () => {
   const [showOrders, setShowOrders] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [userData, setUserData] = useState(null);
+  const [userOrders, setUserOrders] = useState([]);
 
   const navigate = useNavigate();
 
@@ -29,26 +32,48 @@ const ProfilePage = () => {
   }, [userRole, navigate]);
 
   useEffect(() => {
-    const userId = localStorage.getItem("userId");
-    console.log("userId leído en ProfilePage:", userId);
-
-    if (!userId) {
+    const userInfo = JSON.parse(localStorage.getItem("user")); 
+    setUser(userInfo);
+    setUserData(userInfo);
+    
+    const userId = userInfo.id_usuario;
+    const userToken = localStorage.getItem("token");
+    
+    if (!userId || !userToken ) {
       navigate("/login");
       return;
     }
 
-    // Busca el usuario en el JSON
-    const foundUser = users.find(
-      (u) => u.id_usuario === userId || u.id_usuario === parseInt(userId)
-    );
-    
-    if (!foundUser) {
-      navigate("/login");
-      return;
-    }
-    
-    setUser(foundUser);
-    setUserData(foundUser);
+
+
+    /*axios.get(`/api/auth/usuarios/${userId}`, {
+      headers: {
+        Authorization: `Bearer ${userToken}`,
+      },
+    })
+      .then(response => {
+        console.log(response.data);
+        const foundUser =  response.data;
+        console.log("Respuesta del backend:", foundUser);
+        setUser(foundUser);
+        setUserData(foundUser);
+      })
+      .catch(error => {
+        console.error("Error al obtener los datos del usuario:", error);
+        navigate("/login");
+      });*/
+
+    axios.get(`/api/pedidos/usuario/${userId}`, {
+      headers: {
+        Authorization: `Bearer ${userToken}`,
+      },
+    })
+      .then(response => {
+        setUserOrders(response.data);
+      })
+      .catch(error => {
+        console.error("Error al obtener las órdenes del usuario:", error);
+      });
   }, [navigate]);
 
   const handleInputChange = (e) => {
@@ -57,11 +82,26 @@ const ProfilePage = () => {
 };
 
 const handleSave = () => {
-    setUser(userData);
-    setIsEditing(false);
+  const userId = localStorage.getItem("userId");
+  const userToken = localStorage.getItem("token");
+  axios.put(`/api/auth/usuarios/${userId}`, userData, {
+    headers: {
+      Authorization: `Bearer ${userToken}`,
+    },
+  })
+    .then(response => {
+      setUser(userData);
+      setIsEditing(false);
+      console.log("Respuesta del backend:", response.data);
+      message.success("Datos actualizados correctamente!");
+      //navigate("/profile");
+    })
+    .catch(error => {
+      console.error("Error al actualizar los datos del usuario:", error);
+    });
 };
 
-  if (!user) return <div>Cargando...</div>;
+  if (!user) return <div style={{ padding: "20px", display: "flex", flexDirection: "column", alignItems: "center" }}>Cargando...</div>;
 
   // Función para cambiar la sección seleccionada
   const handleMenuClick = (e) => {
@@ -72,11 +112,6 @@ const handleSave = () => {
       setShowOrders(false); // Oculta las órdenes
     }
   };
-
-  // Filtra las órdenes del usuario
-  const userOrders = orders.filter(
-    (order) => order.id_usuario === user.id_usuario
-  );
 
   // Columnas de la tabla para el historial de compras
   const columns = [
@@ -129,7 +164,7 @@ const handleSave = () => {
                                         {isEditing ? (
                                             <Input name={field} value={userData[field]} onChange={handleInputChange} style={{ width: "100%", marginBottom: "12px" }} />
                                         ) : (
-                                            <p>{user[field]}</p>
+                                            <p>{userData[field]}</p>
                                         )}
                                     </div>
                                 ))}

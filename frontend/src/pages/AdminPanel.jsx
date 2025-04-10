@@ -15,7 +15,7 @@ const { Sider, Content } = Layout;
 const { Title } = Typography;
 
 const AdminPanel = () => {
-    const { userRole } = useAuth();
+    const { userRole, logout } = useAuth();
     const navigate = useNavigate();
     const [selectedKey, setSelectedKey] = useState("informacion");
     const [user, setUser] = useState(null);
