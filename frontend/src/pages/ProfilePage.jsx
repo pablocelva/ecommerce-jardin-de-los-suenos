@@ -10,7 +10,6 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import EditIcon from '@mui/icons-material/Edit';
 import LogoutIcon from '@mui/icons-material/Logout';
 import SaveIcon from '@mui/icons-material/Save';
-import { use } from "react";
 
 const { Sider, Content } = Layout;
 
@@ -44,32 +43,14 @@ const ProfilePage = () => {
       return;
     }
 
-
-
-    /*axios.get(`/api/auth/usuarios/${userId}`, {
+    axios.get(`http://localhost:3000/api/pedidos/usuario/${userId}`, {
       headers: {
         Authorization: `Bearer ${userToken}`,
       },
     })
       .then(response => {
-        console.log(response.data);
-        const foundUser =  response.data;
-        console.log("Respuesta del backend:", foundUser);
-        setUser(foundUser);
-        setUserData(foundUser);
-      })
-      .catch(error => {
-        console.error("Error al obtener los datos del usuario:", error);
-        navigate("/login");
-      });*/
-
-    axios.get(`/api/pedidos/usuario/${userId}`, {
-      headers: {
-        Authorization: `Bearer ${userToken}`,
-      },
-    })
-      .then(response => {
-        setUserOrders(response.data);
+        console.log("Pedidos del usuario:", response.data);
+        setUserOrders(response.data.orders);
       })
       .catch(error => {
         console.error("Error al obtener las órdenes del usuario:", error);
@@ -82,9 +63,10 @@ const ProfilePage = () => {
 };
 
 const handleSave = () => {
-  const userId = localStorage.getItem("userId");
+  //const userId = localStorage.getItem("userId");
+  const userId = JSON.parse(localStorage.getItem("user"))?.id_usuario;
   const userToken = localStorage.getItem("token");
-  axios.put(`/api/auth/usuarios/${userId}`, userData, {
+  axios.put(`http://localhost:3000/api/auth/usuarios/${userId}`, userData, {
     headers: {
       Authorization: `Bearer ${userToken}`,
     },
@@ -114,23 +96,57 @@ const handleSave = () => {
   };
 
   // Columnas de la tabla para el historial de compras
-  const columns = [
+  /*const columns = [
     { title: "Fecha", dataIndex: "fecha_orden", key: "fecha_orden" },
     { 
       title: "Detalle", 
       key: "detalle", 
       render: (text, record) => (
-        <span>{record.productos.map((producto) => producto.nombre_producto).join(", ")}</span>
+        <span>
+          {record.productos.map((producto, index) => (
+            <span key={producto.id_producto}>
+              {producto.nombre_producto}
+              {index < record.productos.length - 1 ? ", " : ""}
+            </span>
+          ))}
+        </span>
+        //<span>{record.productos.map((producto) => producto.nombre_producto).join(", ")}</span>
       ) 
     },
     { title: "Total", dataIndex: "total", key: "total" },
     { title: "Estado", dataIndex: "estado", key: "estado" },
     { title: "ID Compra", dataIndex: "id_orden", key: "id_orden" }
+  ];*/
+  const columns = [
+    { title: "Fecha", dataIndex: "fecha_compra", key: "fecha_compra" },
+    { 
+      title: "Detalle", 
+      key: "detalle", 
+      render: (text, record) => (
+        <span>
+          {console.log("record",record)}
+          {console.log("detalle", record.detalle)}
+          {record.detalle && record.detalle.length > 0 ? (
+            record.detalle.map((producto, index) => (
+              <span key={producto.id_producto}>
+                {producto.nombre_producto}
+                {index < record.detalle.length - 1 ? ", " : ""}
+              </span>
+            ))
+          ) : (
+            <span>No hay productos</span>
+          )}
+        </span>
+      ),
+    },
+    { title: "Total", dataIndex: "precio_total", key: "precio_total" },
+    { title: "Estado", dataIndex: "estado", key: "estado" },
+    { title: "ID Compra", dataIndex: "id_compra", key: "id_compra" }
   ];
 
   return (
     <Layout style={{ height: "calc(100vh)" }}>
-      <Layout style={{ hyphenseight: "calc(100vh)" }}>
+      <Layout style={{ height: "calc(100vh)" }}>
         {/* Sidebar con categoria */}
         <Sider className="sider" width={250}>
           <p onClick={() => handleMenuClick({ key: "informacion" })}>Perfil de Usuario</p>
