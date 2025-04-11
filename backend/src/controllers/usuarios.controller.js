@@ -148,11 +148,26 @@ const handleUpdateUser = async (req, res, next) => {
         const { id } = req.params
         const { email, password, nombre, apellido, direccion, telefono } = req.body
 
-        if (!email || !password || !nombre || !apellido || !direccion || !telefono) {
+        //if (!email || !password || !nombre || !apellido || !direccion || !telefono) {
+        if (!email || !nombre || !apellido || !direccion || !telefono) {
             return res.status(400).json({ error: 'Faltan datos' })
         }
 
-        const user = await usuarios.updateUser(id, email, password, nombre, apellido, direccion, telefono)
+        // Preparar los datos para la actualización
+        let userData = {
+            email,
+            nombre,
+            apellido,
+            direccion,
+            telefono
+        };
+
+        // Solo incluir el campo password si se proporciona un valor
+        if (password) {
+            userData.password = password;
+        }
+
+        const user = await usuarios.updateUser(id, email, nombre, apellido, direccion, telefono)
 
         console.log(user)
         if (!user) {

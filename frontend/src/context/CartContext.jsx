@@ -8,13 +8,13 @@ export const CartProvider = ({ children }) => {
     // Cargar carrito desde localStorage al iniciar
     useEffect(() => {
         const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
-        console.log("Carrito cargado desde localStorage:", storedCart);
+        //console.log("Carrito cargado desde localStorage:", storedCart);
         setCart(storedCart);
     }, []);
 
     // Guardar carrito en localStorage cada vez que cambie
     useEffect(() => {
-        console.log("Carrito guardado en localStorage:", cart);
+        //console.log("Carrito guardado en localStorage:", cart);
         localStorage.setItem("cart", JSON.stringify(cart));
     }, [cart]);
 

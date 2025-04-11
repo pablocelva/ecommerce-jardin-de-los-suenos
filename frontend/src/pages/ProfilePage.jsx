@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
-import { Layout, Table, Input } from "antd";
+import { Layout, Table, Input, message } from "antd";
 import axios from "axios";
 //import users from "../data/usuarios.json"; 
 //import orders from "../data/ordenes.json"; 
@@ -34,6 +34,7 @@ const ProfilePage = () => {
     const userInfo = JSON.parse(localStorage.getItem("user")); 
     setUser(userInfo);
     setUserData(userInfo);
+    console.log("userInfo", userInfo);
     
     const userId = userInfo.id_usuario;
     const userToken = localStorage.getItem("token");
@@ -49,7 +50,6 @@ const ProfilePage = () => {
       },
     })
       .then(response => {
-        console.log("Pedidos del usuario:", response.data);
         setUserOrders(response.data.orders);
       })
       .catch(error => {
@@ -69,6 +69,7 @@ const handleSave = () => {
   axios.put(`http://localhost:3000/api/auth/usuarios/${userId}`, userData, {
     headers: {
       Authorization: `Bearer ${userToken}`,
+      ContentType: "application/json",
     },
   })
     .then(response => {
@@ -95,30 +96,17 @@ const handleSave = () => {
     }
   };
 
-  // Columnas de la tabla para el historial de compras
-  /*const columns = [
-    { title: "Fecha", dataIndex: "fecha_orden", key: "fecha_orden" },
-    { 
-      title: "Detalle", 
-      key: "detalle", 
-      render: (text, record) => (
-        <span>
-          {record.productos.map((producto, index) => (
-            <span key={producto.id_producto}>
-              {producto.nombre_producto}
-              {index < record.productos.length - 1 ? ", " : ""}
-            </span>
-          ))}
-        </span>
-        //<span>{record.productos.map((producto) => producto.nombre_producto).join(", ")}</span>
-      ) 
-    },
-    { title: "Total", dataIndex: "total", key: "total" },
-    { title: "Estado", dataIndex: "estado", key: "estado" },
-    { title: "ID Compra", dataIndex: "id_orden", key: "id_orden" }
-  ];*/
   const columns = [
-    { title: "Fecha", dataIndex: "fecha_compra", key: "fecha_compra" },
+    { title: "Fecha", dataIndex: "fecha_compra", key: "fecha_compra",
+      render: (fecha) => {
+        const date = new Date(fecha);
+        return date.toLocaleDateString("es-CL", {
+          day: "2-digit",
+          month: "2-digit",
+          year: "numeric",
+        });
+      }
+    },
     { 
       title: "Detalle", 
       key: "detalle", 
@@ -130,6 +118,7 @@ const handleSave = () => {
             record.detalle.map((producto, index) => (
               <span key={producto.id_producto}>
                 {producto.nombre_producto}
+                {console.log(producto.nombre_producto)}
                 {index < record.detalle.length - 1 ? ", " : ""}
               </span>
             ))
@@ -139,6 +128,7 @@ const handleSave = () => {
         </span>
       ),
     },
+    { title: "Dirección de envío", dataIndex: "direccion", key: "direccion" },
     { title: "Total", dataIndex: "precio_total", key: "precio_total" },
     { title: "Estado", dataIndex: "estado", key: "estado" },
     { title: "ID Compra", dataIndex: "id_compra", key: "id_compra" }
@@ -162,11 +152,13 @@ const handleSave = () => {
                   <Table 
                     dataSource={userOrders} 
                     columns={columns} 
-                    rowKey="id_orden" 
+                    rowKey="id_compra" 
                   />
                 ) : (
                   <p>No tienes órdenes.</p>
                 )}
+                {console.log("userOrders en render", userOrders)}
+
               </div>
             ) : (
               <div style={{ padding: "20px", display: "flex", flexDirection: "column", alignItems: "center" }}>
