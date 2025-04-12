@@ -4,12 +4,12 @@ const pool = require('../db/connection')
 const handleGetAllOrders = async (req, res, next) => {
     try {
         const orders = await getAllOrders()
-        res.status(200).json({ message: `Total de ordenes de compra: ${orders.length}`, orders })
-
+        
         if (!orders) {
             return res.status(404).json({ error: 'No hay pedidos' })
         }
-
+        res.status(200).json({ message: `Total de ordenes de compra: ${orders.length}`, orders })
+        
     } catch (error) {
         next(error)
     }
@@ -45,62 +45,42 @@ const handleGetOrderByOrderId = async (req, res, next) => {
 
 const handleCreateOrder = async (req, res) => {
     try {
-        // Verificar que req.body existe
         if (!req.body) {
             return res.status(400).json({ error: 'No se recibieron datos' });
         }
 
-        // Extraer los datos del body
         const {
             id_usuario,
             nombre_cliente,
             email_cliente,
-            productos,
+            detalle,
             total,
             fecha_orden,
             estado,
-            direccion_envio
+            direccion
         } = req.body;
 
         // Validar que todos los campos requeridos estén presentes
-        if (!id_usuario || !nombre_cliente || !email_cliente || !productos || !total || !direccion_envio) {
+        if (!id_usuario || !nombre_cliente || !email_cliente || !detalle || !total || !direccion) {
             return res.status(400).json({
                 error: 'Faltan campos requeridos para crear el pedido'
             });
         }
 
-        // Crear el pedido en la base de datos
-        const query = `
-            INSERT INTO ordenes (
-                id_usuario,
-                nombre_cliente,
-                email_cliente,
-                productos,
-                total,
-                fecha_orden,
-                estado,
-                direccion_envio
-            )
-            VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
-            RETURNING *
-        `;
-
-        const values = [
+        const newOrder = await createOrder({
             id_usuario,
             nombre_cliente,
             email_cliente,
-            JSON.stringify(productos),
+            detalle,
             total,
-            fecha_orden || new Date(),
-            estado || 'pendiente',
-            JSON.stringify(direccion_envio)
-        ];
+            fecha_orden,
+            estado,
+            direccion
+        });
 
-        const result = await pool.query(query, values);
-        
         res.status(201).json({
             message: 'Pedido creado exitosamente',
-            order: result.rows[0]
+            order: newOrder
         });
 
     } catch (error) {

@@ -48,38 +48,32 @@ const createOrder = async (orderData) => {
         id_usuario, 
         nombre_cliente, 
         email_cliente, 
-        productos, 
+        detalle, 
         total, 
         fecha_orden, 
         estado, 
-        direccion_envio 
+        direccion
     } = orderData;
 
     try {
         const query = `
-            INSERT INTO ordenes (
+            INSERT INTO orders (
                 id_usuario, 
-                nombre_cliente, 
-                email_cliente, 
-                productos, 
-                total, 
-                fecha_orden, 
-                estado, 
-                direccion_envio
+                precio_total, 
+                detalle, 
+                direccion, 
+                estado
             ) 
-            VALUES ($1, $2, $3, $4, $5, $6, $7, $8) 
+            VALUES ($1, $2, $3, $4, $5) 
             RETURNING *
         `;
 
         const values = [
             id_usuario,
-            nombre_cliente,
-            email_cliente,
-            JSON.stringify(productos),
             total,
-            fecha_orden,
-            estado,
-            JSON.stringify(direccion_envio)
+            JSON.stringify(detalle),
+            direccion,
+            estado
         ];
 
         const result = await DB.query(query, values);
@@ -123,23 +117,6 @@ const deleteOrder = async (id_compra) => {
                 `,
                 id_compra,
             )
-        /*let SQLQuery;
-
-        if (isAdmin) {
-            // Si es admin, puede eliminar cualquier orden
-            SQLQuery = format(`
-                DELETE FROM orders
-                WHERE id_compra = %L
-                RETURNING *
-                `, id_compra);
-        } else {
-            // Si no es admin, solo puede eliminar sus propias órdenes
-            SQLQuery = format(`
-                DELETE FROM orders
-                WHERE id_compra = %L AND id_usuario = %L
-                RETURNING *
-                `, id_compra, id_usuario);
-        }*/
 
         const { rows: [order] } = await DB.query(SQLQuery)
 

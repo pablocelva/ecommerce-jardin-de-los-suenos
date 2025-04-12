@@ -1,5 +1,6 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useContext } from "react";
+import { message } from "antd";
 import { ProductContext } from "../context/ProductContext";
 import ImagenesContext from "../context/ImagenesContext"; // Contexto para obtener imágenes
 import { useCart } from "../context/CartContext";
@@ -89,7 +90,10 @@ const ProductPage = () => {
                         ⬅ Volver
                     </button>
                     <button 
-                        onClick={() => addToCart(producto)}
+                        onClick={() => {
+                            addToCart(producto);
+                            message.success(`🛒 Agregado al carrito: ${producto.nombre_producto}`);
+                        }}
                         style={{ transition: "background 0.3s", marginRight: "10px" }}
                         
                     >

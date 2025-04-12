@@ -2,14 +2,15 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { Layout, Table, Typography, Button, Modal, Form, Input, InputNumber } from "antd";
-import users from "../data/usuarios.json";
-import productos from "../data/productos.json";
-import orders from "../data/ordenes.json";
+//import users from "../data/usuarios.json";
+//import productos from "../data/productos.json";
+//import orders from "../data/ordenes.json";
 import AppFooter from "../components/Footer";
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import SaveIcon from '@mui/icons-material/Save';
 import EditIcon from '@mui/icons-material/Edit';
 import LogoutIcon from '@mui/icons-material/Logout';
+import axios from "axios";
 
 const { Sider, Content } = Layout;
 const { Title } = Typography;
@@ -17,17 +18,24 @@ const { Title } = Typography;
 const AdminPanel = () => {
     const { userRole, logout } = useAuth();
     const navigate = useNavigate();
+
     const [selectedKey, setSelectedKey] = useState("informacion");
     const [user, setUser] = useState(null);
+    const [userData, setUserData] = useState(null);
+    
+    const [users, setUsers] = useState([]);
+    const [productosData, setProductosData] = useState([]);	
+    const [orders, setOrders] = useState([]);
+
     const [showUsers, setShowUsers] = useState(false);
     const [showCatalogo, setShowCatalogo] = useState(false);
     const [showVentas, setShowVentas] = useState(false);
+    
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [isEditing, setIsEditing] = useState(false);
-    const [userData, setUserData] = useState(null);
     const [isEditModalOpen, setIsEditModalOpen] = useState(false);
     const [editingProduct, setEditingProduct] = useState(null);
-    const [productosData, setProductosData] = useState(productos);
+    const [isEditing, setIsEditing] = useState(false);
+    
     const [form] = Form.useForm(); 
 
     useEffect(() => {
@@ -35,10 +43,44 @@ const AdminPanel = () => {
             navigate("/");
         }
 
-        setProductosData(productos);
-        const adminUser = users.find((u) => u.id_usuario === 1);
-        setUser(adminUser);
-        setUserData(adminUser);
+        const fetchData = async () => {
+
+            try{
+                const token = localStorage.getItem("token")
+                const [usersRes, productosRes, ordersRes] = await Promise.all([
+                    axios.get("http://localhost:3000/api/auth/usuarios/", {
+                        headers: {
+                            Authorization: `Bearer ${token}`
+                        }
+                    }),
+                    axios.get("http://localhost:3000/api/productos/", {
+                        headers: {
+                            Authorization: `Bearer ${token}`
+                        }
+                    }),
+                    axios.get("http://localhost:3000/api/pedidos/", {
+                        headers: {
+                            Authorization: `Bearer ${token}`
+                        }
+                    })
+                ]);
+                //console.log("Usuarios:", usersRes.data);
+                //console.log("Productos:", productosRes.data);
+                //console.log(ordersRes.data);
+                //console.log("Pedidos:", ordersRes.data.orders);
+
+                setUsers(usersRes.data);
+                setProductosData(productosRes.data);
+                setOrders(ordersRes.data.orders);
+
+                const adminUser = usersRes.data.find((u) => u.id_usuario === 1 || u.rol === "admin");
+                setUser(adminUser);
+                setUserData(adminUser);
+            } catch (error) {
+                console.log("Error al cargar datos desde la API: ", error);
+            }
+        };
+        fetchData();
     }, [userRole, navigate]);
 
     const handleMenuClick = (e) => {
@@ -48,12 +90,15 @@ const AdminPanel = () => {
         setShowVentas(e.key === "ventas");
     };
 
-    const handleAddProduct = (values) => {
-        console.log(values);
-        const newProduct = { id_producto: productosData.length + 1, ...values };
-        setProductosData([...productosData, newProduct]);
-        setIsModalOpen(false);
-    };
+    const handleAddProduct = async (values) => {
+        try {
+            const res = await axios.post("http://localhost:3000/api/productos/", values);
+            setProductosData([...productosData, res.data]);
+            setIsModalOpen(false);
+        } catch (error) {
+            console.log("Error al agregar producto: ", error);
+        }
+    }
 
     const handleEditProduct = (product) => {
         setEditingProduct(product);
@@ -61,14 +106,19 @@ const AdminPanel = () => {
         setIsEditModalOpen(true);
     };
     
-    const handleUpdateProduct = (values) => {
-        const updatedProducts = productosData.map((prod) =>
-            prod.id_producto === editingProduct.id_producto ? { ...prod, ...values } : prod
-        );
-    
-        setProductosData(updatedProducts);
-        setIsEditModalOpen(false);
-        setEditingProduct(null);
+    const handleUpdateProduct = async (values) => {
+        try {
+            const updated = { ...editingProduct, ...values };
+            await axios.put(`http://localhost:3000/api/productos/${editingProduct.id_producto}`, updated);
+
+            setProductosData((prev) =>
+                prev.map((p) =>(p.id_producto === editingProduct.id_producto ? updated : p))
+            )
+            setIsEditModalOpen(false);
+            setEditingProduct(null);
+        } catch (error) {
+            console.log("Error al actualizar producto: ", error);
+        }
     };
 
     const handleInputChange = (e) => {
@@ -78,9 +128,10 @@ const AdminPanel = () => {
 
     const handleSave = () => {
         setUser(userData);
-        setIsEditing(false);
+        //setIsEditing(false);
     };
 
+    //console.log(orders);
     if (!user) return <div>Cargando...</div>;
 
     return (
@@ -189,22 +240,24 @@ const AdminPanel = () => {
                         <div style={{ padding: "20px" }}>
                             <h2>Historial de Ventas</h2>
                             <Table
-                            dataSource={orders}
+                            //scroll={{ x: 'max-content'}}
+                            dataSource={Array.isArray(orders) ? orders : []}
                             columns={[
-                                { title: "ID Compra", dataIndex: "id_orden", key: "id_orden" },
+                                { title: "ID Compra", dataIndex: "id_compra", key: "id_compra" },
                                 { title: "Estado", dataIndex: "estado", key: "estado" },
                                 { title: "Nombre Cliente", dataIndex: "nombre_cliente", key: "nombre_cliente" },
+                                { title: "Dirección", dataIndex: "direccion", key: "direccion" },
                                 { title: "ID Cliente", dataIndex: "id_usuario", key: "id_usuario" },
-                                { title: "Fecha de la Orden", dataIndex: "fecha_orden", key: "fecha_orden" },
-                                { title: "Total", dataIndex: "total", key: "total" },
+                                { title: "Fecha de la Orden", dataIndex: "fecha_compra", key: "fecha_compra" },
+                                { title: "Total", dataIndex: "precio_total", key: "precio_total" },
                             ]}
-                            rowKey="id_orden"
+                            rowKey="id_compra"
                             expandable={{
                                 expandedRowRender: (record) => (
                                     <div>
                                     <Title level={5} style={{ marginBottom: "10px" }}>🛒 Detalle de la Compra</Title>
                                     <Table
-                                        dataSource={record.productos}
+                                        dataSource={record.detalle}
                                         columns={[
                                             { title: "Producto", dataIndex: "nombre_producto", key: "nombre_producto" },
                                             { title: "Cantidad", dataIndex: "cantidad", key: "cantidad" },

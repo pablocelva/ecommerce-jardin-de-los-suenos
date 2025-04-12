@@ -4,7 +4,8 @@ import { useCart } from "../context/CartContext";
 import { useAuth } from "../context/AuthContext";
 import ImagenesContext from "../context/ImagenesContext";
 import { useImagenes } from "../context/ImagenesContext";
-import { App } from "antd";
+import axios from "axios";
+import { message } from "antd";
 import AppFooter from "../components/Footer";
 import ShoppinCartIcon from '@mui/icons-material/ShoppingCart';
 import EditIcon from '@mui/icons-material/Edit';
@@ -28,8 +29,8 @@ const CheckoutPage = () => {
     useEffect(() => {
         // Obtener el userId del almacenamiento local
         const userId = localStorage.getItem("userId");
-        console.log("userId:", userId); // Para debugging
-
+        //console.log("userId:", userId);
+        
         if (!userId) {
             navigate("/login");
             return;
@@ -37,8 +38,8 @@ const CheckoutPage = () => {
 
         // Obtener datos del usuario del localStorage
         const user = JSON.parse(localStorage.getItem("user"));
-        console.log("user data:", user); // Para debugging
-
+        //console.log("user data:", user); 
+        
         if (user) {
             setUserData({
                 nombre: user.nombre || '',
@@ -61,55 +62,43 @@ const CheckoutPage = () => {
 
     const handleCheckout = async () => {
         try {
-            // Validar que los campos necesarios estén completos
             if (!userData.nombre || !userData.direccion || !userData.ciudad || !userData.email) {
                 alert("Por favor completa todos los campos");
                 return;
             }
-
             const userId = localStorage.getItem("userId");
             
-            // Preparar los datos del pedido
+            const detalle = cart.map(item => ({
+                id_producto: item.id_producto,
+                nombre_producto: item.nombre_producto,  
+                cantidad: item.quantity,
+                precio_unitario: parseFloat(item.precio)
+            }));
+
             const orderData = {
                 id_usuario: parseInt(userId),
                 nombre_cliente: userData.nombre,
                 email_cliente: userData.email,
-                productos: cart.map(item => ({
-                    id_producto: item.id_producto,
-                    cantidad: item.quantity,
-                    precio_unitario: parseFloat(item.precio) // Asegurarse de que sea número
-                })),
+                detalle, 
                 total: parseFloat(totalPrice),
-                fecha_orden: new Date().toISOString(),
-                estado: "pendiente",
-                direccion_envio: {
-                    direccion: userData.direccion,
-                    ciudad: userData.ciudad
-                }
+                estado: "pending",
+                direccion: userData.direccion,
             };
 
-            console.log('Datos a enviar:', orderData); // Para debugging
-
+            //console.log('Datos a enviar:', orderData);
             // Enviar el pedido al backend
-            const response = await fetch('http://localhost:3000/api/pedidos', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(orderData)
-            });
+            const response = await axios.post('http://localhost:3000/api/pedidos', orderData);
 
-            const responseData = await response.json();
-            console.log('Respuesta del servidor:', responseData); // Para debugging
-
-            if (!response.ok) {
-                throw new Error(responseData.error || 'Error al procesar el pedido');
+            //const responseData = await response.json();
+            
+            if (!response.status === 201) {
+                throw new Error(response.error || 'Error al procesar el pedido');
             }
 
             // Si todo salió bien, limpiar el carrito
             clearCart();
-            alert("🎉 Compra confirmada. ¡Gracias por tu compra! 🎉");
-            navigate("/profile");
+            message.success("🎉 Compra confirmada. ¡Gracias por tu compra! 🎉");
+            navigate("/");
 
         } catch (error) {
             console.error("Error al procesar la compra:", error);

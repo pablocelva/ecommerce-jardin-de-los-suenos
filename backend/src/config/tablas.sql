@@ -151,6 +151,12 @@ INSERT INTO categorias_productos (id_producto, id_categoria) VALUES
 (12, 1),  -- interior
 (12, 3);  -- suculenta
 
+-- Producto 13: Ruda
+INSERT INTO categorias_productos (id_producto, id_categoria) VALUES
+(13, 2),  -- exterior
+(13, 5);  -- hierba
+
+
 -- Tabla para imágenes de productos (1 producto puede tener muchas imágenes)
 CREATE TABLE imagenes_producto (
     id_imagen SERIAL PRIMARY KEY,

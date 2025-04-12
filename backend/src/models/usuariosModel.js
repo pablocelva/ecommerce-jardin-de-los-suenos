@@ -85,7 +85,7 @@ const register = async (email, password, nombre, apellido, direccion, telefono) 
 
 const getUser = async (req, res) => {
     try {
-        const result = await pool.query('SELECT * FROM usuarios WHERE email = $1', [req.email]);
+        const result = await DB.query('SELECT * FROM usuarios WHERE email = $1', [req.email]);
         const user = result.rows[0];
 
         if (!user) {
@@ -108,19 +108,21 @@ const getAllUsers = async () => {
 
 const updateUser = async (id, email, password, nombre, apellido, direccion, telefono) => {
     try {
+        const hashedPassword = hashPassword(password)
         const SQLQuery = format(`
                 UPDATE usuarios
                 SET email = %L,
-                password = %L,
-                nombre = %L,
-                apellido = %L,
-                direccion = %L,
-                telefono = %L
+                    password = %L,
+                    nombre = %L,
+                    apellido = %L,
+                    direccion = %L,
+                    telefono = %L
                 WHERE id_usuario = %L
                 RETURNING *
                 `,
                 email,
-                password,
+                hashedPassword,
+                //password,
                 nombre,
                 apellido,
                 direccion,
@@ -147,7 +149,7 @@ const deleteUser = async (id) => {
 
         const { rows } = await DB.query(SQLQuery)
 
-        if (!rows.length === 0) {
+        if (rows.length === 0) {
             return null
         }
 

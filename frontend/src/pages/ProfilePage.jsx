@@ -34,7 +34,7 @@ const ProfilePage = () => {
     const userInfo = JSON.parse(localStorage.getItem("user")); 
     setUser(userInfo);
     setUserData(userInfo);
-    console.log("userInfo", userInfo);
+    //console.log("userInfo", userInfo);
     
     const userId = userInfo.id_usuario;
     const userToken = localStorage.getItem("token");
@@ -68,8 +68,8 @@ const handleSave = () => {
   const userToken = localStorage.getItem("token");
   axios.put(`http://localhost:3000/api/auth/usuarios/${userId}`, userData, {
     headers: {
+      ContentType: "application/json; charset=UTF-8",
       Authorization: `Bearer ${userToken}`,
-      ContentType: "application/json",
     },
   })
     .then(response => {
@@ -112,13 +112,13 @@ const handleSave = () => {
       key: "detalle", 
       render: (text, record) => (
         <span>
-          {console.log("record",record)}
-          {console.log("detalle", record.detalle)}
+          {/*console.log("record",record)*/}
+          {/*console.log("detalle", record.detalle)*/}
           {record.detalle && record.detalle.length > 0 ? (
             record.detalle.map((producto, index) => (
               <span key={producto.id_producto}>
                 {producto.nombre_producto}
-                {console.log(producto.nombre_producto)}
+                {/*console.log(producto.nombre_producto)*/}
                 {index < record.detalle.length - 1 ? ", " : ""}
               </span>
             ))
@@ -153,11 +153,12 @@ const handleSave = () => {
                     dataSource={userOrders} 
                     columns={columns} 
                     rowKey="id_compra" 
+                    scroll={{ x: 'max-content' }}
                   />
                 ) : (
                   <p>No tienes órdenes.</p>
                 )}
-                {console.log("userOrders en render", userOrders)}
+                {/*console.log("userOrders en render", userOrders)*/}
 
               </div>
             ) : (
@@ -166,7 +167,7 @@ const handleSave = () => {
                 <AccountCircleIcon style={{ fontSize: "60px", color: "lightblue" }} />
                 <h2>Perfil de Usuario</h2>
                 <div style={{ display: "flex", flexDirection: "column", width: "300px" }}>
-                                {["nombre", "apellido", "email", "direccion", "telefono"].map((field) => (
+                                {[ "email", "password", "nombre", "apellido", "direccion", "telefono"].map((field) => (
                                     <div key={field}>
                                         <strong>{field.charAt(0).toUpperCase() + field.slice(1)}:</strong>
                                         {isEditing ? (
@@ -176,6 +177,16 @@ const handleSave = () => {
                                         )}
                                     </div>
                                 ))}
+                                {/* {[ "password" ].map((field) => (
+                                  <div key={field}>
+                                  <strong>{field.charAt(0).toUpperCase() + field.slice(1)}:</strong>
+                                  {isEditing ? (
+                                      <Input.Password name={field} value={userData[field]} onChange={handleInputChange} style={{ width: "100%", marginBottom: "12px" }} />
+                                  ) : (
+                                      <p>{userData[field]}</p>
+                                  )}
+                              </div>
+                                ))} */}
                             </div>
 
                             <div style={{ display: "flex", gap: "16px" }}>
