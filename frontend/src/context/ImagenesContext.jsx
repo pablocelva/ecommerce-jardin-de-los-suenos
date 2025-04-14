@@ -1,6 +1,7 @@
 import { use } from 'react';
 import { createContext, useState, useEffect, useContext } from 'react';
 import productosJSON from '../data/productos.json';
+const apiURL = import.meta.env.VITE_API_URL;
 
 const ImagenesContext = createContext();
 
@@ -10,7 +11,7 @@ export const ImagenesProvider = ({ children }) => {
     const [imagenes, setImagenes] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:3000/api/productos/imagenes')
+        fetch(`${apiURL}/productos/imagenes`)
             .then(res => res.json())
             .then(data => setImagenes(data))
             .catch(error => {

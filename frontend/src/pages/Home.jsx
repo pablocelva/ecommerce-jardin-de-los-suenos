@@ -11,6 +11,7 @@ import { Layout } from "antd";
 import AppFooter from "../components/Footer";
 import GrassIcon from "@mui/icons-material/Grass";
 import Carousel from "../components/Carousel";
+const apiURL = import.meta.env.VITE_API_URL;
 
 const { Sider, Content } = Layout;
 
@@ -30,10 +31,12 @@ const Home = () => {
   const handleCategoryClick = async (categoria) => {
     setSelectedCategory(categoria);
     
-    let url = "http://localhost:3000/api/productos/";
+    //let url = "http://localhost:3000/api/productos/";
+    let url = `${apiURL}/productos/`;
     
     if (categoria) {
-      url = `http://localhost:3000/api/productos/categorias/${categoria.id_categoria}`;
+      //url = `http://localhost:3000/api/productos/categorias/${categoria.id_categoria}`;
+      url = `${apiURL}/productos/categorias/${categoria.id_categoria}`;
     }
     
     

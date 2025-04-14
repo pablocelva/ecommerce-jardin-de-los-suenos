@@ -10,6 +10,7 @@ import AppFooter from "../components/Footer";
 import ShoppinCartIcon from '@mui/icons-material/ShoppingCart';
 import EditIcon from '@mui/icons-material/Edit';
 import SaveIcon from '@mui/icons-material/Save';
+const apiURL = import.meta.env.VITE_API_URL;
 
 const CheckoutPage = () => {
     const { cart, clearCart } = useCart();
@@ -87,7 +88,8 @@ const CheckoutPage = () => {
 
             //console.log('Datos a enviar:', orderData);
             // Enviar el pedido al backend
-            const response = await axios.post('http://localhost:3000/api/pedidos', orderData);
+            //const response = await axios.post('http://localhost:3000/api/pedidos', orderData);
+            const response = await axios.post(`${apiURL}/pedidos`, orderData);
 
             //const responseData = await response.json();
             

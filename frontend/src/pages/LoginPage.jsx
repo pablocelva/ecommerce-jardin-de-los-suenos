@@ -6,6 +6,7 @@ import { useAuth } from "../context/AuthContext";
 import AppFooter from "../components/Footer";
 import LoginIcon from '@mui/icons-material/Login';
 import axios from "axios";
+const apiURL = import.meta.env.VITE_API_URL;
 
 const LoginPage = () => {
   const { login } = useAuth();
@@ -16,7 +17,8 @@ const LoginPage = () => {
   const handleSubmit = async () => {
     if (email && password) {
       try {
-        const response = await axios.post("http://localhost:3000/api/auth/login", {
+        //const response = await axios.post("http://localhost:3000/api/auth/login", {
+        const response = await axios.post(`${apiURL}/auth/login`, {
           email,
           password,
         });

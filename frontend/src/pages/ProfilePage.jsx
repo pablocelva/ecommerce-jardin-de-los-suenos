@@ -10,6 +10,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import EditIcon from '@mui/icons-material/Edit';
 import LogoutIcon from '@mui/icons-material/Logout';
 import SaveIcon from '@mui/icons-material/Save';
+const apiURL = import.meta.env.VITE_API_URL;
 
 const { Sider, Content } = Layout;
 
@@ -44,7 +45,8 @@ const ProfilePage = () => {
       return;
     }
 
-    axios.get(`http://localhost:3000/api/pedidos/usuario/${userId}`, {
+    //axios.get(`http://localhost:3000/api/pedidos/usuario/${userId}`, {
+    axios.get(`${apiURL}/pedidos/usuario/${userId}`, {
       headers: {
         Authorization: `Bearer ${userToken}`,
       },
@@ -66,7 +68,8 @@ const handleSave = () => {
   //const userId = localStorage.getItem("userId");
   const userId = JSON.parse(localStorage.getItem("user"))?.id_usuario;
   const userToken = localStorage.getItem("token");
-  axios.put(`http://localhost:3000/api/auth/usuarios/${userId}`, userData, {
+  //axios.put(`http://localhost:3000/api/auth/usuarios/${userId}`, userData, {
+  axios.put(`${apiURL}/auth/usuarios/${userId}`, userData, {
     headers: {
       ContentType: "application/json; charset=UTF-8",
       Authorization: `Bearer ${userToken}`,

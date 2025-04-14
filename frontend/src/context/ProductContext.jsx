@@ -1,6 +1,7 @@
 import { createContext, useState, useEffect } from "react";
 import productosJSON from "../data/productos.json";
 import categoriasJSON from "../data/categorias.json";
+const apiURL = import.meta.env.VITE_API_URL;
 
 export const ProductContext = createContext();
 
@@ -12,7 +13,7 @@ export const ProductProvider = ({ children }) => {
         const fetchData = async () => {
             try {
                 // Obtener todos los productos
-                const resProductos = await fetch("http://localhost:3000/api/productos");
+                const resProductos = await fetch(`${apiURL}/productos`);
                 if (!resProductos.ok) throw new Error("Error al cargar los productos");
     
                 const productos = await resProductos.json();
@@ -38,7 +39,8 @@ export const ProductProvider = ({ children }) => {
                 );*/
 
                 // Obtener categorías
-                const resCategorias = await fetch("http://localhost:3000/api/productos/categorias");
+                //const resCategorias = await fetch("http://localhost:3000/api/productos/categorias");
+                const resCategorias = await fetch(`${apiURL}/productos/categorias`);
                 if (!resCategorias.ok) throw new Error("Error al cargar las categorías");
 
                 const categorias = await resCategorias.json();

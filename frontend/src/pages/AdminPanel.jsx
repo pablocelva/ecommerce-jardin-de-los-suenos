@@ -12,6 +12,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { ExclamationCircleOutlined } from "@ant-design/icons";
 import axios from "axios";
+const apiURL = import.meta.env.VITE_API_URL;
 
 const { Sider, Content } = Layout;
 const { Title } = Typography;
@@ -50,22 +51,26 @@ const AdminPanel = () => {
             try{
                 const token = localStorage.getItem("token")
                 const [usersRes, productosRes, ordersRes, categoriasRes] = await Promise.all([
-                    axios.get("http://localhost:3000/api/auth/usuarios/", {
+                    //axios.get("http://localhost:3000/api/auth/usuarios/", {
+                    axios.get(`${apiURL}/auth/usuarios/`, {
                         headers: {
                             Authorization: `Bearer ${token}`
                         }
                     }),
-                    axios.get("http://localhost:3000/api/productos/", {
+                    //axios.get("http://localhost:3000/api/productos/", {
+                    axios.get(`${apiURL}/productos/`, {
                         headers: {
                             Authorization: `Bearer ${token}`
                         }
                     }),
-                    axios.get("http://localhost:3000/api/pedidos/", {
+                    //axios.get("http://localhost:3000/api/pedidos/", {
+                    axios.get( `${apiURL}/pedidos/`, {
                         headers: {
                             Authorization: `Bearer ${token}`
                         }
                     }),
-                    axios.get(`http://localhost:3000/api/productos/categorias`, {
+                    //axios.get(`http://localhost:3000/api/productos/categorias`, {
+                    axios.get(`${apiURL}/productos/categorias`, {
                         headers: {
                             Authorization: `Bearer ${token}`
                         }
@@ -103,7 +108,8 @@ const AdminPanel = () => {
             const token = localStorage.getItem("token");
             const { imagen, ...product } = values;
             console.log(imagen);
-            const resProducto = await axios.post("http://localhost:3000/api/productos/", product,
+            //const resProducto = await axios.post("http://localhost:3000/api/productos/", product,
+            const resProducto = await axios.post(`${apiURL}/productos/`, product,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`
@@ -124,7 +130,8 @@ const AdminPanel = () => {
                 },
             });*/
 
-            const resImagen = await axios.post("http://localhost:3000/api/productos/imagenes", {
+            //const resImagen = await axios.post("http://localhost:3000/api/productos/imagenes", {
+            const resImagen = await axios.post(`${apiURL}/productos/imagenes`, {
                 id_producto : idProducto,
                 url : imagen
             }, {
@@ -162,7 +169,8 @@ const AdminPanel = () => {
             onOk: async () => {
                 try {
                     const token = localStorage.getItem("token");
-                    await axios.delete(`http://localhost:3000/api/productos/${product.id_producto}`, {
+                    //await axios.delete(`http://localhost:3000/api/productos/${product.id_producto}`, {
+                    await axios.delete(`${apiURL}/productos/${product.id_producto}`, {
                         headers: {
                             Authorization: `Bearer ${token}`
                         },
@@ -182,7 +190,8 @@ const AdminPanel = () => {
         try {
             const updated = { ...editingProduct, ...values };
             const token = localStorage.getItem("token");
-            await axios.put(`http://localhost:3000/api/productos/${editingProduct.id_producto}`, updated, 
+            //await axios.put(`http://localhost:3000/api/productos/${editingProduct.id_producto}`, updated, 
+            await axios.put(`${apiURL}/productos/${editingProduct.id_producto}`, updated,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`

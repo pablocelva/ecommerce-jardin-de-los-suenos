@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import AppFooter from "../components/Footer";
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
+const apiURL = import.meta.env.VITE_API_URL;
 
 const RegisterPage = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -36,7 +37,8 @@ const RegisterPage = () => {
     setIsLoading(true);
 
     try {
-      const response = await axios.post("http://localhost:3000/api/auth/registro", nuevoRegistroDeUsuario);
+      //const response = await axios.post("http://localhost:3000/api/auth/registro", nuevoRegistroDeUsuario);
+      const response = await axios.post(`${apiURL}/auth/registro`, nuevoRegistroDeUsuario);
       console.log("Respuesta del backend:", response.data);
       message.success("Usuario registrado correctamente!");
       navigate("/login");
