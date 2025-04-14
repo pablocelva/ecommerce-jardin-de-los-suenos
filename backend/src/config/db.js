@@ -9,6 +9,9 @@ const DB = new Pool({
     jwt_secret: process.env.JWT_SECRET,
     port: process.env.DB_PORT,
     allowExitOnIdle: true,
+    ssl: {
+        rejectUnauthorized: false
+    },
 });
 
 module.exports = { DB };
