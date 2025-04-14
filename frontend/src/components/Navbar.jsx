@@ -60,6 +60,14 @@ const Navbar = () => {
                             </>
                         )}
                         {userRole === "admin" && (
+                            <>
+                            <NavLink 
+                                to="/" 
+                                className="nav-link" 
+                                style={{ color: "white" }}
+                            >
+                                Tienda
+                            </NavLink>
                             <NavLink 
                                 to="/admin" 
                                 className="nav-link" 
@@ -67,6 +75,7 @@ const Navbar = () => {
                             >
                                 Admin
                             </NavLink>
+                            </>
                         )}
                         <NavLink 
                             onClick={handleLogout}

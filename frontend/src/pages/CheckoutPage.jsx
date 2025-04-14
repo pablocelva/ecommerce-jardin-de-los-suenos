@@ -126,7 +126,9 @@ const CheckoutPage = () => {
                 marginBottom: "30px"
             }}>
                 {cart.map((product) => {
-                    const productoImagen = imagenes?.[product.id_producto - 1].url;
+                    //const productoImagen = imagenes?.[product.id_producto - 1].url;
+                    const productoImagen = imagenes?.find(img => img.id_producto === product.id_producto)?.url;
+
                     return (
                     <div key={product.id_producto} style={{
                         display: "flex",

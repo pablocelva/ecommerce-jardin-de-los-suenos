@@ -109,6 +109,22 @@ const getImagenesByIdProducto = async (id) => {
     }
 }
 
+const addImagenProducto = async (id_producto, url) => {
+    try {
+        const SQLQuery = format(`
+            INSERT INTO imagenes_producto (id_producto, url)
+            VALUES (%L, %L)
+            `,
+            id_producto,
+            url
+        )
+        const { rows } = await DB.query(SQLQuery)
+        return rows
+    } catch (error) {
+        throw error
+    }
+}
+
 const getAllCategorias = async () => {
     try {
         const SQLQuery = format(`
@@ -139,6 +155,69 @@ const getProductsByCategoria = async (id) => {
     }
 }
 
+const getCategoriasByIdProducto = async (id_producto) => {
+    try {
+        const SQLQuery = format(`
+            SELECT * FROM categorias_productos WHERE id_producto = %L
+            `,
+            id_producto
+        )
+        const { rows } = await DB.query(SQLQuery)
+        return rows
+    } catch (error) {
+        throw error
+    }
+}
+
+const addProductCategoria = async (id_producto, id_categoria) => {
+    try {
+        const SQLQuery = format(`
+            INSERT INTO categorias_productos
+            VALUES (%L, %L)
+            `,
+            id_producto,
+            id_categoria
+        )
+        const { rows } = await DB.query(SQLQuery)
+        return rows
+    } catch (error) {
+        throw error
+    }
+}
+
+const updateProductCategoria = async (id_producto, id_categoria) => {
+    try {
+        const SQLQuery = format(`
+            UPDATE categorias_productos
+            SET id_categoria = %L
+            WHERE id_producto = %L
+            `,
+            id_categoria,
+            id_producto
+        )
+        const { rows } = await DB.query(SQLQuery)
+        return rows
+    } catch (error) {
+        throw error
+    }
+}
+
+const deleteProductCategoria = async (id_producto, id_categoria) => {
+    try {
+        const SQLQuery = format(`
+            DELETE FROM categorias_productos
+            WHERE id_producto = %L AND id_categoria = %L
+            `,
+            id_producto,
+            id_categoria
+        )
+        const { rows } = await DB.query(SQLQuery)
+        return rows
+    } catch (error) {
+        throw error
+    }
+}
+
 
 module.exports = { 
     getAllProducts, 
@@ -149,5 +228,10 @@ module.exports = {
     getAllImagenes,
     getImagenesByIdProducto,
     getAllCategorias,
-    getProductsByCategoria
+    getProductsByCategoria,
+    addProductCategoria,
+    updateProductCategoria,
+    deleteProductCategoria,
+    getCategoriasByIdProducto,
+    addImagenProducto,
 }

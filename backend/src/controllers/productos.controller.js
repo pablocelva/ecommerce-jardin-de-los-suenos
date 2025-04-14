@@ -7,7 +7,12 @@ const {
     getAllImagenes,
     getImagenesByIdProducto,
     getAllCategorias,
-    getProductsByCategoria
+    getProductsByCategoria,
+    addProductCategoria,
+    updateProductCategoria,
+    deleteProductCategoria,
+    getCategoriasByIdProducto,
+    addImagenProducto
 } = require('../models/productosModel')
 
 const handleGetAllProducts = async (req, res, next) => {
@@ -107,6 +112,26 @@ const handleGetImagenesByIdProducto = async (req, res, next) => {
     }
 }
 
+const handleAddImagenProducto = async (req, res, next) => {
+    const { id_producto, url } = req.body
+    try {
+        const imagenes = await addImagenProducto(id_producto, url)
+        res.status(200).json(imagenes)
+    } catch (error) {
+        next(error)
+    }
+}
+
+const handleGetCategoriasByIdProducto = async (req, res, next) => {
+    const { id } = req.params
+    try {
+        const categorias = await getCategoriasByIdProducto(id)
+        res.status(200).json(categorias)
+    } catch (error) {
+        next(error)
+    }
+}
+
 const handleGetProductsByCategoria = async (req, res, next) => {
     const { id } = req.params
     try {
@@ -126,6 +151,36 @@ const handleGetAllCategorias = async (req, res, next) => {
     }
 }
 
+const handleAddProductCategoria = async (req, res, next) => {
+    const { id_producto, id_categoria } = req.body
+    try {
+        const categorias = await addProductCategoria(id_producto, id_categoria)
+        res.status(200).json(categorias)
+    } catch (error) {
+        next(error)
+    }
+}
+
+const handleUpdateProductCategoria = async (req, res, next) => {
+    const { id_producto, id_categoria } = req.body
+    try {
+        const categorias = await updateProductCategoria(id_producto, id_categoria)
+        res.status(200).json(categorias)
+    } catch (error) {
+        next(error)
+    }
+}
+
+const handleDeleteProductCategoria = async (req, res, next) => {
+    const { id_producto, id_categoria } = req.body
+    try {
+        const categorias = await deleteProductCategoria(id_producto, id_categoria)
+        res.status(200).json(categorias)
+    } catch (error) {
+        next(error)
+    }
+}
+
 module.exports = { 
     handleCreateProduct, 
     handleGetAllProducts, 
@@ -135,5 +190,10 @@ module.exports = {
     handleGetImagenes,
     handleGetImagenesByIdProducto,
     handleGetProductsByCategoria,
-    handleGetAllCategorias
+    handleGetAllCategorias,
+    handleAddProductCategoria,
+    handleUpdateProductCategoria,
+    handleDeleteProductCategoria,
+    handleGetCategoriasByIdProducto,
+    handleAddImagenProducto
 }

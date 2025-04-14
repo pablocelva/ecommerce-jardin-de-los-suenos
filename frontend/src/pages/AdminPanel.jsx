@@ -10,6 +10,7 @@ import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import SaveIcon from '@mui/icons-material/Save';
 import EditIcon from '@mui/icons-material/Edit';
 import LogoutIcon from '@mui/icons-material/Logout';
+import { ExclamationCircleOutlined } from "@ant-design/icons";
 import axios from "axios";
 
 const { Sider, Content } = Layout;
@@ -26,6 +27,7 @@ const AdminPanel = () => {
     const [users, setUsers] = useState([]);
     const [productosData, setProductosData] = useState([]);	
     const [orders, setOrders] = useState([]);
+    const [categorias, setCategorias] = useState([]);
 
     const [showUsers, setShowUsers] = useState(false);
     const [showCatalogo, setShowCatalogo] = useState(false);
@@ -47,7 +49,7 @@ const AdminPanel = () => {
 
             try{
                 const token = localStorage.getItem("token")
-                const [usersRes, productosRes, ordersRes] = await Promise.all([
+                const [usersRes, productosRes, ordersRes, categoriasRes] = await Promise.all([
                     axios.get("http://localhost:3000/api/auth/usuarios/", {
                         headers: {
                             Authorization: `Bearer ${token}`
@@ -62,7 +64,12 @@ const AdminPanel = () => {
                         headers: {
                             Authorization: `Bearer ${token}`
                         }
-                    })
+                    }),
+                    axios.get(`http://localhost:3000/api/productos/categorias`, {
+                        headers: {
+                            Authorization: `Bearer ${token}`
+                        }
+                    }),
                 ]);
                 //console.log("Usuarios:", usersRes.data);
                 //console.log("Productos:", productosRes.data);
@@ -72,6 +79,7 @@ const AdminPanel = () => {
                 setUsers(usersRes.data);
                 setProductosData(productosRes.data);
                 setOrders(ordersRes.data.orders);
+                setCategorias(categoriasRes.data);
 
                 const adminUser = usersRes.data.find((u) => u.id_usuario === 1 || u.rol === "admin");
                 setUser(adminUser);
@@ -92,8 +100,45 @@ const AdminPanel = () => {
 
     const handleAddProduct = async (values) => {
         try {
-            const res = await axios.post("http://localhost:3000/api/productos/", values);
-            setProductosData([...productosData, res.data]);
+            const token = localStorage.getItem("token");
+            const { imagen, ...product } = values;
+            console.log(imagen);
+            const resProducto = await axios.post("http://localhost:3000/api/productos/", product,
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    },
+                }
+            );
+
+            const nuevoProducto = resProducto.data;
+            console.log(nuevoProducto);
+            const idProducto = nuevoProducto.id_producto;
+
+            /*await axios.post(`http://localhost:3000/api/productos/${idProducto}/imagenes`, {
+                id_producto: idProducto,
+                url_imagen
+            }, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                },
+            });*/
+
+            const resImagen = await axios.post("http://localhost:3000/api/productos/imagenes", {
+                id_producto : idProducto,
+                url : imagen
+            }, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                },
+            });
+            console.log(resImagen.data);
+            
+
+            //setProductosData([...productosData, res.data]);
+            setProductosData([...productosData, nuevoProducto]);
+
+            form.resetFields();
             setIsModalOpen(false);
         } catch (error) {
             console.log("Error al agregar producto: ", error);
@@ -105,11 +150,45 @@ const AdminPanel = () => {
         form.setFieldsValue(product);
         setIsEditModalOpen(true);
     };
+
+    const handleDeleteProduct = async (product) => {
+        Modal.confirm({
+            title: "¿Estás seguro de eliminar este producto?",
+            icon: <ExclamationCircleOutlined />,
+            content: "Esta acción no se puede deshacer.",
+            okText: "Eliminar",
+            cancelText: "Cancelar",
+            okType: "danger",
+            onOk: async () => {
+                try {
+                    const token = localStorage.getItem("token");
+                    await axios.delete(`http://localhost:3000/api/productos/${product.id_producto}`, {
+                        headers: {
+                            Authorization: `Bearer ${token}`
+                        },
+                    });
+                    setProductosData((prev) => prev.filter((p) => p.id_producto !== product.id_producto));
+                    form.resetFields();
+                    setIsModalOpen(false);
+                } catch (error) {
+                    console.log("Error al eliminar producto: ", error);
+                }
+            },
+        });
+    };
+
     
     const handleUpdateProduct = async (values) => {
         try {
             const updated = { ...editingProduct, ...values };
-            await axios.put(`http://localhost:3000/api/productos/${editingProduct.id_producto}`, updated);
+            const token = localStorage.getItem("token");
+            await axios.put(`http://localhost:3000/api/productos/${editingProduct.id_producto}`, updated, 
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    },
+                }
+            );
 
             setProductosData((prev) =>
                 prev.map((p) =>(p.id_producto === editingProduct.id_producto ? updated : p))
@@ -152,6 +231,7 @@ const AdminPanel = () => {
                             <h2>Administrar Usuarios</h2>
                             <Table
                             dataSource={users}
+                            scroll={{ x: 'max-content' }}
                             columns={[
                                 { title: "Nombre", dataIndex: "nombre", key: "nombre" },
                                 { title: "ID", dataIndex: "id_usuario", key: "id_usuario" },
@@ -160,7 +240,7 @@ const AdminPanel = () => {
                                 { title: "Direccion", dataIndex: "direccion", key: "direccion" },
                                 { title: "Teléfono", dataIndex: "telefono", key: "telefono" },
                                 { title: "Rol", dataIndex: "rol", key: "rol" },
-                                { title: "Acciones", key: "acciones", render: (text, record) => <button>Gestionar</button> },
+                                //{ title: "Acciones", key: "acciones", render: (text, record) => <button>Gestionar</button> },
                             ]}
                             rowKey="id_usuario"
                             />
@@ -175,32 +255,103 @@ const AdminPanel = () => {
                             </div>
                             <Table
                                 dataSource={productosData}
+                                scroll={{ x: 'max-content' }}
                                 columns={[
                                     { title: "ID", dataIndex: "id_producto", key: "id_producto" },
                                     { title: "Nombre", dataIndex: "nombre_producto", key: "nombre_producto" },
                                     { title: "Stock", dataIndex: "stock", key: "stock" },
                                     { title: "Precio", dataIndex: "precio", key: "precio" },
-                                    { title: "Categorias", dataIndex: "tags", key: "tags" },
-                                    { title: "Descripción", dataIndex: "descripcion", key: "descripcion" },
-                                    //{ title: "Acciones", key: "acciones", render: (text, record) => <button>Editar</button> },
+                                    //{ title: "Categorias", dataIndex: "tags", key: "tags" },
+                                    /*{ 
+                                        title: "Categorias", 
+                                        dataIndex: "tags", 
+                                        key: "tags", 
+                                        render: (tags) => {
+                                            return (
+                                                <span>
+                                                    {categorias.map((tag) => {
+                                                        console.log(categorias);
+                                                        console.log(tag);
+                                                        const tagId = tag.id_categoria;
+                                                        const categoria = categorias.find((cat) => cat.id_categoria === tagId);
+                                                        return categoria ? categoria.nombre : 'Categoría no disponible';
+                                                    }).join(', ')}
+                                                </span>
+                                            );
+                                        } 
+                                    },*/
+                                    /*{
+                                        title: "Categorias",
+                                        key: "tags", 
+                                        render: (_, record) => {
+                                            // Suponiendo que tienes una lista que mapea productos a categorías asociadas
+                                            const categoriasDelProducto = productosCategorias.filter(
+                                                (relacion) => relacion.id_producto === record.id_producto
+                                            );
+                            
+                                            // Para cada relación entre producto y categoría, obtenemos el nombre de la categoría
+                                            const nombresCategorias = categoriasDelProducto.map((relacion) => {
+                                                const categoria = categorias.find(
+                                                    (cat) => cat.id_categoria === relacion.id_categoria
+                                                );
+                                                return categoria ? categoria.nombre_categoria : 'Categoría no disponible';
+                                            });
+                            
+                                            return <span>{nombresCategorias.join(', ')}</span>;
+                                        }
+                                    },*/
                                     { 
-                                        title: "Acciones", 
-                                        key: "acciones", 
+                                        title: "Descripción", 
+                                        dataIndex: "descripcion", 
+                                        key: "descripcion",
+                                        render: (text) => text.length > 50 ? text.slice(0, 50) + '...' : text
+                                    },
+                                    { 
+                                        title: "Editar", 
+                                        key: "editar",
                                         render: (_, record) => (
                                             <button onClick={() => handleEditProduct(record)}>Editar</button>
+                                        )
+                                    },
+                                    { 
+                                        title: "Eliminar", 
+                                        key: "eliminar",
+                                        render: (_, record) => (
+                                            <button onClick={() => handleDeleteProduct(record)}>Eliminar</button>
                                         )
                                     },
                             ]}
                             rowKey="id_producto"
                             />
-                            <Modal title="Agregar Producto" open={isModalOpen} onCancel={() => setIsModalOpen(false)} footer={null}>
-                                <Form layout="vertical" onFinish={handleAddProduct}>
-                                    <Form.Item name="nombre_producto" label="Nombre" rules={[{ required: true, message: "Ingresa un nombre" }]}> <Input /> </Form.Item>
-                                    <Form.Item name="stock" label="Stock" rules={[{ required: true, message: "Ingresa el stock" }]} normalize={value => Number(value)}> <InputNumber min={1} /> </Form.Item>
-                                    <Form.Item name="precio" label="Precio" rules={[{ required: true, message: "Ingresa el precio" }]} normalize={value => Number(value)}> <InputNumber min={0} /> </Form.Item>
-                                    <Form.Item name="categorias" label="Categorias" rules={[{ required: true, message: "Ingresa una categoria" }]}> <Input /> </Form.Item>
-                                    <Form.Item name="descripcion" label="Descripción" rules={[{ required: true, message: "Ingresa una descripción" }]}> <div><Input.TextArea /></div> </Form.Item>    
-                                    <button type="submit">Agregar</button>
+                            <Modal 
+                                title="Agregar Producto" 
+                                open={isModalOpen} 
+                                onCancel={() => {
+                                    form.resetFields();
+                                    setIsModalOpen(false)} 
+                                }
+                                footer={null}
+                            >
+                                <Form form={form} layout="vertical" onFinish={handleAddProduct}>
+                                    <Form.Item name="nombre_producto" label="Nombre" rules={[{ required: true, message: "Ingresa un nombre" }]}> 
+                                        <Input /> 
+                                    </Form.Item>
+                                    <Form.Item name="stock" label="Stock" rules={[{ required: true, message: "Ingresa el stock" }]} normalize={value => Number(value)}> 
+                                        <InputNumber min={1} /> 
+                                    </Form.Item>
+                                    <Form.Item name="precio" label="Precio" rules={[{ required: true, message: "Ingresa el precio" }]} normalize={value => Number(value)}> 
+                                        <InputNumber min={0} /> 
+                                    </Form.Item>
+                                    {/* <Form.Item name="categorias" label="Categorias" rules={[{ required: true, message: "Ingresa una categoria" }]}> 
+                                        <Input /> 
+                                    </Form.Item> */}
+                                    <Form.Item name="imagen" label="Imagen" rules={[{ required: true, message: "Ingresa una url de imagen" }]}> 
+                                        <Input /> 
+                                    </Form.Item>
+                                    <Form.Item name="descripcion" label="Descripción" rules={[{ required: true, message: "Ingresa una descripción" }]}> 
+                                        <Input.TextArea /> 
+                                    </Form.Item>    
+                                    <Button className="Button" type="secondary" htmlType="submit">Agregar</Button>
                                 </Form>
                             </Modal>
                             <Modal 
@@ -224,34 +375,50 @@ const AdminPanel = () => {
                                     <Form.Item name="precio" label="Precio" rules={[{ required: true }]} normalize={value => Number(value)}>
                                         <InputNumber min={0} />
                                     </Form.Item>
-                                    <Form.Item name="tags" label="Categorias" rules={[{ required: true }]}>
+                                    {/* <Form.Item name="tags" label="Categorias" rules={[{ required: true }]}>
                                         <Input />
-                                    </Form.Item>
+                                    </Form.Item> */}
                                     <Form.Item name="descripcion" label="Descripción" rules={[{ required: true }]}>
                                         <Input.TextArea />
                                     </Form.Item>    
-                                    <button type="primary" htmlType="submit">
+                                    <Button type="secondary" htmlType="submit">
                                         Guardar Cambios
-                                    </button>
+                                    </Button>
                                 </Form>
                             </Modal>
                         </div>
                         ) : showVentas ? (
                         <div style={{ padding: "20px" }}>
                             <h2>Historial de Ventas</h2>
+                            {console.log(orders)}
                             <Table
-                            //scroll={{ x: 'max-content'}}
                             dataSource={Array.isArray(orders) ? orders : []}
+                            scroll={{ x: 'max-content' }}
                             columns={[
                                 { title: "ID Compra", dataIndex: "id_compra", key: "id_compra" },
                                 { title: "Estado", dataIndex: "estado", key: "estado" },
-                                { title: "Nombre Cliente", dataIndex: "nombre_cliente", key: "nombre_cliente" },
+                                //{ title: "Nombre Cliente", dataIndex: "nombre_cliente", key: "nombre_cliente" },
+                                {
+                                    title: "Nombre Cliente",
+                                    key: "nombre_cliente",
+                                    render: (record) => {
+                                        const usuario = users.find((u) => u.id_usuario === record.id_usuario);
+                                        return usuario ? usuario.nombre : "Desconocido";
+                                    }
+                                },
                                 { title: "Dirección", dataIndex: "direccion", key: "direccion" },
                                 { title: "ID Cliente", dataIndex: "id_usuario", key: "id_usuario" },
-                                { title: "Fecha de la Orden", dataIndex: "fecha_compra", key: "fecha_compra" },
+                                { title: "Fecha de la Orden", dataIndex: "fecha_compra", key: "fecha_compra", render: (text) => new Date(text).toLocaleString("es-CL", {
+                                    day: "2-digit",
+                                    month: "2-digit",
+                                    year: "numeric",
+                                    hour: "2-digit",
+                                    minute: "2-digit"
+                                }) },
                                 { title: "Total", dataIndex: "precio_total", key: "precio_total" },
                             ]}
                             rowKey="id_compra"
+
                             expandable={{
                                 expandedRowRender: (record) => (
                                     <div>
@@ -266,6 +433,7 @@ const AdminPanel = () => {
                                         ]}
                                         rowKey="id_producto"
                                         pagination={false}
+                                        scroll={{ x: 'max-content' }}
                                     />
                                 </div>
                                 ),
@@ -295,18 +463,18 @@ const AdminPanel = () => {
                             <div style={{ display: "flex", gap: "16px" }}>
 
                             {isEditing ? (
-                                <button type="primary" onClick={handleSave} style={{ marginTop: "10px", display: "flex", gap: "8px", alignItems: "center", padding: "12px 32px 12px 12px" }}>
+                                <Button htmlType="submit" onClick={handleSave} style={{ marginTop: "10px", display: "flex", gap: "8px", alignItems: "center", padding: "12px 32px 12px 12px" }}>
                                     <SaveIcon style={{ fontSize: "20px" }} />
                                     Guardar
-                                </button>
+                                </Button>
                             ) : (
-                                <button onClick={() => setIsEditing(true)} style={{ marginTop: "10px", display: "flex", gap: "8px", alignItems: "center", padding: "12px 32px 12px 12px" }}>
+                                <Button className="Button" type="secondary" htmlType="submit" onClick={() => setIsEditing(true)} style={{ marginTop: "10px", display: "flex", gap: "8px", alignItems: "center", padding: "12px 32px 12px 12px" }}>
                                     <EditIcon style={{ fontSize: "20px" }} />
                                     Editar
-                                </button>
+                                </Button>
                             )}
 
-                            <button
+                            <Button
                                 onClick={() => {
                                     logout();
                                     localStorage.removeItem("userId");
@@ -316,7 +484,7 @@ const AdminPanel = () => {
                             >
                                 <LogoutIcon style={{ fontSize: "20px" }} />
                                 Cerrar sesión
-                            </button>
+                            </Button>
                         </div>
                         </div>
                         )}

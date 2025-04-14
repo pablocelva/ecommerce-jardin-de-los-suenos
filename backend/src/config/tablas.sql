@@ -215,6 +215,12 @@ VALUES (12, 'https://images.unsplash.com/photo-1569745358610-b01866003860?q=80&w
 -- Insertar imagen para el producto 13
 INSERT INTO imagenes_producto (id_producto, url)
 VALUES (13, 'https://entresemillas.com/2238-large_default/ruda-planta.jpg');
+-- Insertar imagen para el producto 14
+INSERT INTO imagenes_producto (id_producto, url)
+VALUES (14, 'https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcSY3eA8AQP5XbbYkA2CyDw9XhBwokCXqyPfrrqzm1orEw5Voz2yUr8o75cVFoIGjxr8fJUV6UCGMG3eFVCfEcOID90VBZnzrbO1WKZvhdRXHZKk02gN6YSb&usqp=CAE');
+-- Insertar imagen para el producto 15
+INSERT INTO imagenes_producto (id_producto, url)
+VALUES (15, 'https://images.unsplash.com/photo-1722554086475-f11257a9eb6d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
 
 -- Tabla de órdenes (pedidos)
 CREATE TABLE orders (

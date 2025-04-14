@@ -64,7 +64,9 @@ const CartPage = () => {
                         </thead>
                         <tbody>
                         {cart.map((product) => {
-                                const productoImagen = imagenes?.[product.id_producto -1].url;
+                                //const productoImagen = imagenes?.[product.id_producto -1].url;
+                                const productoImagen = imagenes?.find(img => img.id_producto === product.id_producto)?.url;
+
                                 //console.log(productoImagen);
                                 
 

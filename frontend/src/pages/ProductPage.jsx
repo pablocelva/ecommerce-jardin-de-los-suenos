@@ -76,13 +76,14 @@ const ProductPage = () => {
                     <p style={{ fontSize: "16px", lineHeight: "1.5", color: "#555", marginBottom: "20px" }}>
                         {producto.descripcion}
                     </p>
-                    <p style={{ fontSize: "16px", lineHeight: "1.5", color: "#555", marginBottom: "20px" }}>
+                    {/* <p style={{ fontSize: "16px", lineHeight: "1.5", color: "#555", marginBottom: "20px" }}>
                         Cuidados: {producto.cuidado}
-                    </p>
+                    </p> */}
 
                     <p style={{ fontSize: "20px", fontWeight: "bold", marginBottom: "20px" }}>
                         Precio: ${producto.precio}
                     </p>
+                    <br />
                     <button 
                         onClick={() => navigate(-1)}
                         style={{ padding: "12px 20px", fontSize: "16px", background: "transparent", color: "#1F7D53", border: "#1F7D53 solid 2px", borderRadius: "0", cursor: "pointer", transition: "background 0.3s", marginRight: "10px" }}
@@ -99,8 +100,7 @@ const ProductPage = () => {
                     >
                         🛒 Añadir al carrito
                     </button>
-
-
+        
                     {/* <p style={{ fontSize: "16px", lineHeight: "1.5", color: "#555", marginBottom: "20px" }}>
                         Tags: {producto.tags}
                     </p> */}
