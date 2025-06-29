@@ -24,21 +24,15 @@ const ProductPage = () => {
 
     return (
         <>
-            <div style={{
-                padding: "40px",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                gap: "40px",
-                flexWrap: "wrap",
-                maxWidth: "1000px",
-                margin: "auto",
-                height: "calc(100vh - 128px)"
-            }}>
+            <div 
+                className="product-page"
+            >
                 {/* Carrusel de imágenes del producto */}
-                <div style={{ flex: "1", maxWidth: "400px" }}>
+                <div style={{ flex: "1", maxWidth: "400px" }}
+                >
                     {imagenesProducto.length > 1 ? (
-                        <div style={{ display: "flex", overflowX: "auto", gap: "10px" }}>
+                        <div style={{ display: "flex", overflowX: "auto", gap: "10px" }}
+                        >
                             {imagenesProducto.map((img) => (
                                 <img
                                     key={img.id_imagen}

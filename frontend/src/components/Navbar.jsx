@@ -27,13 +27,13 @@ const Navbar = () => {
         <Header className="AppHeader">
             <Typography.Title color="white" style={{ fontSize: "28px", display: "flex", gap: "8px", alignItems: "center" }}>
                 <GrassIcon color="white" style={{ fontSize: "40px", color: "white" }} />
-                <NavLink to="/" style={{ color: "#f3f3f3" }}>
+                <NavLink to="/" style={{ color: "#f3f3f3" }} className="nav-link-home">
                     Jardin de los Sueños
                 </NavLink>
             </Typography.Title>
             <Space>
                 {isAuthenticated ? (
-                    <div style={{ display: "flex", gap: "20px" }}>
+                    <div style={{ display: "flex", gap: "20px" }} className="nav-link">
                         {userRole === "cliente" && (
                             <>
                                 <NavLink 

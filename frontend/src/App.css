@@ -59,6 +59,8 @@ html, body {
   height: 100%;
   overflow-y: auto;
   overflow-x: hidden;
+  padding-left: 250px;
+  padding-bottom: 40px;
 }
 
 .AppHeader {
@@ -265,6 +267,18 @@ button:active {
   /* border-radius: 10px; */
 }
 
+.product-page {
+  padding: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  max-width: 1000px;
+  margin: auto;
+  height: calc(100vh - 128px);
+}
+
 .footer {
   z-index: 2;
   text-align: center;
@@ -292,4 +306,35 @@ button:active {
 
 .AppFooter a {
   color: white;
+}
+
+@media (max-width: 768px) {
+  .layout-home {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+  }
+  .nav-link {
+    display: none;
+  }
+  .nav-link-home {
+    font-size: 24px;
+  }
+  .sider {
+    display: none;
+  }
+  .content {
+    margin-left: 0;
+    /* padding: 0 20px; */
+    padding: 0;
+  }
+  .card-container {
+    margin-bottom: 20px;
+    padding: 0 20px;
+  }
+  .product-page {
+    padding: 40px 10px;
+    flex-direction: column;
+    gap: 0;
+  }
 }

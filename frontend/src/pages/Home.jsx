@@ -85,7 +85,7 @@ const Home = () => {
 //console.log("Categorías en el Sider:", categorias);
 return (
   <Layout style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
-      <Layout style={{ flex: 1 }}>
+      <Layout style={{ flex: 1 }} className="layout-home">
         {/* Sidebar con categorías */}
         <Sider className="sider" width={250}>
           <p
@@ -116,7 +116,7 @@ return (
 
         {/* Contenido principal */}
         <Layout>
-          <Content className="content" style={{ marginLeft: "250px", paddingBottom: "40px" }}>
+          <Content className="content" style={{ paddingBottom: "40px" }}>
             <Carousel />
             <SearchBar onSearch={handleSearch} />
             <h3 style={{ textAlign: "center", marginBottom: "4px" }}>
@@ -126,6 +126,7 @@ return (
               gutter={[16, 16]} 
               justify="center" 
               style={{ minHeight: 'calc(100vh - 300px)' }}
+              className="card-container"
             >
               {filteredData.length > 0 ? (
                 filteredData.map((producto) => {
@@ -134,7 +135,7 @@ return (
                   );
 
                   return (
-                    <Col key={producto.id_producto} xs={24} sm={24} md={12} lg={6}>
+                    <Col key={producto.id_producto} xs={24} sm={24} md={12} lg={6} >
                       <Link to={`/product/${producto.id_producto}`}>
                         <Card
                           image={imagenesProducto[0]?.url || "default_image.jpg"}
