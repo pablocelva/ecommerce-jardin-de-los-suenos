@@ -35,9 +35,9 @@ export const registerSchema = z
 export const productSchema = z.object({
   id_producto: z.number(),
   nombre_producto: z.string(),
-  stock: z.number(),
-  precio: z.number(),
-  descripcion: z.string(),
+  stock: z.coerce.number(),
+  precio: z.coerce.number(),
+  descripcion: z.string().nullable().optional().transform((v) => v ?? ""),
 });
 
 export const categoriaSchema = z.object({
@@ -61,11 +61,11 @@ export const orderDetailSchema = z.object({
 
 export const orderSchema = z.object({
   id_compra: z.number(),
-  id_usuario: z.number(),
-  fecha_compra: z.string(),
+  id_usuario: z.number().nullable().optional(),
+  fecha_compra: z.coerce.string(),
   detalle: z.array(orderDetailSchema),
   direccion: z.string(),
-  precio_total: z.number(),
+  precio_total: z.coerce.number(),
   estado: z.string(),
   nombre_cliente: z.string().optional(),
   email_cliente: z.string().optional(),

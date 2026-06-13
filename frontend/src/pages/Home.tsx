@@ -7,7 +7,7 @@ import Card from "../components/Card";
 import SearchBar from "../components/SearchBar";
 import AppFooter from "../components/Footer";
 import Carousel from "../components/Carousel";
-import { apiURL } from "../lib/api";
+import { api } from "../lib/api";
 import { productSchema, type Categoria, type Product } from "../schemas";
 
 const { Sider, Content } = Layout;
@@ -28,15 +28,11 @@ const Home = () => {
   const handleCategoryClick = async (categoria: Categoria | null) => {
     setSelectedCategory(categoria);
 
-    let url = `${apiURL}/productos/`;
-
-    if (categoria) {
-      url = `${apiURL}/productos/categorias/${categoria.id_categoria}`;
-    }
-
     try {
-      const response = await fetch(url);
-      const responseData = await response.json();
+      const path = categoria
+        ? `/productos/categorias/${categoria.id_categoria}`
+        : "/productos/";
+      const responseData = await api.get<unknown>(path);
 
       if (!Array.isArray(responseData)) {
         console.error("La API no devolvió un array de productos:", responseData);

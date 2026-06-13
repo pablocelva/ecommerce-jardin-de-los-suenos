@@ -5,7 +5,7 @@ import {
   useContext,
   type ReactNode,
 } from "react";
-import { apiURL } from "../lib/api";
+import { api } from "../lib/api";
 import {
   categoriaSchema,
   productSchema,
@@ -16,44 +16,49 @@ import {
 interface ProductContextValue {
   productos: Product[];
   categorias: Categoria[];
+  loading: boolean;
+  error: string | null;
 }
 
 export const ProductContext = createContext<ProductContextValue>({
   productos: [],
   categorias: [],
+  loading: true,
+  error: null,
 });
 
 export const ProductProvider = ({ children }: { children: ReactNode }) => {
   const [productos, setProductos] = useState<Product[]>([]);
   const [categorias, setCategorias] = useState<Categoria[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const resProductos = await fetch(`${apiURL}/productos`);
-        if (!resProductos.ok) throw new Error("Error al cargar los productos");
+        setLoading(true);
+        setError(null);
 
-        const productosData = await resProductos.json();
-        const parsedProductos = productSchema.array().parse(productosData);
+        const [productosData, categoriasData] = await Promise.all([
+          api.get<unknown>("/productos/"),
+          api.get<unknown>("/productos/categorias"),
+        ]);
 
-        const resCategorias = await fetch(`${apiURL}/productos/categorias`);
-        if (!resCategorias.ok) throw new Error("Error al cargar las categorías");
-
-        const categoriasData = await resCategorias.json();
-        const parsedCategorias = categoriaSchema.array().parse(categoriasData);
-
-        setProductos(parsedProductos);
-        setCategorias(parsedCategorias);
-      } catch (error) {
-        console.error("Error al obtener los datos:", error);
+        setProductos(productSchema.array().parse(productosData));
+        setCategorias(categoriaSchema.array().parse(categoriasData));
+      } catch (err) {
+        console.error("Error al obtener productos/categorías:", err);
+        setError("No se pudieron cargar los productos del servidor.");
+      } finally {
+        setLoading(false);
       }
     };
 
-    fetchData();
+    void fetchData();
   }, []);
 
   return (
-    <ProductContext.Provider value={{ productos, categorias }}>
+    <ProductContext.Provider value={{ productos, categorias, loading, error }}>
       {children}
     </ProductContext.Provider>
   );

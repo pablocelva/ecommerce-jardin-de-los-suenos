@@ -1,6 +1,5 @@
 import { createContext, useState, useEffect, useContext, type ReactNode } from "react";
-import productosJSON from "../data/productos.json";
-import { apiURL } from "../lib/api";
+import { api } from "../lib/api";
 import { imagenSchema, type Imagen } from "../schemas";
 
 interface ImagenesContextValue {
@@ -22,20 +21,12 @@ export const ImagenesProvider = ({ children }: { children: ReactNode }) => {
   const [imagenes, setImagenes] = useState<Imagen[]>([]);
 
   useEffect(() => {
-    fetch(`${apiURL}/productos/imagenes`)
-      .then((res) => res.json())
+    api
+      .get<unknown>("/productos/imagenes")
       .then((data) => setImagenes(imagenSchema.array().parse(data)))
       .catch((error) => {
-        console.error("Error obteniendo imágenes, usando datos locales:", error);
-        setImagenes(
-          productosJSON.map((producto) => {
-            const url = producto.imagen_producto;
-            return {
-              id_producto: producto.id_producto,
-              url: Array.isArray(url) ? url[0] : url,
-            };
-          }),
-        );
+        console.error("Error obteniendo imágenes:", error);
+        setImagenes([]);
       });
   }, []);
 

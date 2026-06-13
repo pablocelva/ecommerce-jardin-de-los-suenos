@@ -10,7 +10,7 @@ const pool = new pg.Pool({
   database: env.DB_NAME,
   port: env.DB_PORT,
   allowExitOnIdle: true,
-  ssl: { rejectUnauthorized: false },
+  ...(env.DB_SSL ? { ssl: { rejectUnauthorized: false } } : {}),
 });
 
 export const db = drizzle(pool, { schema });

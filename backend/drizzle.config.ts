@@ -1,6 +1,8 @@
 import "dotenv/config";
 import { defineConfig } from "drizzle-kit";
 
+const dbSsl = process.env.DB_SSL === "true";
+
 export default defineConfig({
   schema: "./src/database/schema/index.ts",
   out: "./src/database/migrations",
@@ -11,6 +13,6 @@ export default defineConfig({
     user: process.env.DB_USER ?? "postgres",
     password: process.env.DB_PASSWORD ?? "",
     database: process.env.DB_NAME ?? "ecommerce",
-    ssl: { rejectUnauthorized: false },
+    ...(dbSsl ? { ssl: { rejectUnauthorized: false } } : {}),
   },
 });

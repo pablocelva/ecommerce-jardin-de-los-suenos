@@ -1,4 +1,12 @@
-const apiURL = import.meta.env.VITE_API_URL;
+const apiURL =
+  import.meta.env.VITE_API_URL ??
+  (import.meta.env.DEV ? "http://localhost:3000/api" : "");
+
+if (!apiURL) {
+  console.error(
+    "VITE_API_URL no está definida. Crea frontend/.env con VITE_API_URL=http://localhost:3000/api",
+  );
+}
 
 export class ApiError extends Error {
   status: number;
