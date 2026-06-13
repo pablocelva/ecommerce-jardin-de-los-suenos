@@ -1,26 +1,23 @@
-import productosJSON from "../data/productos.json";
 import { ProductContext } from "../context/ProductContext";
-import ImagenesContext from "../context/ImagenesContext";
-import categorias from "../data/categorias.json";
+import { useImagenes } from "../context/ImagenesContext";
 import { useState, useEffect, useContext } from "react";
-import { Row, Col } from "antd";
+import { Row, Col, Layout } from "antd";
 import { Link } from "react-router-dom";
 import Card from "../components/Card";
 import SearchBar from "../components/SearchBar";
-import { Layout } from "antd";
 import AppFooter from "../components/Footer";
-import GrassIcon from "@mui/icons-material/Grass";
 import Carousel from "../components/Carousel";
-const apiURL = import.meta.env.VITE_API_URL;
+import { apiURL } from "../lib/api";
+import { productSchema, type Categoria, type Product } from "../schemas";
 
 const { Sider, Content } = Layout;
 
 const Home = () => {
   const { productos, categorias } = useContext(ProductContext);
-  const { imagenes } = useContext(ImagenesContext);
-  const [data, setData] = useState([]);
-  const [filteredData, setFilteredData] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState(null);
+  const { imagenes } = useImagenes();
+  const [data, setData] = useState<Product[]>([]);
+  const [filteredData, setFilteredData] = useState<Product[]>([]);
+  const [selectedCategory, setSelectedCategory] = useState<Categoria | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
@@ -28,65 +25,60 @@ const Home = () => {
     setFilteredData(productos);
   }, [productos]);
 
-  const handleCategoryClick = async (categoria) => {
+  const handleCategoryClick = async (categoria: Categoria | null) => {
     setSelectedCategory(categoria);
-    
-    //let url = "http://localhost:3000/api/productos/";
+
     let url = `${apiURL}/productos/`;
-    
+
     if (categoria) {
-      //url = `http://localhost:3000/api/productos/categorias/${categoria.id_categoria}`;
       url = `${apiURL}/productos/categorias/${categoria.id_categoria}`;
     }
-    
-    
+
     try {
       const response = await fetch(url);
-      const data = await response.json();
-      
-      if (!Array.isArray(data)) {
-        console.error("La API no devolvió un array de productos:", data);
+      const responseData = await response.json();
+
+      if (!Array.isArray(responseData)) {
+        console.error("La API no devolvió un array de productos:", responseData);
         setFilteredData([]);
         return;
       }
-      
-      // Guardamos los datos de la categoría
-      setData(data);
-      
-      // Aplicamos el término de búsqueda actual si existe
-      if (searchTerm) {
-        const filtered = data.filter((producto) =>
-          producto.nombre_producto.toLowerCase().includes(searchTerm.toLowerCase())
-      );
-      setFilteredData(filtered);
-    } else {
-      setFilteredData(data);
-    }
 
+      const parsed = productSchema.array().parse(responseData);
+      setData(parsed);
+
+      if (searchTerm) {
+        const filtered = parsed.filter((producto) =>
+          producto.nombre_producto.toLowerCase().includes(searchTerm.toLowerCase()),
+        );
+        setFilteredData(filtered);
+      } else {
+        setFilteredData(parsed);
+      }
     } catch (error) {
       console.error("Error al obtener los productos:", error);
       setFilteredData([]);
     }
   };
-  
-  const handleSearch = (search) => {
+
+  const handleSearch = (search: string) => {
     setSearchTerm(search);
-    
+
     if (search) {
       const filtered = data.filter((producto) =>
-        producto.nombre_producto.toLowerCase().includes(search.toLowerCase())
-    );
-    setFilteredData(filtered);
-  } else {
-    setFilteredData(data);
-  }
-};
+        producto.nombre_producto.toLowerCase().includes(search.toLowerCase()),
+      );
+      setFilteredData(filtered);
+    } else {
+      setFilteredData(data);
+    }
+  };
 
-//console.log("Categorías en el Sider:", categorias);
-return (
-  <Layout style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+  return (
+    <Layout
+      style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}
+    >
       <Layout style={{ flex: 1 }} className="layout-home">
-        {/* Sidebar con categorías */}
         <Sider className="sider" width={250}>
           <p
             style={{
@@ -114,7 +106,6 @@ return (
           ))}
         </Sider>
 
-        {/* Contenido principal */}
         <Layout>
           <Content className="content" style={{ paddingBottom: "40px" }}>
             <Carousel />
@@ -122,20 +113,20 @@ return (
             <h3 style={{ textAlign: "center", marginBottom: "4px" }}>
               Catálogo de Productos
             </h3>
-            <Row 
-              gutter={[16, 16]} 
-              justify="center" 
-              style={{ minHeight: 'calc(100vh - 300px)' }}
+            <Row
+              gutter={[16, 16]}
+              justify="center"
+              style={{ minHeight: "calc(100vh - 300px)" }}
               className="card-container"
             >
               {filteredData.length > 0 ? (
                 filteredData.map((producto) => {
                   const imagenesProducto = imagenes.filter(
-                    (img) => img.id_producto === producto.id_producto
+                    (img) => img.id_producto === producto.id_producto,
                   );
 
                   return (
-                    <Col key={producto.id_producto} xs={24} sm={24} md={12} lg={6} >
+                    <Col key={producto.id_producto} xs={24} sm={24} md={12} lg={6}>
                       <Link to={`/product/${producto.id_producto}`}>
                         <Card
                           image={imagenesProducto[0]?.url || "default_image.jpg"}
@@ -148,7 +139,7 @@ return (
                   );
                 })
               ) : (
-                <Col span={24} style={{ textAlign: 'center', marginTop: '20px' }}>
+                <Col span={24} style={{ textAlign: "center", marginTop: "20px" }}>
                   No se encontraron productos
                 </Col>
               )}

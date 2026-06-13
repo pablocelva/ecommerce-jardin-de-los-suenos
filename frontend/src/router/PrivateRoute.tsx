@@ -1,7 +1,14 @@
 import { Navigate, useLocation } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import type { User } from "../schemas";
+import type { ReactNode } from "react";
 
-const PrivateRoute = ({ children, requiredRole }) => {
+interface PrivateRouteProps {
+  children: ReactNode;
+  requiredRole?: User["rol"];
+}
+
+const PrivateRoute = ({ children, requiredRole }: PrivateRouteProps) => {
   const { isAuthenticated, userRole, loading } = useAuth();
   const location = useLocation();
 
@@ -13,15 +20,15 @@ const PrivateRoute = ({ children, requiredRole }) => {
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
 
-  // Permitir acceso si no se requiere un rol específico o si el rol coincide
   if (!requiredRole || userRole === requiredRole) {
     return children;
   }
 
-  // Si el rol no coincide, redirigir según el rol del usuario
   if (userRole === "admin") {
     return <Navigate to="/admin" replace />;
-  } else if (userRole === "cliente") {
+  }
+
+  if (userRole === "cliente") {
     return <Navigate to="/profile" replace />;
   }
 

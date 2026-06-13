@@ -1,19 +1,15 @@
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
 import { useCart } from "../context/CartContext";
-import ImagenesContext from "../context/ImagenesContext";
 import { useImagenes } from "../context/ImagenesContext";
 import AppFooter from "../components/Footer";
-import ShoppinCartIcon from '@mui/icons-material/ShoppingCart';
+import ShoppinCartIcon from "@mui/icons-material/ShoppingCart";
 
 const CartPage = () => {
     const { cart, removeFromCart, updateCart } = useCart();
-    const { isAuthenticated } = useAuth();
     const { imagenes } = useImagenes();
     const navigate = useNavigate();
 
-    // Función para aumentar la cantidad
-    const increaseQuantity = (productId) => {
+    const increaseQuantity = (productId: number) => {
         const updatedCart = cart.map((product) => {
             if (product.id_producto === productId) {
                 return { 
@@ -27,7 +23,7 @@ const CartPage = () => {
     };
 
     // Función para disminuir la cantidad
-    const decreaseQuantity = (productId) => {
+    const decreaseQuantity = (productId: number) => {
         const updatedCart = cart.map((product) => {
             if (product.id_producto === productId && product.quantity > 1) {
                 return { 

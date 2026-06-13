@@ -1,9 +1,7 @@
-import { Layout, Badge, Image, Space, Typography } from "antd";
-import { BellFilled, MailOutlined, UserOutlined, ShoppingCartOutlined, PoweroffOutlined, LoginOutlined, UserAddOutlined } from "@ant-design/icons";
+import { Layout, Space, Typography } from "antd";
 import { NavLink, useNavigate } from "react-router-dom";
-import { useEffect } from "react";
 import { useAuth } from "../context/AuthContext";
-import GrassIcon from "@mui/icons-material/Grass"
+import GrassIcon from "@mui/icons-material/Grass";
 
 const { Header } = Layout;
 
@@ -26,7 +24,7 @@ const Navbar = () => {
     return (
         <Header className="AppHeader">
             <Typography.Title color="white" style={{ fontSize: "28px", display: "flex", gap: "8px", alignItems: "center" }}>
-                <GrassIcon color="white" style={{ fontSize: "40px", color: "white" }} />
+                <GrassIcon style={{ fontSize: "40px", color: "white" }} />
                 <NavLink to="/" style={{ color: "#f3f3f3" }} className="nav-link-home">
                     Jardin de los Sueños
                 </NavLink>
