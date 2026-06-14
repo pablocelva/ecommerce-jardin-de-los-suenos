@@ -1,27 +1,69 @@
-# Ecommerce Jardin de los Sueños
+# E-commerce Jardín de los Sueños
 
-## Descripción
+Monorepo full stack: tienda online de plantas con catálogo, carrito, checkout simulado, panel admin y blog.
 
-Este proyecto es una aplicación web que permite a los usuarios crear, ver, editar y eliminar productos, así como a los administradores gestionar el catálogo de productos. Además, permite a los usuarios realizar búsquedas y filtrar productos según categorías.
+## Demo local
+
+```bash
+# Backend
+cd backend && cp .env.example .env   # configurar PostgreSQL
+pnpm install && pnpm dev
+
+# Frontend (otra terminal)
+cd frontend && cp .env.example .env
+pnpm install && pnpm dev
+```
+
+- Frontend: http://localhost:5173  
+- API: http://localhost:3000/api  
+- Swagger: http://localhost:3000/api/docs  
 
 ## Tecnologías
 
-- React-Vite
-- Ant Design
-- Express
-- Node.js
-- PostgreSQL
+| Frontend | Backend |
+|----------|---------|
+| React 18 + TypeScript | Node.js + Express + TypeScript |
+| Vite | Drizzle ORM + PostgreSQL |
+| Ant Design 5 | JWT + Zod |
+| TanStack Query | Vitest + Swagger |
 
-## Estructura del proyecto
+## Arquitectura
 
-El proyecto está dividido en dos partes principales: el frontend y el backend.
+```
+ecommerce-jardin-de-los-sueños/
+├── frontend/     → SPA feature-first (ver frontend/README.md)
+├── backend/      → API REST modular (ver backend/README.md)
+└── README.md     → Este archivo
+```
 
-### Frontend
+### Frontend (resumen)
 
-El frontend está compuesto por dos páginas principales: la página de inicio y la página de perfil. La página de inicio es la página principal de la aplicación, y permite a los usuarios iniciar sesión y crear una cuenta. La página de perfil es una página privada que solo se puede acceder si se ha iniciado sesión. En la página de perfil, los usuarios pueden ver su información personal y sus favoritos, así como realizar búsquedas y filtrar productos según categorías.
+- Organización **por features** (`catalog`, `cart`, `auth`…)
+- **TanStack Query** para productos/categorías/imágenes
+- **Context** solo para auth y carrito
+- **Lazy loading** de rutas
+- **CSS Modules** + theme Ant Design
 
-Diseño Figma: https://www.figma.com/design/BVufRRcJUoDPX1a4NmrxDu/Marketplace-Web?node-id=0-1
+### Backend (resumen)
 
-### Backend
+- Módulos `auth`, `products`, `orders`
+- Drizzle + migraciones
+- Tests automatizados
+- JSON de respaldo en `backend/data/backup/` (no runtime)
 
-El backend está compuesto por una API RESTful que proporciona una interfaz para los usuarios y los administradores. La API proporciona rutas para crear, leer, actualizar y eliminar productos, así como gestionar el catálogo de productos. Además, la API permite a los usuarios realizar búsquedas y filtrar productos según categorías.
+## Diseño
+
+Figma: https://www.figma.com/design/BVufRRcJUoDPX1a4NmrxDu/Marketplace-Web?node-id=0-1
+
+## Documentación detallada
+
+- [Frontend](./frontend/README.md)
+- [Backend](./backend/README.md)
+
+## Portafolio — puntos destacables
+
+1. TypeScript end-to-end con validación Zod en el cliente
+2. Separación clara server state vs client state
+3. API documentada con OpenAPI
+4. Estructura escalable feature-first en frontend y backend
+5. Tests en backend; build estricto en frontend
