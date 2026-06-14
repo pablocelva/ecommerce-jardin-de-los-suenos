@@ -28,6 +28,7 @@ import {
 import { useAuth } from "@/shared/context/AuthContext";
 import AppFooter from "@/shared/components/Footer";
 import { api } from "@/shared/lib/api";
+import styles from "./ProfilePage.module.css";
 import { ordersResponseSchema, type Order, type User } from "@/shared/schemas";
 import { showSuccess } from "@/shared/lib/alerts";
 
@@ -127,7 +128,7 @@ const ProfilePage = () => {
 
   if (loading || !user) {
     return (
-      <div className="profile-loading">
+      <div className={styles.loading}>
         <Spin size="large" tip="Cargando perfil…" />
       </div>
     );
@@ -174,12 +175,12 @@ const ProfilePage = () => {
   ];
 
   return (
-    <div className="profile-page">
-      <div className="profile-layout">
-        <aside className="profile-sider">
-          <div className="profile-user-card">
-            <Avatar size={64} icon={<UserOutlined />} className="profile-avatar" />
-            <Title level={4} className="profile-user-name">
+    <div className={styles.page}>
+      <div className={styles.layout}>
+        <aside className={styles.sider}>
+          <div className={styles.userCard}>
+            <Avatar size={64} icon={<UserOutlined />} className={styles.avatar} />
+            <Title level={4} className={styles.userName}>
               {user.nombre} {user.apellido}
             </Title>
             <Text type="secondary">{user.email}</Text>
@@ -188,7 +189,7 @@ const ProfilePage = () => {
           <Menu
             mode="inline"
             selectedKeys={[section]}
-            className="profile-menu"
+            className={styles.menu}
             items={[
               {
                 key: "profile",
@@ -210,15 +211,15 @@ const ProfilePage = () => {
             block
             icon={<LogoutOutlined />}
             onClick={handleLogout}
-            className="profile-logout-btn"
+            className={styles.logoutBtn}
           >
             Cerrar sesión
           </Button>
         </aside>
 
-        <main className="profile-main">
+        <main className={styles.main}>
           <Breadcrumb
-            className="profile-breadcrumb"
+            className={styles.breadcrumb}
             items={[
               {
                 title: (
@@ -232,20 +233,19 @@ const ProfilePage = () => {
           />
 
           {section === "profile" ? (
-            <Card className="profile-card" title="Datos personales">
+            <Card className={styles.card} title="Datos personales">
               <Form
                 form={form}
                 layout="vertical"
                 onFinish={handleSave}
                 disabled={!isEditing}
-                className="profile-form"
               >
-                <div className="profile-form-row">
+                <div className={styles.formRow}>
                   <Form.Item
                     name="nombre"
                     label="Nombre"
                     rules={[{ required: true, message: "Requerido" }]}
-                    className="profile-form-col"
+                    className={styles.formCol}
                   >
                     <Input prefix={<UserOutlined />} />
                   </Form.Item>
@@ -253,7 +253,7 @@ const ProfilePage = () => {
                     name="apellido"
                     label="Apellido"
                     rules={[{ required: true, message: "Requerido" }]}
-                    className="profile-form-col"
+                    className={styles.formCol}
                   >
                     <Input prefix={<UserOutlined />} />
                   </Form.Item>
@@ -270,11 +270,11 @@ const ProfilePage = () => {
                   <Input prefix={<MailOutlined />} />
                 </Form.Item>
 
-                <div className="profile-form-row">
-                  <Form.Item name="telefono" label="Teléfono" className="profile-form-col">
+                <div className={styles.formRow}>
+                  <Form.Item name="telefono" label="Teléfono" className={styles.formCol}>
                     <Input prefix={<PhoneOutlined />} />
                   </Form.Item>
-                  <Form.Item name="direccion" label="Dirección" className="profile-form-col">
+                  <Form.Item name="direccion" label="Dirección" className={styles.formCol}>
                     <Input />
                   </Form.Item>
                 </div>
@@ -288,7 +288,7 @@ const ProfilePage = () => {
                   </Form.Item>
                 )}
 
-                <div className="profile-form-actions">
+                <div className={styles.formActions}>
                   {isEditing ? (
                     <>
                       <Button onClick={() => setIsEditing(false)}>Cancelar</Button>
@@ -313,9 +313,9 @@ const ProfilePage = () => {
               </Form>
             </Card>
           ) : (
-            <Card className="profile-card" title="Historial de compras">
+            <Card className={styles.card} title="Historial de compras">
               {ordersLoading ? (
-                <div className="profile-loading-inline">
+                <div className={styles.loadingInline}>
                   <Spin />
                 </div>
               ) : userOrders.length > 0 ? (

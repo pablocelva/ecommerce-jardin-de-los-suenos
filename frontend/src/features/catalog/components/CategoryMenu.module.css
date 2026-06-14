@@ -1,0 +1,37 @@
+.menu {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: calc(100vh - 64px);
+  padding: 20px 0 24px;
+}
+
+.title {
+  color: #b7e4c7 !important;
+  padding: 0 20px 12px !important;
+  margin: 0 !important;
+  font-size: 0.72rem !important;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  flex-shrink: 0;
+}
+
+.list {
+  flex: 1;
+  background: transparent !important;
+  border-inline-end: none !important;
+}
+
+.list :global(.ant-menu-item) {
+  margin: 2px 8px !important;
+  width: calc(100% - 16px) !important;
+  border-radius: 8px;
+}
+
+.list :global(.ant-menu-item-selected) {
+  background: rgba(82, 183, 136, 0.22) !important;
+}
+
+.list :global(.ant-menu-item:hover) {
+  background: rgba(255, 255, 255, 0.08) !important;
+}

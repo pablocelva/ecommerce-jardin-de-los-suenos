@@ -1,0 +1,130 @@
+.page {
+  background: #f8faf7;
+  min-height: calc(100vh - 64px);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section {
+  padding: 56px 0;
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.sectionTitle {
+  color: #1b4332 !important;
+  margin-bottom: 8px !important;
+}
+
+.loading {
+  text-align: center;
+  padding: 48px;
+}
+
+.tag {
+  margin-bottom: 12px;
+}
+
+.offers {
+  background: #fff;
+}
+
+.blog {
+  background: #f0fdf4;
+}
+
+.ctaInline {
+  text-align: center;
+  margin-top: 32px;
+}
+
+.ctaBanner {
+  background: linear-gradient(135deg, #1b4332, #2d6a4f);
+  padding: 56px 24px;
+}
+
+.ctaInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.ctaTitle {
+  color: #fff !important;
+  margin-bottom: 8px !important;
+}
+
+.ctaText {
+  color: rgba(255, 255, 255, 0.85) !important;
+  margin: 0 !important;
+  max-width: 520px;
+}
+
+.categoryCard {
+  border-radius: 16px !important;
+  overflow: hidden;
+  border: 1px solid #e9f5ee !important;
+}
+
+.categoryCardImg {
+  height: 180px;
+  object-fit: cover;
+}
+
+.categoryCardTitle {
+  color: #1b4332 !important;
+  margin-bottom: 0 !important;
+}
+
+.reviewCard {
+  height: 100%;
+  border-radius: 16px !important;
+  border: 1px solid #e9f5ee !important;
+}
+
+.reviewText {
+  margin: 16px 0 !important;
+  font-style: italic;
+  color: #555;
+}
+
+.blogCardLink {
+  display: block;
+  color: inherit;
+}
+
+.blogCard {
+  height: 100%;
+  border-radius: 16px !important;
+  overflow: hidden;
+  border: 1px solid #e9f5ee !important;
+}
+
+.blogCardImg {
+  height: 160px;
+  object-fit: cover;
+}
+
+@media (max-width: 575px) {
+  .section {
+    padding: 40px 0;
+  }
+
+  .container {
+    padding: 0 16px;
+  }
+
+  .ctaInner {
+    flex-direction: column;
+    text-align: center;
+  }
+}

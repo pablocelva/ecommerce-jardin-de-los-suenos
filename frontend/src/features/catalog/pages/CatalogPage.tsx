@@ -26,6 +26,7 @@ import ProductFilters, {
 } from "@/features/catalog/components/ProductFilters";
 import { fetchProductsByCategory } from "@/features/catalog/api/catalog.api";
 import type { Categoria, Product } from "@/shared/schemas";
+import styles from "./CatalogPage.module.css";
 
 const { useBreakpoint } = Grid;
 
@@ -216,18 +217,18 @@ const CatalogPage = () => {
 
   return (
     <>
-      <div className="catalog-page">
+      <div className={styles.page}>
         {!isCompact && (
-          <aside className="catalog-sider">{categoryPanel}</aside>
+          <aside className={styles.sider}>{categoryPanel}</aside>
         )}
 
-        <main className="catalog-main">
-          <div className="catalog-top">
-            <Breadcrumb items={breadcrumbItems} className="catalog-breadcrumb" />
+        <main className={styles.main}>
+          <div className={styles.top}>
+            <Breadcrumb items={breadcrumbItems} className={styles.breadcrumb} />
 
-            <div className="catalog-toolbar">
+            <div className={styles.toolbar}>
               {isCompact && (
-                <div className="catalog-mobile-actions">
+                <div className={styles.mobileActions}>
                   <Button
                     icon={<AppstoreOutlined />}
                     onClick={() => setCategoryDrawerOpen(true)}
@@ -248,8 +249,8 @@ const CatalogPage = () => {
               {!isCompact && filtersPanel}
             </div>
 
-            <div className="catalog-header">
-              <Typography.Title level={3} className="catalog-title">
+            <div className={styles.header}>
+              <Typography.Title level={3} className={styles.title}>
                 {selectedCategory
                   ? selectedCategory.nombre_categoria
                   : "Catálogo de plantas"}
@@ -263,14 +264,14 @@ const CatalogPage = () => {
           </div>
 
           {isLoading ? (
-            <div className="catalog-loading">
+            <div className={styles.loading}>
               <Spin size="large" tip="Cargando plantas…" />
             </div>
           ) : error ? (
             <Empty description={error} />
           ) : filteredData.length > 0 ? (
             <>
-              <Row gutter={[16, 16]} className="product-grid">
+              <Row gutter={[16, 16]} className={styles.productGrid}>
                 {paginatedData.map((producto) => (
                   <Col
                     key={producto.id_producto}
@@ -279,7 +280,7 @@ const CatalogPage = () => {
                     md={8}
                     lg={6}
                     xl={6}
-                    className="product-grid-col"
+                    className={styles.productGridCol}
                   >
                     <ProductCard
                       image={getProductImage(producto.id_producto)}
@@ -299,7 +300,7 @@ const CatalogPage = () => {
                 ))}
               </Row>
 
-              <div className="catalog-pagination">
+              <div className={styles.pagination}>
                 <Pagination
                   current={currentPage}
                   pageSize={PAGE_SIZE}
@@ -318,7 +319,7 @@ const CatalogPage = () => {
           ) : (
             <Empty
               description="No se encontraron plantas con esos criterios"
-              className="catalog-empty"
+              className={styles.empty}
             >
               <Button type="primary" onClick={handleResetFilters}>
                 Limpiar filtros

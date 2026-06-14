@@ -18,6 +18,11 @@ import {
 import { useCart } from "@/shared/context/CartContext";
 import { useCatalog } from "@/features/catalog/api/catalog.queries";
 import AppFooter from "@/shared/components/Footer";
+import {
+  calculateCartTotal,
+  updateProductQuantity,
+} from "@/shared/lib/cartUtils";
+import styles from "./CartPage.module.css";
 
 const { Title, Text } = Typography;
 
@@ -32,28 +37,17 @@ const CartPage = () => {
   const getImage = (productId: number) =>
     imagenes.find((img) => img.id_producto === productId)?.url ?? FALLBACK_IMAGE;
 
-  const totalPrice = cart.reduce(
-    (acc, product) => acc + product.precio * product.quantity,
-    0,
-  );
+  const totalPrice = calculateCartTotal(cart);
 
   const updateQuantity = (productId: number, quantity: number) => {
-    if (quantity < 1) {
-      removeFromCart(productId);
-      return;
-    }
-    updateCart(
-      cart.map((item) =>
-        item.id_producto === productId ? { ...item, quantity } : item,
-      ),
-    );
+    updateCart(updateProductQuantity(cart, productId, quantity));
   };
 
   return (
-    <div className="cart-page">
-      <div className="cart-container">
+    <div className={styles.page}>
+      <div className={styles.container}>
         <Breadcrumb
-          className="cart-breadcrumb"
+          className={styles.breadcrumb}
           items={[
             {
               title: (
@@ -66,12 +60,12 @@ const CartPage = () => {
           ]}
         />
 
-        <Title level={2} className="cart-title">
+        <Title level={2} className={styles.title}>
           <ShoppingCartOutlined /> Carrito de compras
         </Title>
 
         {cart.length === 0 ? (
-          <Card className="cart-empty-card">
+          <Card className={styles.emptyCard}>
             <Empty description="Tu carrito está vacío">
               <Link to="/catalogo">
                 <Button type="primary" icon={<ArrowLeftOutlined />}>
@@ -83,21 +77,21 @@ const CartPage = () => {
         ) : (
           <Row gutter={[24, 24]}>
             <Col xs={24} lg={16}>
-              <div className="cart-items-list">
+              <div className={styles.itemsList}>
                 {cart.map((product) => (
-                  <Card key={product.id_producto} className="cart-item-card">
-                    <div className="cart-item">
+                  <Card key={product.id_producto} className={styles.itemCard}>
+                    <div className={styles.item}>
                       <img
                         src={getImage(product.id_producto)}
                         alt={product.nombre_producto}
-                        className="cart-item-img"
+                        className={styles.itemImg}
                       />
-                      <div className="cart-item-details">
+                      <div className={styles.itemDetails}>
                         <Title level={5}>{product.nombre_producto}</Title>
                         <Text type="secondary">
                           ${product.precio.toFixed(2)} c/u
                         </Text>
-                        <div className="cart-item-controls">
+                        <div className={styles.itemControls}>
                           <Text>Cantidad:</Text>
                           <InputNumber
                             min={1}
@@ -109,8 +103,8 @@ const CartPage = () => {
                           />
                         </div>
                       </div>
-                      <div className="cart-item-side">
-                        <Text strong className="cart-item-subtotal">
+                      <div className={styles.itemSide}>
+                        <Text strong className={styles.itemSubtotal}>
                           ${(product.precio * product.quantity).toFixed(2)}
                         </Text>
                         <Button
@@ -129,18 +123,18 @@ const CartPage = () => {
             </Col>
 
             <Col xs={24} lg={8}>
-              <Card className="cart-summary-card" title="Resumen del pedido">
-                <div className="cart-summary-row">
+              <Card className={styles.summaryCard} title="Resumen del pedido">
+                <div className={styles.summaryRow}>
                   <Text>Productos ({cart.length})</Text>
                   <Text>${totalPrice.toFixed(2)}</Text>
                 </div>
-                <div className="cart-summary-row">
+                <div className={styles.summaryRow}>
                   <Text>Envío</Text>
                   <Text type="success">Gratis</Text>
                 </div>
-                <div className="cart-summary-total">
+                <div className={styles.summaryTotal}>
                   <Text strong>Total</Text>
-                  <Title level={3} className="cart-summary-price">
+                  <Title level={3} className={styles.summaryPrice}>
                     ${totalPrice.toFixed(2)}
                   </Title>
                 </div>
@@ -152,7 +146,7 @@ const CartPage = () => {
                 >
                   Proceder al pago
                 </Button>
-                <Link to="/catalogo" className="cart-continue-link">
+                <Link to="/catalogo" className={styles.continueLink}>
                   <Button block type="link">
                     Seguir comprando
                   </Button>

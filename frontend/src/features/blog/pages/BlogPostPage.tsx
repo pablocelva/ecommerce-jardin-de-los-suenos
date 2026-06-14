@@ -9,9 +9,11 @@ import {
   UserOutlined,
 } from "@ant-design/icons";
 import AppFooter from "@/shared/components/Footer";
-import CardCarousel from "@/shared/components/CardCarousel";
+import CardCarousel, { CARD_CAROUSEL_SLIDE_CLASS } from "@/shared/components/CardCarousel";
+import ProductCard from "@/shared/components/ProductCard";
 import { useCatalog } from "@/features/catalog/api/catalog.queries";
 import { getBlogPostBySlug } from "@/features/blog/data/blogPosts";
+import styles from "./BlogPostPage.module.css";
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -41,15 +43,15 @@ const BlogPostPage = () => {
   }
 
   return (
-    <div className="blog-post-page">
+    <div className={styles.page}>
       <div
-        className="blog-post-hero"
+        className={styles.hero}
         style={{ backgroundImage: `url(${post.image})` }}
       >
-        <div className="blog-post-hero-overlay" />
-        <div className="blog-post-hero-content">
+        <div className={styles.heroOverlay} />
+        <div className={styles.heroContent}>
           <Breadcrumb
-            className="blog-post-breadcrumb"
+            className={styles.breadcrumb}
             items={[
               {
                 title: (
@@ -64,10 +66,10 @@ const BlogPostPage = () => {
               { title: post.title },
             ]}
           />
-          <Title level={1} className="blog-post-title">
+          <Title level={1} className={styles.title}>
             {post.title}
           </Title>
-          <div className="blog-post-meta">
+          <div className={styles.meta}>
             <Text>
               <UserOutlined /> {post.author}
             </Text>
@@ -84,9 +86,9 @@ const BlogPostPage = () => {
         </div>
       </div>
 
-      <div className="blog-post-body">
-        <article className="blog-post-container">
-          <div className="blog-post-tags">
+      <div className={styles.body}>
+        <article className={styles.article}>
+          <div className={styles.tags}>
             {post.tags.map((tag) => (
               <Tag key={tag} color="green">
                 {tag}
@@ -94,28 +96,28 @@ const BlogPostPage = () => {
             ))}
           </div>
 
-          <Paragraph className="blog-post-excerpt">{post.excerpt}</Paragraph>
+          <Paragraph className={styles.excerpt}>{post.excerpt}</Paragraph>
 
           {post.content.map((paragraph) => (
             <Paragraph
               key={paragraph.slice(0, 40)}
-              className="blog-post-paragraph"
+              className={styles.paragraph}
             >
               {paragraph}
             </Paragraph>
           ))}
 
           <Link to="/blogs">
-            <Button icon={<ArrowLeftOutlined />} className="blog-post-back-btn">
+            <Button icon={<ArrowLeftOutlined />} className={styles.backBtn}>
               Volver al blog
             </Button>
           </Link>
         </article>
 
         {relatedProducts.length > 0 && (
-          <section className="blog-post-related">
-            <div className="blog-post-related-inner">
-              <Title level={3} className="blog-post-related-title">
+          <section className={styles.related}>
+            <div className={styles.relatedInner}>
+              <Title level={3} className={styles.relatedTitle}>
                 <ShoppingOutlined /> Productos relacionados
               </Title>
               <Paragraph type="secondary">
@@ -130,31 +132,21 @@ const BlogPostPage = () => {
                   { breakpoint: 992, settings: { slidesToShow: 2 } },
                   { breakpoint: 576, settings: { slidesToShow: 1 } },
                 ]}
-                className="products-carousel blog-related-carousel"
+                className={styles.relatedCarousel}
               >
                 {relatedProducts.map((producto) => (
                   <div
                     key={producto.id_producto}
-                    className="product-carousel-slide"
+                    className={CARD_CAROUSEL_SLIDE_CLASS}
                   >
-                    <Card
-                      hoverable
-                      className="product-mini-card"
-                      cover={
-                        <img
-                          src={getProductImage(producto.id_producto)}
-                          alt={producto.nombre_producto}
-                        />
-                      }
-                      onClick={() =>
-                        navigate(`/product/${producto.id_producto}`)
-                      }
-                    >
-                      <Text strong>{producto.nombre_producto}</Text>
-                      <Text className="product-mini-price">
-                        ${producto.precio.toFixed(2)}
-                      </Text>
-                    </Card>
+                    <ProductCard
+                      image={getProductImage(producto.id_producto)}
+                      title={producto.nombre_producto}
+                      description={producto.descripcion}
+                      price={producto.precio}
+                      stock={producto.stock}
+                      onView={() => navigate(`/product/${producto.id_producto}`)}
+                    />
                   </div>
                 ))}
               </CardCarousel>

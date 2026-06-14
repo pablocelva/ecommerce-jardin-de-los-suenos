@@ -1,6 +1,7 @@
 import { Menu, Typography } from "antd";
 import { AppstoreOutlined } from "@ant-design/icons";
 import type { Categoria } from "@/shared/schemas";
+import styles from "./CategoryMenu.module.css";
 
 interface CategoryMenuProps {
   categorias: Categoria[];
@@ -14,8 +15,8 @@ const CategoryMenu = ({
   onSelect,
 }: CategoryMenuProps) => {
   return (
-    <div className="category-menu">
-      <Typography.Title level={5} className="category-menu-title">
+    <div className={styles.menu}>
+      <Typography.Title level={5} className={styles.title}>
         Categorías
       </Typography.Title>
       <Menu
@@ -39,7 +40,7 @@ const CategoryMenu = ({
             onClick: () => onSelect(cat),
           })),
         ]}
-        className="category-menu-list"
+        className={styles.list}
       />
     </div>
   );

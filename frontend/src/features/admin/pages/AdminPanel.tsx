@@ -9,6 +9,7 @@ import {
 import { useAuth } from "@/shared/context/AuthContext";
 import { Layout, Table, Typography, Button, Modal, Form, Input, InputNumber } from "antd";
 import AppFooter from "@/shared/components/Footer";
+import styles from "./AdminPanel.module.css";
 import { api } from "@/shared/lib/api";
 import {
   categoriaSchema,
@@ -310,7 +311,7 @@ const AdminPanel = () => {
                     >
                       <Input.TextArea />
                     </Form.Item>
-                    <Button className="Button" type="default" htmlType="submit">
+                    <Button className={styles.legacyButton} type="default" htmlType="submit">
                       Agregar
                     </Button>
                   </Form>
@@ -478,7 +479,7 @@ const AdminPanel = () => {
                     </Button>
                   ) : (
                     <Button
-                      className="Button"
+                      className={styles.legacyButton}
                       type="default"
                       htmlType="button"
                       onClick={() => setIsEditing(true)}

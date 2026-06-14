@@ -1,0 +1,68 @@
+.wrapper {
+  position: relative;
+  padding: 0 52px 72px;
+}
+
+.carousel :global(.slick-slider) {
+  margin-bottom: 0;
+}
+
+.carousel :global(.slick-dots) {
+  bottom: -40px !important;
+  margin-bottom: 0 !important;
+  line-height: 1;
+}
+
+.carousel :global(.slick-dots li) {
+  margin: 0 4px;
+}
+
+.carousel :global(.slick-dots li button) {
+  background: #2d6a4f !important;
+  opacity: 0.35;
+}
+
+.carousel :global(.slick-dots li.slick-active button) {
+  opacity: 1;
+}
+
+.slide {
+  padding: 0 12px;
+}
+
+.nav {
+  position: absolute;
+  top: calc(50% - 20px);
+  transform: translateY(-50%);
+  z-index: 2;
+  border-color: #2d6a4f !important;
+  color: #2d6a4f !important;
+  background: #fff !important;
+  box-shadow: 0 2px 12px rgba(27, 67, 50, 0.15);
+}
+
+.nav:hover {
+  background: #2d6a4f !important;
+  color: #fff !important;
+  border-color: #2d6a4f !important;
+}
+
+.navPrev {
+  left: 0;
+}
+
+.navNext {
+  right: 0;
+}
+
+@media (max-width: 575px) {
+  .wrapper {
+    padding: 0 40px 64px;
+  }
+
+  .nav {
+    width: 36px !important;
+    height: 36px !important;
+    min-width: 36px !important;
+  }
+}

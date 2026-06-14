@@ -1,0 +1,89 @@
+.root {
+  width: 100%;
+  flex: 0 0 100%;
+  background: linear-gradient(160deg, #152a1e 0%, #1b4332 45%, #2d6a4f 100%) !important;
+  color: rgba(255, 255, 255, 0.88);
+  padding: 48px 24px 24px !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.brandTitle {
+  color: #fff !important;
+  display: flex !important;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px !important;
+}
+
+.brandIcon {
+  font-size: 28px !important;
+  color: #95d5b2 !important;
+}
+
+.brandText {
+  color: rgba(255, 255, 255, 0.72);
+  display: block;
+  line-height: 1.6;
+  max-width: 320px;
+}
+
+.sectionTitle {
+  color: #b7e4c7 !important;
+  margin-bottom: 16px !important;
+  font-size: 0.85rem !important;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.links a,
+.contact :global(.ant-typography) {
+  color: rgba(255, 255, 255, 0.82) !important;
+  transition: color 0.2s;
+}
+
+.links a:hover,
+.contact :global(.ant-typography:hover) {
+  color: #95d5b2 !important;
+}
+
+.social {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.socialLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff !important;
+  font-size: 18px;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.socialLink:hover {
+  background: rgba(149, 213, 178, 0.25);
+  color: #95d5b2 !important;
+  transform: translateY(-2px);
+}
+
+.bottom {
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
+
+.bottom :global(.ant-typography) {
+  color: rgba(255, 255, 255, 0.55) !important;
+  font-size: 13px;
+}

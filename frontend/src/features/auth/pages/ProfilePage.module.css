@@ -1,0 +1,119 @@
+.page {
+  background: #f8faf7;
+  min-height: calc(100vh - 64px);
+}
+
+.layout {
+  display: flex;
+  gap: 0;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+  min-height: calc(100vh - 64px);
+}
+
+.sider {
+  flex: 0 0 260px;
+  background: #fff;
+  border-radius: 16px;
+  border: 1px solid #e9f5ee;
+  padding: 24px 16px;
+  height: fit-content;
+  position: sticky;
+  top: 88px;
+}
+
+.userCard {
+  text-align: center;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e9f5ee;
+}
+
+.avatar {
+  background: #2d6a4f !important;
+  margin-bottom: 12px;
+}
+
+.userName {
+  margin-bottom: 4px !important;
+  color: #1b4332 !important;
+}
+
+.menu {
+  border-inline-end: none !important;
+  background: transparent;
+}
+
+.logoutBtn {
+  margin-top: 16px;
+}
+
+.main {
+  flex: 1;
+  min-width: 0;
+  padding-left: 24px;
+}
+
+.breadcrumb {
+  margin-bottom: 16px;
+}
+
+.breadcrumb a {
+  color: #2d6a4f;
+}
+
+.card {
+  border-radius: 16px !important;
+  border: 1px solid #e9f5ee !important;
+}
+
+.formRow {
+  display: flex;
+  gap: 12px;
+}
+
+.formCol {
+  flex: 1;
+  min-width: 0;
+}
+
+.formActions {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.loading,
+.loadingInline {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 64px);
+  padding: 48px;
+}
+
+.loadingInline {
+  min-height: 200px;
+}
+
+@media (max-width: 991px) {
+  .layout {
+    flex-direction: column;
+  }
+
+  .sider {
+    position: static;
+    flex: none;
+    width: 100%;
+  }
+
+  .main {
+    padding-left: 0;
+    padding-top: 16px;
+  }
+
+  .formRow {
+    flex-direction: column;
+  }
+}

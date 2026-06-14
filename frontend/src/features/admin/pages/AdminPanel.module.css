@@ -1,0 +1,16 @@
+.legacyButton {
+  background-color: #2d6a4f;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.legacyButton:hover {
+  background-color: #40916c;
+  color: white;
+}

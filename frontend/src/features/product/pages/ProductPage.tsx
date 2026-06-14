@@ -23,6 +23,7 @@ import {
 import { useCatalog } from "@/features/catalog/api/catalog.queries";
 import { useCart } from "@/shared/context/CartContext";
 import AppFooter from "@/shared/components/Footer";
+import styles from "./ProductPage.module.css";
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -38,7 +39,7 @@ const ProductPage = () => {
 
   if (!producto) {
     return (
-      <div className="product-detail-page product-detail-empty">
+      <div className={`${styles.page} ${styles.empty}`}>
         <Card>
           <Title level={3}>Producto no encontrado</Title>
           <Paragraph type="secondary">
@@ -69,10 +70,10 @@ const ProductPage = () => {
   };
 
   return (
-    <div className="product-detail-page">
-      <div className="product-detail-container">
+    <div className={styles.page}>
+      <div className={styles.container}>
         <Breadcrumb
-          className="product-breadcrumb"
+          className={styles.breadcrumb}
           items={[
             {
               title: (
@@ -90,17 +91,17 @@ const ProductPage = () => {
 
         <Row gutter={[32, 32]} align="top">
           <Col xs={24} md={12}>
-            <div className="product-gallery">
+            <div className={styles.gallery}>
               <Image.PreviewGroup>
-                <div className="product-main-image-wrap">
+                <div className={styles.mainImageWrap}>
                   <Image
                     src={mainImage}
                     alt={producto.nombre_producto}
-                    className="product-main-image"
+                    className={styles.mainImage}
                   />
                 </div>
                 {imagenesProducto.length > 1 && (
-                  <div className="product-thumbnails">
+                  <div className={styles.thumbnails}>
                     {imagenesProducto.map((img) => (
                       <Image
                         key={img.id_imagen ?? img.url}
@@ -108,7 +109,7 @@ const ProductPage = () => {
                         alt={`Vista de ${producto.nombre_producto}`}
                         width={80}
                         height={80}
-                        className="product-thumbnail"
+                        className={styles.thumbnail}
                       />
                     ))}
                   </div>
@@ -118,7 +119,7 @@ const ProductPage = () => {
           </Col>
 
           <Col xs={24} md={12}>
-            <div className="product-info">
+            <div className={styles.info}>
               <Space wrap>
                 <Tag color={inStock ? "success" : "error"} icon={<CheckCircleOutlined />}>
                   {inStock ? `${producto.stock} disponibles` : "Agotado"}
@@ -126,21 +127,21 @@ const ProductPage = () => {
                 <Tag color="green">Planta</Tag>
               </Space>
 
-              <Title level={2} className="product-detail-title">
+              <Title level={2} className={styles.title}>
                 {producto.nombre_producto}
               </Title>
 
-              <Title level={3} className="product-detail-price">
+              <Title level={3} className={styles.price}>
                 ${producto.precio.toFixed(2)}
               </Title>
 
-              <Paragraph className="product-detail-description">
+              <Paragraph className={styles.description}>
                 {producto.descripcion}
               </Paragraph>
 
               <Divider />
 
-              <div className="product-detail-actions">
+              <div className={styles.actions}>
                 <Text strong>Cantidad</Text>
                 <InputNumber
                   min={1}
@@ -149,10 +150,10 @@ const ProductPage = () => {
                   onChange={(val) => setQuantity(val ?? 1)}
                   disabled={!inStock}
                   size="large"
-                  className="product-quantity-input"
+                  className={styles.quantityInput}
                 />
 
-                <Space wrap size="middle" className="product-buttons">
+                <Space wrap size="middle" className={styles.buttons}>
                   <Button
                     type="primary"
                     size="large"
@@ -172,7 +173,7 @@ const ProductPage = () => {
                 </Space>
               </div>
 
-              <Card size="small" className="product-tip-card">
+              <Card size="small" className={styles.tipCard}>
                 <Text type="secondary">
                   🌱 Todas nuestras plantas se preparan con cuidado antes del envío.
                   Consulta nuestras guías de cuidado según el tipo de planta.

@@ -11,7 +11,8 @@ E-commerce de plantas construido con **React 18**, **TypeScript**, **Vite** y **
 | Estado cliente | React Context (auth, carrito) |
 | Validación | Zod |
 | Routing | React Router 7 (lazy routes) |
-| Estilos | CSS Modules (componentes) + theme Ant + `App.css` (layout legacy en migración) |
+| Estilos | CSS Modules + theme Ant + `global.css` |
+| Tests | Vitest + Testing Library + jsdom |
 
 ## Estructura (feature-first)
 
@@ -20,7 +21,8 @@ src/
 ├── app/                    # Shell: App, providers, router
 │   ├── App.tsx
 │   ├── providers/AppProviders.tsx
-│   └── router/AppRouter.tsx
+│   ├── router/AppRouter.tsx
+│   └── styles/AppShell.module.css
 ├── features/               # Dominios de negocio
 │   ├── catalog/            # Catálogo, filtros, API + queries
 │   ├── home/
@@ -34,9 +36,12 @@ src/
 │   ├── components/         # ProductCard, Navbar, Footer…
 │   ├── context/            # Auth, Cart (solo estado cliente)
 │   ├── hooks/
-│   ├── lib/                # api, queryClient, alerts
+│   ├── lib/                # api, queryClient, alerts, cartUtils
 │   ├── schemas/            # Contratos Zod
 │   └── styles/global.css
+├── test/                   # Utilidades y setup de tests
+│   ├── setup.ts
+│   └── test-utils.tsx
 └── theme/plantTheme.ts     # Tokens Ant Design
 ```
 
@@ -64,6 +69,8 @@ pnpm install
 pnpm dev      # http://localhost:5173
 pnpm build
 pnpm lint
+pnpm test     # Vitest watch
+pnpm test:run # CI — suite completa
 pnpm preview
 ```
 
@@ -72,15 +79,60 @@ pnpm preview
 - **Productos, categorías e imágenes**: TanStack Query (`useCatalog`, `useProductsQuery`, etc.)
 - **Carrito**: `CartContext` + `localStorage`
 - **Auth**: JWT en `localStorage` vía `AuthContext`
+- **Checkout pendiente**: `sessionStorage` vía `checkoutStorage`
 
 Stale time por defecto: 5–10 minutos para catálogo.
 
 ## CSS
 
 1. **Ant Design `ConfigProvider`** — colores, tipografía, radios (`theme/plantTheme.ts`)
-2. **CSS Modules** — estilos scoped por componente (ej. `ProductCard.module.css`)
-3. **`App.css`** — layout de páginas (en migración gradual a modules por feature)
-4. **`shared/styles/global.css`** — reset y variables CSS
+2. **CSS Modules** — estilos scoped por componente/página (`*.module.css`)
+3. **`shared/styles/global.css`** — reset, variables CSS y estilos base (`body`, enlaces)
+
+> La migración desde `App.css` está **completa**. Ya no hay hoja global monolítica por página.
+
+### Módulos CSS por área
+
+| Área | Archivos |
+|------|----------|
+| App shell | `app/styles/AppShell.module.css` |
+| Shared | `Navbar`, `Footer`, `ProductCard`, `Carousel`, `CardCarousel` |
+| Home | `Home.module.css` |
+| Catalog | `CatalogPage`, `CategoryMenu`, `SearchBar`, `ProductFilters` |
+| Product | `ProductPage.module.css` |
+| Cart | `CartPage`, `CartDrawer` |
+| Checkout | `CheckoutPage`, `PaymentPage` |
+| Auth | `auth.module.css`, `ProfilePage.module.css` |
+| Blog | `BlogsPage`, `BlogPostPage` |
+| Admin | `AdminPanel.module.css` (botones legacy) |
+
+## Tests
+
+Suite con **Vitest** y **Testing Library**. Configuración en `vite.config.ts` (`environment: jsdom`).
+
+### Infraestructura
+
+| Archivo | Rol |
+|---------|-----|
+| `src/test/setup.ts` | `jest-dom`, mocks de `matchMedia` y `ResizeObserver` |
+| `src/test/test-utils.tsx` | `renderWithProviders`, `seedCart`, `seedAuthenticatedUser` |
+
+`renderWithProviders` envuelve componentes con `QueryClient`, `ConfigProvider`, `CartProvider` y `MemoryRouter`.
+
+### Cobertura actual (24 tests)
+
+| Archivo | Tipo | Qué valida |
+|---------|------|------------|
+| `shared/lib/cartUtils.test.ts` | Unitario | Lógica pura del carrito (añadir, quitar, totales) |
+| `shared/components/ProductCard.test.tsx` | Componente | Render, descuento, interacciones Ver/Añadir, stock agotado |
+| `features/cart/pages/CartPage.test.tsx` | Componente | Carrito vacío, listado, total y cantidades |
+| `features/checkout/pages/CheckoutPage.test.tsx` | Integración | Redirección sin sesión, resumen, prellenado, guardado y navegación al pago |
+
+Ejecutar solo un archivo:
+
+```bash
+pnpm test:run src/shared/components/ProductCard.test.tsx
+```
 
 ## Rutas principales
 
@@ -89,13 +141,15 @@ Stale time por defecto: 5–10 minutos para catálogo.
 | `/` | Home |
 | `/catalogo` | Catalog |
 | `/product/:id` | Product |
-| `/cart`, checkout | Cart / Checkout |
+| `/cart`, `/checkout`, `/checkout/payment` | Cart / Checkout |
 | `/login`, `/register`, `/profile` | Auth |
 | `/admin` | Admin (rol admin) |
-| `/blogs` | Blog |
+| `/blogs`, `/blogs/:slug` | Blog |
 
 ## Próximos pasos sugeridos
 
-- Migrar secciones de `App.css` a `*.module.css` por feature
-- Tests con Vitest + Testing Library en cart y checkout
-- Code-splitting adicional por feature admin
+- **Tests de componentes**: `PaymentPage`, `CartDrawer`, flujos de login/registro y `AdminPanel`
+- **AdminPanel**: completar CSS Module del layout (`sider`, `content`) y reemplazar estilos inline
+- **Bundle**: `manualChunks` en Vite para reducir el chunk principal (~735 KB)
+- **E2E opcional**: Playwright o Cypress para flujo completo catálogo → carrito → pago
+- **Accesibilidad**: auditoría con axe en páginas críticas (checkout, catálogo)

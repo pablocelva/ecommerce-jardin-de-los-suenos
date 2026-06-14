@@ -2,12 +2,15 @@ import { useRef, type ReactNode } from "react";
 import { Button, Carousel } from "antd";
 import type { CarouselProps, CarouselRef } from "antd/es/carousel";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
+import styles from "./CardCarousel.module.css";
 
 interface CardCarouselProps extends CarouselProps {
   className?: string;
   autoplayInterval?: number;
   children: ReactNode;
 }
+
+export const CARD_CAROUSEL_SLIDE_CLASS = styles.slide;
 
 const CardCarousel = ({
   className = "",
@@ -19,13 +22,13 @@ const CardCarousel = ({
   const carouselRef = useRef<CarouselRef>(null);
 
   return (
-    <div className={`card-carousel-wrapper ${className}`.trim()}>
+    <div className={`${styles.wrapper} ${className}`.trim()}>
       <Button
         type="default"
         shape="circle"
         size="large"
         icon={<LeftOutlined />}
-        className="card-carousel-nav card-carousel-nav-prev"
+        className={`${styles.nav} ${styles.navPrev}`}
         aria-label="Anterior"
         onClick={() => carouselRef.current?.prev()}
       />
@@ -36,7 +39,7 @@ const CardCarousel = ({
         dots={dots}
         pauseOnHover
         {...carouselProps}
-        className={`card-carousel ${className}`.trim()}
+        className={`${styles.carousel} ${className}`.trim()}
       >
         {children}
       </Carousel>
@@ -45,7 +48,7 @@ const CardCarousel = ({
         shape="circle"
         size="large"
         icon={<RightOutlined />}
-        className="card-carousel-nav card-carousel-nav-next"
+        className={`${styles.nav} ${styles.navNext}`}
         aria-label="Siguiente"
         onClick={() => carouselRef.current?.next()}
       />

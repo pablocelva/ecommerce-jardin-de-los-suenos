@@ -6,6 +6,10 @@ import {
   type ReactNode,
 } from "react";
 import type { CartItem, Product } from "@/shared/schemas";
+import {
+  addProductToCart,
+  removeProductFromCart,
+} from "@/shared/lib/cartUtils";
 
 interface CartContextValue {
   cart: CartItem[];
@@ -34,19 +38,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   }, [cart]);
 
   const addToCart = (product: Product) => {
-    setCart((prevCart) => {
-      const existingProductIndex = prevCart.findIndex(
-        (item) => item.id_producto === product.id_producto,
-      );
-
-      if (existingProductIndex >= 0) {
-        const updatedCart = [...prevCart];
-        updatedCart[existingProductIndex].quantity += 1;
-        return updatedCart;
-      }
-
-      return [...prevCart, { ...product, quantity: 1 }];
-    });
+    setCart((prevCart) => addProductToCart(prevCart, product));
   };
 
   const updateCart = (updatedCart: CartItem[]) => {
@@ -54,9 +46,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const removeFromCart = (productId: number) => {
-    setCart((prevCart) =>
-      prevCart.filter((product) => product.id_producto !== productId),
-    );
+    setCart((prevCart) => removeProductFromCart(prevCart, productId));
   };
 
   const clearCart = () => {

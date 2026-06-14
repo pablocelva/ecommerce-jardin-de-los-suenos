@@ -1,0 +1,147 @@
+.shell {
+  background: #f8faf7;
+}
+
+.page {
+  display: flex;
+  min-height: calc(100vh - 64px);
+  background: #f8faf7;
+}
+
+.hero {
+  flex: 1;
+  display: none;
+  background:
+    linear-gradient(135deg, rgba(27, 67, 50, 0.92), rgba(45, 106, 79, 0.85)),
+    url("https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=1200&q=80")
+      center / cover no-repeat;
+  align-items: center;
+  justify-content: center;
+  padding: 48px;
+}
+
+.heroContent {
+  max-width: 400px;
+  text-align: center;
+}
+
+.heroIcon {
+  font-size: 64px !important;
+  color: #95d5b2 !important;
+  margin-bottom: 16px;
+}
+
+.heroTitle {
+  color: #fff !important;
+  margin-bottom: 12px !important;
+}
+
+.heroText {
+  color: rgba(255, 255, 255, 0.85) !important;
+  font-size: 1.05rem;
+  margin: 0 !important;
+}
+
+.panel {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.card {
+  width: 100%;
+  max-width: 440px;
+  border-radius: 20px !important;
+  box-shadow: 0 8px 40px rgba(27, 67, 50, 0.1) !important;
+  border: 1px solid #e9f5ee !important;
+}
+
+.card :global(.ant-card-body) {
+  padding: 22px 24px !important;
+}
+
+.cardWide {
+  max-width: 540px;
+}
+
+.cardSubtitle {
+  margin-bottom: 14px !important;
+  font-size: 0.92rem;
+}
+
+.cardFooter {
+  text-align: center;
+  margin: 14px 0 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.link {
+  color: #2d6a4f !important;
+  font-weight: 600;
+}
+
+.link:hover {
+  color: #40916c !important;
+}
+
+.submitBtn {
+  height: 42px !important;
+  font-weight: 600;
+  border-radius: 10px !important;
+  margin-top: 0;
+}
+
+.cardTitle {
+  margin-bottom: 4px !important;
+  color: #1b4332 !important;
+  font-size: 1.35rem !important;
+}
+
+.form:global(.ant-form-vertical) :global(.ant-form-item) {
+  margin-bottom: 10px;
+}
+
+.form :global(.ant-form-item-label) {
+  padding-bottom: 4px;
+}
+
+.form :global(.ant-form-item-label > label) {
+  height: auto;
+  font-size: 13px;
+  color: #2d6a4f;
+  font-weight: 500;
+}
+
+.formRow {
+  display: flex;
+  gap: 10px;
+}
+
+.formCol {
+  flex: 1;
+  min-width: 0;
+}
+
+.formSubmit {
+  margin-bottom: 0;
+  margin-top: 2px;
+}
+
+.page :global(.ant-input-affix-wrapper),
+.page :global(.ant-input) {
+  border-radius: 10px;
+}
+
+@media (min-width: 992px) {
+  .hero {
+    display: flex;
+    min-height: calc(100vh - 64px);
+  }
+
+  .panel {
+    min-height: calc(100vh - 64px);
+    padding: 32px 24px;
+  }
+}

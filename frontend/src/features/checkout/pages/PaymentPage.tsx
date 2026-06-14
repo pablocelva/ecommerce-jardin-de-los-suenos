@@ -29,6 +29,7 @@ import {
   type PaymentMethod,
 } from "@/shared/lib/checkoutStorage";
 import { showError, showSuccess } from "@/shared/lib/alerts";
+import styles from "./PaymentPage.module.css";
 
 const { Title, Text, Paragraph } = Typography;
 
@@ -48,8 +49,8 @@ const PaymentPage = () => {
 
   if (!pending || cart.length === 0) {
     return (
-      <div className="payment-page">
-        <div className="payment-container payment-loading">
+      <div className={styles.page}>
+        <div className={`${styles.container} ${styles.loading}`}>
           <Spin size="large" tip="Redirigiendo…" />
         </div>
       </div>
@@ -60,7 +61,6 @@ const PaymentPage = () => {
     setProcessing(true);
 
     try {
-      // Simula latencia del procesador de pagos (Stripe / Khipu)
       await new Promise((resolve) => setTimeout(resolve, 1500));
 
       const { cartSnapshot: _, ciudad: __, ...orderData } = pending;
@@ -92,10 +92,10 @@ const PaymentPage = () => {
   const selectedMethod = PAYMENT_METHODS.find((m) => m.id === paymentMethod);
 
   return (
-    <div className="payment-page">
-      <div className="payment-container">
+    <div className={styles.page}>
+      <div className={styles.container}>
         <Breadcrumb
-          className="payment-breadcrumb"
+          className={styles.breadcrumb}
           items={[
             {
               title: (
@@ -111,30 +111,34 @@ const PaymentPage = () => {
           ]}
         />
 
-        <Title level={2} className="payment-title">
+        <Title level={2} className={styles.title}>
           <LockOutlined /> Método de pago
         </Title>
-        <Paragraph type="secondary" className="payment-subtitle">
+        <Paragraph type="secondary" className={styles.subtitle}>
           Selecciona un proveedor. Este paso simula la integración con Stripe o
           Khipu.
         </Paragraph>
 
         <Row gutter={[24, 24]}>
           <Col xs={24} lg={14}>
-            <Card className="payment-card" title="Elige cómo pagar">
+            <Card className={styles.card} title="Elige cómo pagar">
               <Radio.Group
                 value={paymentMethod}
                 onChange={(e) => setPaymentMethod(e.target.value as PaymentMethod)}
-                className="payment-methods"
+                className={styles.methods}
               >
                 {PAYMENT_METHODS.map((method) => (
-                  <Radio key={method.id} value={method.id} className="payment-method-option">
-                    <div className="payment-method-content">
-                      <div className="payment-method-header">
-                        <CreditCardOutlined className="payment-method-icon" />
+                  <Radio
+                    key={method.id}
+                    value={method.id}
+                    className={styles.methodOption}
+                  >
+                    <div className={styles.methodContent}>
+                      <div className={styles.methodHeader}>
+                        <CreditCardOutlined className={styles.methodIcon} />
                         <div>
                           <Text strong>{method.name}</Text>
-                          <Tag color="green" className="payment-method-badge">
+                          <Tag color="green" className={styles.methodBadge}>
                             {method.badge}
                           </Tag>
                         </div>
@@ -147,7 +151,7 @@ const PaymentPage = () => {
 
               <Divider />
 
-              <div className="payment-simulation-note">
+              <div className={styles.simulationNote}>
                 <SafetyCertificateOutlined />
                 <Text type="secondary">
                   Pago simulado — no se realizará ningún cargo real. En
@@ -159,25 +163,25 @@ const PaymentPage = () => {
           </Col>
 
           <Col xs={24} lg={10}>
-            <Card className="payment-summary-card" title="Resumen">
-              <div className="payment-summary-row">
+            <Card className={styles.summaryCard} title="Resumen">
+              <div className={styles.summaryRow}>
                 <Text>Cliente</Text>
                 <Text>{pending.nombre_cliente}</Text>
               </div>
-              <div className="payment-summary-row">
+              <div className={styles.summaryRow}>
                 <Text>Productos</Text>
                 <Text>{pending.detalle.length}</Text>
               </div>
-              <div className="payment-summary-row">
+              <div className={styles.summaryRow}>
                 <Text>Método</Text>
                 <Text strong>{selectedMethod?.name}</Text>
               </div>
 
               <Divider />
 
-              <div className="payment-summary-total">
+              <div className={styles.summaryTotal}>
                 <Text strong>Total a pagar</Text>
-                <Title level={3} className="payment-summary-price">
+                <Title level={3} className={styles.summaryPrice}>
                   ${pending.total.toFixed(2)}
                 </Title>
               </div>
@@ -188,7 +192,7 @@ const PaymentPage = () => {
                 block
                 loading={processing}
                 onClick={handleSimulatePayment}
-                className="payment-submit-btn"
+                className={styles.submitBtn}
               >
                 {processing
                   ? "Procesando pago…"

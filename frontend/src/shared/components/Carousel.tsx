@@ -1,4 +1,5 @@
 import { Carousel } from "antd";
+import styles from "./Carousel.module.css";
 
 export interface BannerSlide {
   imagen: string;
@@ -35,9 +36,9 @@ const BannerCarousel = ({ slides = HERO_SLIDES }: BannerCarouselProps) => {
   return (
     <Carousel autoplay effect="fade">
       {slides.map((item, index) => (
-        <div key={index} className="banner-slide">
-          <img src={item.imagen} alt={item.titulo} className="banner-img" />
-          <div className="banner-text">
+        <div key={index} className={styles.slide}>
+          <img src={item.imagen} alt={item.titulo} className={styles.img} />
+          <div className={styles.text}>
             <h2>{item.titulo}</h2>
             <p>{item.descripcion}</p>
           </div>

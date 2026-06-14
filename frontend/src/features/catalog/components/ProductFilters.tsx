@@ -8,6 +8,7 @@ import {
   Button,
 } from "antd";
 import { FilterOutlined, ReloadOutlined } from "@ant-design/icons";
+import styles from "./ProductFilters.module.css";
 
 export type SortOption =
   | "default"
@@ -42,7 +43,7 @@ const ProductFilters = ({
   const panelContent = (
     <Space direction="vertical" size="large" style={{ width: "100%" }}>
       <div>
-        <Typography.Text type="secondary" className="filter-label">
+        <Typography.Text type="secondary" className={styles.label}>
           Ordenar por
         </Typography.Text>
         <Radio.Group
@@ -59,7 +60,7 @@ const ProductFilters = ({
       </div>
 
       <div>
-        <Typography.Text type="secondary" className="filter-label">
+        <Typography.Text type="secondary" className={styles.label}>
           Rango de precio
         </Typography.Text>
         <Slider
@@ -79,7 +80,7 @@ const ProductFilters = ({
         </Typography.Text>
       </div>
 
-      <div className="filter-switch-row">
+      <div className={styles.switchRow}>
         <Typography.Text>Solo productos en stock</Typography.Text>
         <Switch
           checked={filters.inStockOnly}
@@ -94,8 +95,8 @@ const ProductFilters = ({
   );
 
   return (
-    <div className="product-filters">
-      <div className="product-filters-header">
+    <div className={styles.filters}>
+      <div className={styles.header}>
         <Typography.Text strong>
           {resultCount === 1
             ? "1 producto encontrado"
@@ -104,12 +105,12 @@ const ProductFilters = ({
       </div>
       <Collapse
         bordered={false}
-        className="filters-collapse"
+        className={styles.collapse}
         items={[
           {
             key: "filters",
             label: (
-              <span className="filters-collapse-label">
+              <span className={styles.collapseLabel}>
                 <FilterOutlined /> Filtros y orden
               </span>
             ),

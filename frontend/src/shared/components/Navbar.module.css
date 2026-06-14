@@ -1,0 +1,117 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  height: 64px;
+  background-color: #1f7d53;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 24px 0 40px;
+  gap: 12px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  min-width: 0;
+}
+
+.brandTitle {
+  margin: 0 !important;
+  font-size: 28px !important;
+  line-height: 1.2 !important;
+  display: flex !important;
+  align-items: center;
+  gap: 8px;
+  color: #f3f3f3 !important;
+  white-space: nowrap;
+}
+
+.brandIcon {
+  font-size: 40px;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.brand:hover .brandTitle {
+  color: #fff !important;
+}
+
+.desktopNav {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  min-width: 0;
+}
+
+.desktopNav :global(.ant-menu-horizontal) {
+  border-bottom: none;
+  line-height: 62px;
+}
+
+.desktopNav :global(.ant-menu-item) {
+  color: rgba(255, 255, 255, 0.92) !important;
+}
+
+.desktopNav :global(.ant-menu-item-selected) {
+  color: #fff !important;
+}
+
+.desktopNav :global(.ant-menu-item:hover) {
+  color: #1c3224 !important;
+}
+
+.actions {
+  flex-shrink: 0;
+}
+
+.logoutBtn {
+  color: #fff !important;
+}
+
+.logoutBtn:hover {
+  color: #b7e4c7 !important;
+}
+
+@media (max-width: 1199px) {
+  .inner {
+    padding: 0 16px 0 24px;
+  }
+
+  .brandTitle {
+    font-size: 22px !important;
+  }
+
+  .brandIcon {
+    font-size: 34px;
+  }
+}
+
+@media (max-width: 575px) {
+  .inner {
+    padding: 0 12px;
+  }
+
+  .brandTitle {
+    font-size: 18px !important;
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .brandIcon {
+    font-size: 30px;
+  }
+}

@@ -1,5 +1,6 @@
 import { Input } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
+import styles from "./SearchBar.module.css";
 
 interface SearchBarProps {
   onSearch: (term: string) => void;
@@ -16,7 +17,7 @@ const SearchBar = ({ onSearch, value }: SearchBarProps) => {
       enterButton={<SearchOutlined />}
       onChange={(e) => onSearch(e.target.value)}
       onSearch={onSearch}
-      className="catalog-search"
+      className={styles.search}
     />
   );
 };

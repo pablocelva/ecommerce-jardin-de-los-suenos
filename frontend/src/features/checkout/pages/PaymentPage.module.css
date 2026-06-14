@@ -1,0 +1,134 @@
+.page {
+  background: #f8faf7;
+  min-height: calc(100vh - 64px);
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 320px;
+}
+
+.breadcrumb {
+  margin-bottom: 16px;
+}
+
+.breadcrumb :global(a) {
+  color: #2d6a4f;
+}
+
+.title {
+  color: #1b4332 !important;
+  margin-bottom: 4px !important;
+}
+
+.subtitle {
+  margin-bottom: 24px !important;
+}
+
+.card,
+.summaryCard {
+  border-radius: 16px !important;
+  border: 1px solid #e9f5ee !important;
+}
+
+.methods {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.methodOption {
+  width: 100%;
+  margin: 0 !important;
+  padding: 16px;
+  border: 1px solid #e9f5ee;
+  border-radius: 12px;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.methodOption:global(.ant-radio-wrapper-checked) {
+  border-color: #52b788;
+  background: #f0fdf4;
+}
+
+.methodContent {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-left: 8px;
+}
+
+.methodHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.methodIcon {
+  font-size: 22px;
+  color: #2d6a4f;
+}
+
+.methodBadge {
+  margin-left: 8px;
+}
+
+.simulationNote {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 14px;
+  background: #f0fdf4;
+  border-radius: 10px;
+  border: 1px solid #bbf7d0;
+}
+
+.simulationNote :global(.anticon) {
+  color: #2d6a4f;
+  margin-top: 2px;
+}
+
+.summaryCard {
+  position: sticky;
+  top: 88px;
+}
+
+.summaryRow {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  gap: 12px;
+}
+
+.summaryTotal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.summaryPrice {
+  margin: 0 !important;
+  color: #2d6a4f !important;
+}
+
+.submitBtn {
+  height: 48px !important;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+@media (max-width: 991px) {
+  .summaryCard {
+    position: static;
+  }
+}

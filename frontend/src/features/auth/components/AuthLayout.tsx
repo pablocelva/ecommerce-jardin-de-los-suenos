@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { Card, Typography } from "antd";
 import { BranchesOutlined } from "@ant-design/icons";
+import styles from "../styles/auth.module.css";
 
 const { Title, Paragraph } = Typography;
 
@@ -20,29 +21,29 @@ const AuthLayout = ({
   wide = false,
 }: AuthLayoutProps) => {
   return (
-    <div className="auth-page">
-      <div className="auth-hero">
-        <div className="auth-hero-content">
-          <BranchesOutlined className="auth-hero-icon" />
-          <Title level={2} className="auth-hero-title">
+    <div className={styles.page}>
+      <div className={styles.hero}>
+        <div className={styles.heroContent}>
+          <BranchesOutlined className={styles.heroIcon} />
+          <Title level={2} className={styles.heroTitle}>
             Jardin de los Sueños
           </Title>
-          <Paragraph className="auth-hero-text">
+          <Paragraph className={styles.heroText}>
             Tu tienda de confianza para plantas de interior, exterior y
             decoración natural.
           </Paragraph>
         </div>
       </div>
 
-      <div className="auth-panel">
+      <div className={styles.panel}>
         <Card
-          className={`auth-card${wide ? " auth-card-wide" : ""}`}
+          className={`${styles.card}${wide ? ` ${styles.cardWide}` : ""}`}
           bordered={false}
         >
-          <Title level={3} className="auth-card-title">
+          <Title level={3} className={styles.cardTitle}>
             {title}
           </Title>
-          <Paragraph type="secondary" className="auth-card-subtitle">
+          <Paragraph type="secondary" className={styles.cardSubtitle}>
             {subtitle}
           </Paragraph>
           {children}

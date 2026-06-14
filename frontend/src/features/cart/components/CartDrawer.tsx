@@ -8,6 +8,11 @@ import {
 import { useNavigate } from "react-router-dom";
 import { useCart } from "@/shared/context/CartContext";
 import { useCatalog } from "@/features/catalog/api/catalog.queries";
+import {
+  calculateCartTotal,
+  changeProductQuantity,
+} from "@/shared/lib/cartUtils";
+import styles from "./CartDrawer.module.css";
 
 const { Text, Title } = Typography;
 
@@ -25,23 +30,13 @@ const CartDrawer = () => {
   const { imagenes } = useCatalog();
   const navigate = useNavigate();
 
-  const total = cart.reduce(
-    (sum, item) => sum + item.precio * item.quantity,
-    0,
-  );
+  const total = calculateCartTotal(cart);
 
   const getImage = (productId: number) =>
     imagenes.find((img) => img.id_producto === productId)?.url ?? FALLBACK_IMAGE;
 
-  const changeQuantity = (productId: number, delta: number) => {
-    const updated = cart
-      .map((item) => {
-        if (item.id_producto !== productId) return item;
-        const nextQty = item.quantity + delta;
-        return nextQty > 0 ? { ...item, quantity: nextQty } : item;
-      })
-      .filter((item) => item.quantity > 0);
-    updateCart(updated);
+  const handleQuantityChange = (productId: number, delta: number) => {
+    updateCart(changeProductQuantity(cart, productId, delta));
   };
 
   const handleViewCart = () => {
@@ -52,7 +47,7 @@ const CartDrawer = () => {
   return (
     <Drawer
       title={
-        <span className="cart-drawer-title">
+        <span className={styles.drawerTitle}>
           <ShoppingCartOutlined /> Tu carrito
         </span>
       }
@@ -60,13 +55,12 @@ const CartDrawer = () => {
       width={400}
       onClose={closeCartDrawer}
       open={cartDrawerOpen}
-      className="cart-drawer"
       footer={
         cart.length > 0 ? (
-          <div className="cart-drawer-footer">
-            <div className="cart-drawer-total">
+          <div className={styles.footer}>
+            <div className={styles.total}>
               <Text>Total</Text>
-              <Title level={4} className="cart-drawer-total-price">
+              <Title level={4} className={styles.totalPrice}>
                 ${total.toFixed(2)}
               </Title>
             </div>
@@ -81,34 +75,34 @@ const CartDrawer = () => {
         <Empty
           description="Tu carrito está vacío"
           image={Empty.PRESENTED_IMAGE_SIMPLE}
-          className="cart-drawer-empty"
+          className={styles.empty}
         />
       ) : (
-        <ul className="cart-drawer-list">
+        <ul className={styles.list}>
           {cart.map((item) => (
-            <li key={item.id_producto} className="cart-drawer-item">
+            <li key={item.id_producto} className={styles.item}>
               <img
                 src={getImage(item.id_producto)}
                 alt={item.nombre_producto}
-                className="cart-drawer-item-img"
+                className={styles.itemImg}
               />
-              <div className="cart-drawer-item-info">
-                <Text strong className="cart-drawer-item-name">
+              <div className={styles.itemInfo}>
+                <Text strong className={styles.itemName}>
                   {item.nombre_producto}
                 </Text>
                 <Text type="secondary">${item.precio.toFixed(2)} c/u</Text>
-                <div className="cart-drawer-item-actions">
+                <div className={styles.itemActions}>
                   <Button
                     size="small"
                     icon={<MinusOutlined />}
-                    onClick={() => changeQuantity(item.id_producto, -1)}
+                    onClick={() => handleQuantityChange(item.id_producto, -1)}
                     aria-label="Disminuir cantidad"
                   />
                   <Text>{item.quantity}</Text>
                   <Button
                     size="small"
                     icon={<PlusOutlined />}
-                    onClick={() => changeQuantity(item.id_producto, 1)}
+                    onClick={() => handleQuantityChange(item.id_producto, 1)}
                     aria-label="Aumentar cantidad"
                   />
                   <Button
@@ -121,7 +115,7 @@ const CartDrawer = () => {
                   />
                 </div>
               </div>
-              <Text strong className="cart-drawer-item-subtotal">
+              <Text strong className={styles.itemSubtotal}>
                 ${(item.precio * item.quantity).toFixed(2)}
               </Text>
             </li>

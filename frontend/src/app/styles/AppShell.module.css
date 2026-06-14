@@ -1,0 +1,17 @@
+.layout {
+  min-height: 100vh;
+  background: #f8faf7;
+}
+
+.content {
+  padding-top: 64px;
+  min-height: calc(100vh - 64px);
+}
+
+.routeLoading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+  padding: 48px;
+}

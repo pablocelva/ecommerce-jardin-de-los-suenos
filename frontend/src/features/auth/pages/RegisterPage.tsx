@@ -12,6 +12,7 @@ import AuthPageShell from "@/features/auth/components/AuthPageShell";
 import { api, ApiError } from "@/shared/lib/api";
 import { registerSchema } from "@/shared/schemas";
 import { showSuccess } from "@/shared/lib/alerts";
+import authStyles from "../styles/auth.module.css";
 
 const RegisterPage = () => {
   const navigate = useNavigate();
@@ -55,9 +56,9 @@ const RegisterPage = () => {
         subtitle="Completa tus datos para empezar."
         wide
         footer={
-          <Typography.Paragraph className="auth-card-footer">
+          <Typography.Paragraph className={authStyles.cardFooter}>
             ¿Ya tienes cuenta?{" "}
-            <Link to="/login" className="auth-link">
+            <Link to="/login" className={authStyles.link}>
               Inicia sesión
             </Link>
           </Typography.Paragraph>
@@ -69,14 +70,14 @@ const RegisterPage = () => {
           onFinish={handleSubmit}
           requiredMark={false}
           size="middle"
-          className="auth-form auth-form-register"
+          className={authStyles.form}
         >
-        <div className="auth-form-row">
+        <div className={authStyles.formRow}>
           <Form.Item
             name="nombre"
             label="Nombre"
             rules={[{ required: true, message: "Ingresa tu nombre" }]}
-            className="auth-form-col"
+            className={authStyles.formCol}
           >
             <Input prefix={<UserOutlined />} placeholder="Nombre" />
           </Form.Item>
@@ -84,13 +85,13 @@ const RegisterPage = () => {
             name="apellido"
             label="Apellido"
             rules={[{ required: true, message: "Ingresa tu apellido" }]}
-            className="auth-form-col"
+            className={authStyles.formCol}
           >
             <Input prefix={<UserOutlined />} placeholder="Apellido" />
           </Form.Item>
         </div>
 
-        <div className="auth-form-row">
+        <div className={authStyles.formRow}>
           <Form.Item
             name="email"
             label="Correo"
@@ -98,7 +99,7 @@ const RegisterPage = () => {
               { required: true, message: "Ingresa tu correo" },
               { type: "email", message: "Correo inválido" },
             ]}
-            className="auth-form-col"
+            className={authStyles.formCol}
           >
             <Input
               prefix={<MailOutlined />}
@@ -110,7 +111,7 @@ const RegisterPage = () => {
             name="telefono"
             label="Teléfono"
             rules={[{ required: true, message: "Ingresa tu teléfono" }]}
-            className="auth-form-col"
+            className={authStyles.formCol}
           >
             <Input prefix={<PhoneOutlined />} placeholder="+56 9 1234 5678" />
           </Form.Item>
@@ -124,12 +125,12 @@ const RegisterPage = () => {
           <Input prefix={<HomeOutlined />} placeholder="Calle, número, comuna" />
         </Form.Item>
 
-        <div className="auth-form-row">
+        <div className={authStyles.formRow}>
           <Form.Item
             name="password"
             label="Contraseña"
             rules={[{ required: true, message: "Ingresa una contraseña" }]}
-            className="auth-form-col"
+            className={authStyles.formCol}
           >
             <Input.Password prefix={<LockOutlined />} placeholder="Contraseña" />
           </Form.Item>
@@ -137,18 +138,18 @@ const RegisterPage = () => {
             name="passwordconfirm"
             label="Confirmar"
             rules={[{ required: true, message: "Confirma tu contraseña" }]}
-            className="auth-form-col"
+            className={authStyles.formCol}
           >
             <Input.Password prefix={<LockOutlined />} placeholder="Repetir" />
           </Form.Item>
         </div>
 
-        <Form.Item className="auth-form-submit">
+        <Form.Item className={authStyles.formSubmit}>
           <Button
             type="primary"
             htmlType="submit"
             block
-            className="auth-submit-btn"
+            className={authStyles.submitBtn}
           >
             Registrarse
           </Button>

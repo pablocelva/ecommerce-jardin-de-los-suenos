@@ -16,6 +16,7 @@ import { NavLink, useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "@/shared/context/AuthContext";
 import { useCart } from "@/shared/context/CartContext";
 import CartDrawer from "@/features/cart/components/CartDrawer";
+import styles from "./Navbar.module.css";
 
 const { useBreakpoint } = Grid;
 
@@ -103,26 +104,26 @@ const Navbar = () => {
   );
 
   return (
-    <header className="navbar">
-      <div className="navbar-inner">
+    <header className={styles.navbar}>
+      <div className={styles.inner}>
         <NavLink
           to="/"
-          className="navbar-brand nav-link-home"
+          className={styles.brand}
           onClick={() => setDrawerOpen(false)}
         >
-          <Typography.Title level={3} className="navbar-brand-title">
-            <BranchesOutlined className="navbar-brand-icon" />
+          <Typography.Title level={3} className={styles.brandTitle}>
+            <BranchesOutlined className={styles.brandIcon} />
             Jardin de los Sueños
           </Typography.Title>
         </NavLink>
 
         {!isCompactNav && (
-          <nav className="navbar-desktop-nav" aria-label="Navegación principal">
+          <nav className={styles.desktopNav} aria-label="Navegación principal">
             {menuContent}
           </nav>
         )}
 
-        <Space size="middle" className="navbar-actions">
+        <Space size="middle" className={styles.actions}>
           {isAuthenticated && userRole === "cliente" && (
             <Badge count={cartCount} size="small" offset={[-2, 2]}>
               <Button
@@ -139,7 +140,7 @@ const Navbar = () => {
               type="text"
               icon={<LogoutOutlined style={{ color: "#fff" }} />}
               onClick={handleLogout}
-              className={isCompactNav ? "" : "navbar-logout-btn"}
+              className={isCompactNav ? undefined : styles.logoutBtn}
             >
               {!isCompactNav && "Cerrar sesión"}
             </Button>
@@ -161,7 +162,6 @@ const Navbar = () => {
         placement="right"
         onClose={() => setDrawerOpen(false)}
         open={drawerOpen}
-        className="navbar-drawer"
         styles={{ body: { padding: 0, background: "#1b4332" } }}
         headerStyle={{ background: "#1b4332", color: "#fff", borderBottom: "1px solid rgba(255,255,255,0.1)" }}
       >

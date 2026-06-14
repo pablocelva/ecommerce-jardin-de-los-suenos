@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import { Spin } from "antd";
 import PrivateRoute from "./PrivateRoute";
 import CategoryRedirect from "./CategoryRedirect";
+import styles from "@/app/styles/AppShell.module.css";
 
 const Home = lazy(() => import("@/features/home/pages/Home"));
 const CatalogPage = lazy(() => import("@/features/catalog/pages/CatalogPage"));
@@ -19,7 +20,7 @@ const PaymentPage = lazy(() => import("@/features/checkout/pages/PaymentPage"));
 const AdminPanel = lazy(() => import("@/features/admin/pages/AdminPanel"));
 
 const PageLoader = () => (
-  <div className="route-loading">
+  <div className={styles.routeLoading}>
     <Spin size="large" />
   </div>
 );

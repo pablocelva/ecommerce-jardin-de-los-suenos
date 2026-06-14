@@ -1,0 +1,8 @@
+.search {
+  max-width: 560px;
+}
+
+.search :global(.ant-input-group) {
+  border-radius: 12px;
+  overflow: hidden;
+}

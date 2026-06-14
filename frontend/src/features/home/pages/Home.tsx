@@ -24,6 +24,8 @@ import CardCarousel from "@/shared/components/CardCarousel";
 import ProductCard from "@/shared/components/ProductCard";
 import AppFooter from "@/shared/components/Footer";
 import { BLOG_POSTS } from "@/features/blog/data/blogPosts";
+import styles from "./Home.module.css";
+import { CARD_CAROUSEL_SLIDE_CLASS } from "@/shared/components/CardCarousel";
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -125,13 +127,13 @@ const Home = () => {
   const isCategoriesLoading = loading || loadingCategoryImages;
 
   return (
-    <div className="landing-page">
+    <div className={styles.page}>
       <BannerCarousel />
 
-      <section className="landing-section">
-        <div className="landing-container">
-          <div className="landing-section-header">
-            <Title level={2} className="landing-section-title">
+      <section className={styles.section}>
+        <div className={styles.container}>
+          <div className={styles.sectionHeader}>
+            <Title level={2} className={styles.sectionTitle}>
               Explora por tipo de planta
             </Title>
             <Paragraph type="secondary">
@@ -140,7 +142,7 @@ const Home = () => {
           </div>
 
           {isCategoriesLoading ? (
-            <div className="landing-loading">
+            <div className={styles.loading}>
               <Spin size="large" />
             </div>
           ) : (
@@ -155,24 +157,24 @@ const Home = () => {
               className="category-carousel"
             >
               {categorias.map((cat) => (
-                <div key={cat.id_categoria} className="category-carousel-slide">
+                <div key={cat.id_categoria} className={CARD_CAROUSEL_SLIDE_CLASS}>
                   <Card
                     hoverable
-                    className="category-card"
+                    className={styles.categoryCard}
                     cover={
                       <img
                         alt={cat.nombre_categoria}
                         src={
                           categoryImages[cat.id_categoria] ?? FALLBACK_IMAGE
                         }
-                        className="category-card-img"
+                        className={styles.categoryCardImg}
                       />
                     }
                     onClick={() =>
                       navigate(`/catalogo/categoria/${cat.id_categoria}`)
                     }
                   >
-                    <Title level={4} className="category-card-title">
+                    <Title level={4} className={styles.categoryCardTitle}>
                       {cat.nombre_categoria}
                     </Title>
                     <Button type="link" icon={<ArrowRightOutlined />}>
@@ -186,13 +188,13 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="landing-section landing-offers">
-        <div className="landing-container">
-          <div className="landing-section-header">
-            <Tag icon={<TagOutlined />} color="green" className="landing-tag">
+      <section className={`${styles.section} ${styles.offers}`}>
+        <div className={styles.container}>
+          <div className={styles.sectionHeader}>
+            <Tag icon={<TagOutlined />} color="green" className={styles.tag}>
               Ofertas del mes
             </Tag>
-            <Title level={2} className="landing-section-title">
+            <Title level={2} className={styles.sectionTitle}>
               Destacados con descuento
             </Title>
           </div>
@@ -220,7 +222,7 @@ const Home = () => {
             })}
           </Row>
 
-          <div className="landing-cta-inline">
+          <div className={styles.ctaInline}>
             <Button
               type="primary"
               size="large"
@@ -233,10 +235,10 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="landing-section">
-        <div className="landing-container">
-          <div className="landing-section-header">
-            <Title level={2} className="landing-section-title">
+      <section className={styles.section}>
+        <div className={styles.container}>
+          <div className={styles.sectionHeader}>
+            <Title level={2} className={styles.sectionTitle}>
               Lo que dicen nuestros clientes
             </Title>
           </div>
@@ -244,9 +246,9 @@ const Home = () => {
           <Row gutter={[24, 24]}>
             {reviews.map((review) => (
               <Col key={review.name} xs={24} md={8}>
-                <Card className="review-card">
+                <Card className={styles.reviewCard}>
                   <Rate disabled defaultValue={review.rating} />
-                  <Paragraph className="review-text">{review.text}</Paragraph>
+                  <Paragraph className={styles.reviewText}>{review.text}</Paragraph>
                   <Text strong>{review.name}</Text>
                 </Card>
               </Col>
@@ -255,10 +257,10 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="landing-section landing-blog">
-        <div className="landing-container">
-          <div className="landing-section-header">
-            <Title level={2} className="landing-section-title">
+      <section className={`${styles.section} ${styles.blog}`}>
+        <div className={styles.container}>
+          <div className={styles.sectionHeader}>
+            <Title level={2} className={styles.sectionTitle}>
               <ReadOutlined /> Tips de jardinería
             </Title>
             <Paragraph type="secondary">
@@ -269,15 +271,15 @@ const Home = () => {
           <Row gutter={[24, 24]}>
             {blogPosts.map((post) => (
               <Col key={post.slug} xs={24} md={8}>
-                <Link to={`/blogs/${post.slug}`} className="blog-card-link">
+                <Link to={`/blogs/${post.slug}`} className={styles.blogCardLink}>
                   <Card
                     hoverable
-                    className="blog-card"
+                    className={styles.blogCard}
                     cover={
                       <img
                         alt={post.title}
                         src={post.image}
-                        className="blog-card-img"
+                        className={styles.blogCardImg}
                       />
                     }
                   >
@@ -289,7 +291,7 @@ const Home = () => {
               </Col>
             ))}
           </Row>
-          <div className="landing-cta-inline">
+          <div className={styles.ctaInline}>
             <Link to="/blogs">
               <Button type="link" icon={<ReadOutlined />}>
                 Ver todos los artículos
@@ -300,10 +302,10 @@ const Home = () => {
       </section>
 
       {featuredProducts.length > 0 && (
-        <section className="landing-section">
-          <div className="landing-container">
-            <div className="landing-section-header">
-              <Title level={2} className="landing-section-title">
+        <section className={styles.section}>
+          <div className={styles.container}>
+            <div className={styles.sectionHeader}>
+              <Title level={2} className={styles.sectionTitle}>
                 Productos populares
               </Title>
             </div>
@@ -316,10 +318,9 @@ const Home = () => {
                 { breakpoint: 992, settings: { slidesToShow: 2 } },
                 { breakpoint: 576, settings: { slidesToShow: 1 } },
               ]}
-              className="products-carousel"
             >
               {featuredProducts.map((producto) => (
-                <div key={producto.id_producto} className="product-carousel-slide">
+                <div key={producto.id_producto} className={CARD_CAROUSEL_SLIDE_CLASS}>
                   <ProductCard
                     image={getProductImage(producto.id_producto)}
                     title={producto.nombre_producto}
@@ -336,13 +337,13 @@ const Home = () => {
         </section>
       )}
 
-      <section className="landing-cta-banner">
-        <div className="landing-container landing-cta-inner">
+      <section className={styles.ctaBanner}>
+        <div className={`${styles.container} ${styles.ctaInner}`}>
           <div>
-            <Title level={2} className="landing-cta-title">
+            <Title level={2} className={styles.ctaTitle}>
               ¿Listo para llenar tu hogar de verde?
             </Title>
-            <Paragraph className="landing-cta-text">
+            <Paragraph className={styles.ctaText}>
               Explora nuestro catálogo completo con filtros por categoría, precio
               y disponibilidad.
             </Paragraph>

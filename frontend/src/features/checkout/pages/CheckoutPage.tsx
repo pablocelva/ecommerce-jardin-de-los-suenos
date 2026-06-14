@@ -26,7 +26,9 @@ import AppFooter from "@/shared/components/Footer";
 import { savePendingCheckout } from "@/shared/lib/checkoutStorage";
 import { checkoutSchema } from "@/shared/schemas";
 import { showWarning } from "@/shared/lib/alerts";
+import { calculateCartTotal } from "@/shared/lib/cartUtils";
 import type { User } from "@/shared/schemas";
+import styles from "./CheckoutPage.module.css";
 
 const { Title, Text } = Typography;
 
@@ -66,10 +68,7 @@ const CheckoutPage = () => {
     }
   }, [form, navigate]);
 
-  const totalPrice = cart.reduce(
-    (total, product) => total + product.precio * product.quantity,
-    0,
-  );
+  const totalPrice = calculateCartTotal(cart);
 
   const getImage = (productId: number) =>
     imagenes.find((img) => img.id_producto === productId)?.url ?? FALLBACK_IMAGE;
@@ -116,9 +115,9 @@ const CheckoutPage = () => {
 
   if (cart.length === 0) {
     return (
-      <div className="checkout-page">
-        <div className="checkout-container">
-          <Card className="checkout-empty-card">
+      <div className={styles.page}>
+        <div className={styles.container}>
+          <Card className={styles.emptyCard}>
             <Empty description="No hay productos para finalizar la compra">
               <Link to="/catalogo">
                 <Button type="primary">Ir al catálogo</Button>
@@ -132,10 +131,10 @@ const CheckoutPage = () => {
   }
 
   return (
-    <div className="checkout-page">
-      <div className="checkout-container">
+    <div className={styles.page}>
+      <div className={styles.container}>
         <Breadcrumb
-          className="checkout-breadcrumb"
+          className={styles.breadcrumb}
           items={[
             {
               title: (
@@ -148,14 +147,14 @@ const CheckoutPage = () => {
           ]}
         />
 
-        <Title level={2} className="checkout-title">
+        <Title level={2} className={styles.title}>
           <ShoppingOutlined /> Finalizar compra
         </Title>
 
         <Form form={form} layout="vertical" onFinish={handleCheckout}>
           <Row gutter={[24, 24]}>
             <Col xs={24} lg={14}>
-              <Card className="checkout-card" title="Datos de envío">
+              <Card className={styles.card} title="Datos de envío">
                 <Form.Item
                   name="nombre"
                   label="Nombre completo"
@@ -192,22 +191,25 @@ const CheckoutPage = () => {
                 </Form.Item>
               </Card>
 
-              <Card className="checkout-card checkout-items-card" title="Tu pedido">
-                <ul className="checkout-items-list">
+              <Card
+                className={`${styles.card} ${styles.itemsCard}`}
+                title="Tu pedido"
+              >
+                <ul className={styles.itemsList}>
                   {cart.map((product) => (
-                    <li key={product.id_producto} className="checkout-item">
+                    <li key={product.id_producto} className={styles.item}>
                       <img
                         src={getImage(product.id_producto)}
                         alt={product.nombre_producto}
-                        className="checkout-item-img"
+                        className={styles.itemImg}
                       />
-                      <div className="checkout-item-info">
+                      <div className={styles.itemInfo}>
                         <Text strong>{product.nombre_producto}</Text>
                         <Text type="secondary">
                           {product.quantity} × ${product.precio.toFixed(2)}
                         </Text>
                       </div>
-                      <Text strong className="checkout-item-subtotal">
+                      <Text strong className={styles.itemSubtotal}>
                         ${(product.precio * product.quantity).toFixed(2)}
                       </Text>
                     </li>
@@ -217,21 +219,21 @@ const CheckoutPage = () => {
             </Col>
 
             <Col xs={24} lg={10}>
-              <Card className="checkout-summary-card" title="Resumen">
-                <div className="checkout-summary-row">
+              <Card className={styles.summaryCard} title="Resumen">
+                <div className={styles.summaryRow}>
                   <Text>Subtotal ({cart.length} productos)</Text>
                   <Text>${totalPrice.toFixed(2)}</Text>
                 </div>
-                <div className="checkout-summary-row">
+                <div className={styles.summaryRow}>
                   <Text>Envío</Text>
                   <Text type="success">Gratis</Text>
                 </div>
 
                 <Divider />
 
-                <div className="checkout-summary-total">
+                <div className={styles.summaryTotal}>
                   <Text strong>Total a pagar</Text>
-                  <Title level={3} className="checkout-summary-price">
+                  <Title level={3} className={styles.summaryPrice}>
                     ${totalPrice.toFixed(2)}
                   </Title>
                 </div>
@@ -242,12 +244,12 @@ const CheckoutPage = () => {
                   block
                   htmlType="submit"
                   icon={<CheckCircleOutlined />}
-                  className="checkout-submit-btn"
+                  className={styles.submitBtn}
                 >
                   Continuar al pago
                 </Button>
 
-                <Link to="/cart" className="checkout-back-link">
+                <Link to="/cart" className={styles.backLink}>
                   <Button block type="link" icon={<ArrowLeftOutlined />}>
                     Volver al carrito
                   </Button>

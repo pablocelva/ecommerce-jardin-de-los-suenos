@@ -6,6 +6,7 @@ import AuthLayout from "@/features/auth/components/AuthLayout";
 import AuthPageShell from "@/features/auth/components/AuthPageShell";
 import { api, ApiError } from "@/shared/lib/api";
 import { loginResponseSchema } from "@/shared/schemas";
+import authStyles from "../styles/auth.module.css";
 
 interface LoginFormValues {
   email: string;
@@ -47,9 +48,9 @@ const LoginPage = () => {
         title="Iniciar sesión"
         subtitle="Accede a tu cuenta para gestionar pedidos y tu perfil."
         footer={
-          <Typography.Paragraph className="auth-card-footer">
+          <Typography.Paragraph className={authStyles.cardFooter}>
             ¿No tienes cuenta?{" "}
-            <Link to="/register" className="auth-link">
+            <Link to="/register" className={authStyles.link}>
               Regístrate aquí
             </Link>
           </Typography.Paragraph>
@@ -61,7 +62,7 @@ const LoginPage = () => {
           onFinish={handleSubmit}
           requiredMark={false}
           size="middle"
-          className="auth-form"
+          className={authStyles.form}
         >
           <Form.Item
             name="email"
@@ -90,13 +91,13 @@ const LoginPage = () => {
             />
           </Form.Item>
 
-          <Form.Item className="auth-form-submit">
+          <Form.Item className={authStyles.formSubmit}>
             <Button
               type="primary"
               htmlType="submit"
               block
               icon={<LoginOutlined />}
-              className="auth-submit-btn"
+              className={authStyles.submitBtn}
             >
               Entrar
             </Button>
