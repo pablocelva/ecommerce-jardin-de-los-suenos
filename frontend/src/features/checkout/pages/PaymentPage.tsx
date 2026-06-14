@@ -1,0 +1,217 @@
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import {
+  Breadcrumb,
+  Button,
+  Card,
+  Col,
+  Divider,
+  Radio,
+  Row,
+  Spin,
+  Tag,
+  Typography,
+} from "antd";
+import {
+  ArrowLeftOutlined,
+  CreditCardOutlined,
+  HomeOutlined,
+  LockOutlined,
+  SafetyCertificateOutlined,
+} from "@ant-design/icons";
+import { useCart } from "@/shared/context/CartContext";
+import AppFooter from "@/shared/components/Footer";
+import { api } from "@/shared/lib/api";
+import {
+  clearPendingCheckout,
+  getPendingCheckout,
+  PAYMENT_METHODS,
+  type PaymentMethod,
+} from "@/shared/lib/checkoutStorage";
+import { showError, showSuccess } from "@/shared/lib/alerts";
+
+const { Title, Text, Paragraph } = Typography;
+
+const PaymentPage = () => {
+  const { cart, clearCart } = useCart();
+  const navigate = useNavigate();
+  const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>("stripe");
+  const [processing, setProcessing] = useState(false);
+  const pending = getPendingCheckout();
+
+  useEffect(() => {
+    const userId = localStorage.getItem("userId");
+    if (!userId || !pending || cart.length === 0) {
+      navigate("/checkout", { replace: true });
+    }
+  }, [pending, cart.length, navigate]);
+
+  if (!pending || cart.length === 0) {
+    return (
+      <div className="payment-page">
+        <div className="payment-container payment-loading">
+          <Spin size="large" tip="Redirigiendo…" />
+        </div>
+      </div>
+    );
+  }
+
+  const handleSimulatePayment = async () => {
+    setProcessing(true);
+
+    try {
+      // Simula latencia del procesador de pagos (Stripe / Khipu)
+      await new Promise((resolve) => setTimeout(resolve, 1500));
+
+      const { cartSnapshot: _, ciudad: __, ...orderData } = pending;
+
+      await api.post("/pedidos", {
+        ...orderData,
+        estado: "pending",
+      });
+
+      clearCart();
+      clearPendingCheckout();
+
+      await showSuccess(
+        "¡Compra confirmada!",
+        "Gracias por tu compra. Recibirás la confirmación en tu correo.",
+      );
+      navigate("/");
+    } catch (error) {
+      console.error("Error al procesar el pago:", error);
+      await showError(
+        "Error en el pago",
+        "No se pudo completar el pago simulado. Intenta nuevamente.",
+      );
+    } finally {
+      setProcessing(false);
+    }
+  };
+
+  const selectedMethod = PAYMENT_METHODS.find((m) => m.id === paymentMethod);
+
+  return (
+    <div className="payment-page">
+      <div className="payment-container">
+        <Breadcrumb
+          className="payment-breadcrumb"
+          items={[
+            {
+              title: (
+                <Link to="/">
+                  <HomeOutlined /> Inicio
+                </Link>
+              ),
+            },
+            {
+              title: <Link to="/checkout">Checkout</Link>,
+            },
+            { title: "Pago" },
+          ]}
+        />
+
+        <Title level={2} className="payment-title">
+          <LockOutlined /> Método de pago
+        </Title>
+        <Paragraph type="secondary" className="payment-subtitle">
+          Selecciona un proveedor. Este paso simula la integración con Stripe o
+          Khipu.
+        </Paragraph>
+
+        <Row gutter={[24, 24]}>
+          <Col xs={24} lg={14}>
+            <Card className="payment-card" title="Elige cómo pagar">
+              <Radio.Group
+                value={paymentMethod}
+                onChange={(e) => setPaymentMethod(e.target.value as PaymentMethod)}
+                className="payment-methods"
+              >
+                {PAYMENT_METHODS.map((method) => (
+                  <Radio key={method.id} value={method.id} className="payment-method-option">
+                    <div className="payment-method-content">
+                      <div className="payment-method-header">
+                        <CreditCardOutlined className="payment-method-icon" />
+                        <div>
+                          <Text strong>{method.name}</Text>
+                          <Tag color="green" className="payment-method-badge">
+                            {method.badge}
+                          </Tag>
+                        </div>
+                      </div>
+                      <Text type="secondary">{method.description}</Text>
+                    </div>
+                  </Radio>
+                ))}
+              </Radio.Group>
+
+              <Divider />
+
+              <div className="payment-simulation-note">
+                <SafetyCertificateOutlined />
+                <Text type="secondary">
+                  Pago simulado — no se realizará ningún cargo real. En
+                  producción aquí se redirigiría al checkout de{" "}
+                  {selectedMethod?.name}.
+                </Text>
+              </div>
+            </Card>
+          </Col>
+
+          <Col xs={24} lg={10}>
+            <Card className="payment-summary-card" title="Resumen">
+              <div className="payment-summary-row">
+                <Text>Cliente</Text>
+                <Text>{pending.nombre_cliente}</Text>
+              </div>
+              <div className="payment-summary-row">
+                <Text>Productos</Text>
+                <Text>{pending.detalle.length}</Text>
+              </div>
+              <div className="payment-summary-row">
+                <Text>Método</Text>
+                <Text strong>{selectedMethod?.name}</Text>
+              </div>
+
+              <Divider />
+
+              <div className="payment-summary-total">
+                <Text strong>Total a pagar</Text>
+                <Title level={3} className="payment-summary-price">
+                  ${pending.total.toFixed(2)}
+                </Title>
+              </div>
+
+              <Button
+                type="primary"
+                size="large"
+                block
+                loading={processing}
+                onClick={handleSimulatePayment}
+                className="payment-submit-btn"
+              >
+                {processing
+                  ? "Procesando pago…"
+                  : `Confirmar pago con ${selectedMethod?.name}`}
+              </Button>
+
+              <Link to="/checkout">
+                <Button
+                  block
+                  type="link"
+                  icon={<ArrowLeftOutlined />}
+                  disabled={processing}
+                >
+                  Volver al checkout
+                </Button>
+              </Link>
+            </Card>
+          </Col>
+        </Row>
+      </div>
+      <AppFooter />
+    </div>
+  );
+};
+
+export default PaymentPage;
