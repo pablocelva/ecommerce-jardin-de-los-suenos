@@ -177,24 +177,32 @@ const AdminPanel = () => {
     if (userData) setUser(userData);
   };
 
-  if (!user) return <div>Cargando...</div>;
+  if (!user) return <div className={styles.loading}>Cargando...</div>;
 
   return (
-    <Layout style={{ height: "calc(100vh)" }}>
-      <Layout style={{ height: "calc(100vh)" }}>
-        <Sider className="sider" width={250}>
-          <div>
-            <p onClick={() => handleMenuClick("informacion")}>Información Personal</p>
-            <p onClick={() => handleMenuClick("usuarios")}>Administrar Usuarios</p>
-            <p onClick={() => handleMenuClick("catalogo")}>Catálogo de Productos</p>
-            <p onClick={() => handleMenuClick("ventas")}>Historial de Ventas</p>
-          </div>
+    <Layout className={styles.root}>
+      <Layout className={styles.layout}>
+        <Sider className={styles.sider} width={250}>
+          <nav className={styles.menu}>
+            <p className={styles.menuItem} onClick={() => handleMenuClick("informacion")}>
+              Información Personal
+            </p>
+            <p className={styles.menuItem} onClick={() => handleMenuClick("usuarios")}>
+              Administrar Usuarios
+            </p>
+            <p className={styles.menuItem} onClick={() => handleMenuClick("catalogo")}>
+              Catálogo de Productos
+            </p>
+            <p className={styles.menuItem} onClick={() => handleMenuClick("ventas")}>
+              Historial de Ventas
+            </p>
+          </nav>
         </Sider>
         <Layout>
-          <Content className="content" style={{ marginLeft: "250px", paddingBottom: "40px" }}>
+          <Content className={styles.content}>
             {showUsers ? (
-              <div style={{ padding: "20px" }}>
-                <h2>Administrar Usuarios</h2>
+              <div className={styles.section}>
+                <h2 className={styles.sectionTitle}>Administrar Usuarios</h2>
                 <Table
                   dataSource={users}
                   scroll={{ x: "max-content" }}
@@ -211,22 +219,16 @@ const AdminPanel = () => {
                 />
               </div>
             ) : showCatalogo ? (
-              <div style={{ padding: "20px" }}>
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                  }}
-                >
-                  <h2>Catálogo de Productos</h2>
-                  <button
-                    type="button"
+              <div className={styles.section}>
+                <div className={styles.sectionHeader}>
+                  <h2 className={styles.sectionTitle}>Catálogo de Productos</h2>
+                  <Button
+                    type="primary"
+                    className={styles.addProductBtn}
                     onClick={() => setIsModalOpen(true)}
-                    style={{ marginBottom: "10px" }}
                   >
                     Agregar Producto
-                  </button>
+                  </Button>
                 </div>
                 <Table
                   dataSource={productosData}
@@ -247,18 +249,18 @@ const AdminPanel = () => {
                       title: "Editar",
                       key: "editar",
                       render: (_: unknown, record: Product) => (
-                        <button type="button" onClick={() => handleEditProduct(record)}>
+                        <Button type="link" onClick={() => handleEditProduct(record)}>
                           Editar
-                        </button>
+                        </Button>
                       ),
                     },
                     {
                       title: "Eliminar",
                       key: "eliminar",
                       render: (_: unknown, record: Product) => (
-                        <button type="button" onClick={() => handleDeleteProduct(record)}>
+                        <Button type="link" danger onClick={() => handleDeleteProduct(record)}>
                           Eliminar
-                        </button>
+                        </Button>
                       ),
                     },
                   ]}
@@ -365,8 +367,8 @@ const AdminPanel = () => {
                 </Modal>
               </div>
             ) : showVentas ? (
-              <div style={{ padding: "20px" }}>
-                <h2>Historial de Ventas</h2>
+              <div className={styles.section}>
+                <h2 className={styles.sectionTitle}>Historial de Ventas</h2>
                 <Table
                   dataSource={Array.isArray(orders) ? orders : []}
                   scroll={{ x: "max-content" }}
@@ -402,8 +404,8 @@ const AdminPanel = () => {
                   expandable={{
                     expandedRowRender: (record: Order) => (
                       <div>
-                        <Title level={5} style={{ marginBottom: "10px" }}>
-                          🛒 Detalle de la Compra
+                        <Title level={5} className={styles.detailTitle}>
+                          Detalle de la Compra
                         </Title>
                         <Table
                           dataSource={record.detalle}
@@ -432,27 +434,20 @@ const AdminPanel = () => {
                 />
               </div>
             ) : (
-              <div
-                style={{
-                  padding: "20px",
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                }}
-              >
-                <ControlOutlined style={{ fontSize: "60px", color: "lightgreen" }} />
-                <h2>Panel de Administrador</h2>
-                <div style={{ display: "flex", flexDirection: "column", width: "300px" }}>
+              <div className={styles.profilePanel}>
+                <ControlOutlined className={styles.profileIcon} />
+                <h2 className={styles.profileTitle}>Panel de Administrador</h2>
+                <div className={styles.profileFields}>
                   {(["nombre", "apellido", "email", "telefono", "rol"] as const).map(
                     (field) => (
-                      <div key={field}>
+                      <div key={field} className={styles.fieldBlock}>
                         <strong>{field.charAt(0).toUpperCase() + field.slice(1)}:</strong>
                         {isEditing && userData ? (
                           <Input
                             name={field}
                             value={String(userData[field] ?? "")}
                             onChange={handleInputChange}
-                            style={{ width: "100%", marginBottom: "12px" }}
+                            className={styles.fieldInput}
                           />
                         ) : (
                           <p>{String(user[field] ?? "")}</p>
@@ -461,37 +456,20 @@ const AdminPanel = () => {
                     ),
                   )}
                 </div>
-                <div style={{ display: "flex", gap: "16px" }}>
+                <div className={styles.actions}>
                   {isEditing ? (
-                    <Button
-                      htmlType="button"
-                      onClick={handleSave}
-                      style={{
-                        marginTop: "10px",
-                        display: "flex",
-                        gap: "8px",
-                        alignItems: "center",
-                        padding: "12px 32px 12px 12px",
-                      }}
-                    >
-                      <SaveOutlined style={{ fontSize: "20px" }} />
+                    <Button htmlType="button" onClick={handleSave} className={styles.actionBtn}>
+                      <SaveOutlined className={styles.actionIcon} />
                       Guardar
                     </Button>
                   ) : (
                     <Button
-                      className={styles.legacyButton}
+                      className={`${styles.legacyButton} ${styles.actionBtn}`}
                       type="default"
                       htmlType="button"
                       onClick={() => setIsEditing(true)}
-                      style={{
-                        marginTop: "10px",
-                        display: "flex",
-                        gap: "8px",
-                        alignItems: "center",
-                        padding: "12px 32px 12px 12px",
-                      }}
                     >
-                      <EditOutlined style={{ fontSize: "20px" }} />
+                      <EditOutlined className={styles.actionIcon} />
                       Editar
                     </Button>
                   )}
@@ -502,15 +480,9 @@ const AdminPanel = () => {
                       localStorage.removeItem("userId");
                       navigate("/");
                     }}
-                    style={{
-                      marginTop: "10px",
-                      display: "flex",
-                      gap: "8px",
-                      alignItems: "center",
-                      padding: "12px 32px 12px 12px",
-                    }}
+                    className={styles.actionBtn}
                   >
-                    <LogoutOutlined style={{ fontSize: "20px" }} />
+                    <LogoutOutlined className={styles.actionIcon} />
                     Cerrar sesión
                   </Button>
                 </div>

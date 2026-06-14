@@ -1,5 +1,8 @@
 import "@testing-library/jest-dom/vitest";
 import { vi } from "vitest";
+import { applyCssVariables } from "@/theme/tokens";
+
+applyCssVariables();
 
 Object.defineProperty(window, "matchMedia", {
   writable: true,

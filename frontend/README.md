@@ -42,8 +42,12 @@ src/
 ├── test/                   # Utilidades y setup de tests
 │   ├── setup.ts
 │   └── test-utils.tsx
-└── theme/plantTheme.ts     # Tokens Ant Design
+└── theme/
+    ├── tokens.ts           # Fuente única de colores y variables CSS
+    └── plantTheme.ts       # Theme Ant Design
 ```
+
+> **Guía de estilos para el equipo:** [`docs/estilos-ant-design.md`](docs/estilos-ant-design.md)
 
 ## Alias de imports
 
@@ -85,9 +89,12 @@ Stale time por defecto: 5–10 minutos para catálogo.
 
 ## CSS
 
-1. **Ant Design `ConfigProvider`** — colores, tipografía, radios (`theme/plantTheme.ts`)
-2. **CSS Modules** — estilos scoped por componente/página (`*.module.css`)
-3. **`shared/styles/global.css`** — reset, variables CSS y estilos base (`body`, enlaces)
+1. **`theme/tokens.ts`** — fuente única de colores, radios y `--color-*` (inyectados al arrancar)
+2. **Ant Design `ConfigProvider`** — theme global (`theme/plantTheme.ts`, importa `tokens.ts`)
+3. **CSS Modules** — layout y branding por feature (`*.module.css` con `var(--color-primary)`, etc.)
+4. **`shared/styles/global.css`** — reset, fallbacks de variables y estilos base
+
+Documentación completa: [`docs/estilos-ant-design.md`](docs/estilos-ant-design.md)
 
 > La migración desde `App.css` está **completa**. Ya no hay hoja global monolítica por página.
 
@@ -104,7 +111,7 @@ Stale time por defecto: 5–10 minutos para catálogo.
 | Checkout | `CheckoutPage`, `PaymentPage` |
 | Auth | `auth.module.css`, `ProfilePage.module.css` |
 | Blog | `BlogsPage`, `BlogPostPage` |
-| Admin | `AdminPanel.module.css` (botones legacy) |
+| Admin | `AdminPanel.module.css` (layout + panel) |
 
 ## Tests
 
@@ -114,7 +121,7 @@ Suite con **Vitest** y **Testing Library**. Configuración en `vite.config.ts` (
 
 | Archivo | Rol |
 |---------|-----|
-| `src/test/setup.ts` | `jest-dom`, mocks de `matchMedia` y `ResizeObserver` |
+| `src/test/setup.ts` | `jest-dom`, mocks de `matchMedia`/`ResizeObserver`, `applyCssVariables()` |
 | `src/test/test-utils.tsx` | `renderWithProviders`, `seedCart`, `seedAuthenticatedUser` |
 
 `renderWithProviders` envuelve componentes con `QueryClient`, `ConfigProvider`, `CartProvider` y `MemoryRouter`.
@@ -148,8 +155,8 @@ pnpm test:run src/shared/components/ProductCard.test.tsx
 
 ## Próximos pasos sugeridos
 
-- **Tests de componentes**: `PaymentPage`, `CartDrawer`, flujos de login/registro y `AdminPanel`
-- **AdminPanel**: completar CSS Module del layout (`sider`, `content`) y reemplazar estilos inline
+- **Tokens en módulos restantes**: reemplazar hex legacy por `var(--color-*)` al tocar cada feature
+- **Tests de componentes**: `PaymentPage`, `CartDrawer`, flujos de login/registro
 - **Bundle**: `manualChunks` en Vite para reducir el chunk principal (~735 KB)
-- **E2E opcional**: Playwright o Cypress para flujo completo catálogo → carrito → pago
-- **Accesibilidad**: auditoría con axe en páginas críticas (checkout, catálogo)
+- **E2E opcional**: Playwright o Cypress para flujo catálogo → carrito → pago
+- **Accesibilidad**: auditoría con axe en checkout y catálogo

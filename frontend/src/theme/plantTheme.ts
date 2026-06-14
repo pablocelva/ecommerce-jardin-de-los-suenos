@@ -1,32 +1,32 @@
 import type { ThemeConfig } from "antd";
+import { colors, fontFamily, radii } from "./tokens";
 
 export const plantTheme: ThemeConfig = {
   token: {
-    colorPrimary: "#2d6a4f",
-    colorPrimaryHover: "#40916c",
-    colorPrimaryActive: "#1b4332",
-    colorSuccess: "#52b788",
-    colorBgLayout: "#f8faf7",
-    colorBgContainer: "#ffffff",
-    borderRadius: 12,
-    fontFamily:
-      "'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif",
+    colorPrimary: colors.primary,
+    colorPrimaryHover: colors.primaryHover,
+    colorPrimaryActive: colors.primaryActive,
+    colorSuccess: colors.success,
+    colorBgLayout: colors.surface,
+    colorBgContainer: colors.white,
+    borderRadius: radii.default,
+    fontFamily,
   },
   components: {
     Layout: {
-      headerBg: "#1b4332",
-      siderBg: "#1b4332",
-      bodyBg: "#f8faf7",
+      headerBg: colors.primaryDark,
+      siderBg: colors.primaryDark,
+      bodyBg: colors.surface,
     },
     Menu: {
-      darkItemBg: "#1b4332",
+      darkItemBg: colors.primaryDark,
       darkSubMenuItemBg: "#163728",
     },
     Card: {
-      borderRadiusLG: 16,
+      borderRadiusLG: radii.card,
     },
     Button: {
-      borderRadius: 10,
+      borderRadius: radii.button,
     },
   },
 };

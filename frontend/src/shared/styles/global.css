@@ -1,15 +1,45 @@
+/*
+ * Variables definidas en src/theme/tokens.ts (applyCssVariables al arrancar).
+ * Fallbacks aquí evitan flash sin estilo antes de que cargue JS.
+ */
 :root {
   --color-primary: #2d6a4f;
+  --color-primary-hover: #40916c;
+  --color-primary-active: #1b4332;
   --color-primary-dark: #1b4332;
+  --color-navbar: #1f7d53;
+  --color-navbar-hover-text: #1c3224;
   --color-surface: #f8faf7;
   --color-border: #e9f5ee;
-  --color-text-muted: #555;
+  --color-white: #ffffff;
+  --color-text-primary: #1b4332;
+  --color-text-secondary: #444444;
+  --color-text-muted: #555555;
+  --color-text-inverse: #f3f3f3;
+  --color-success: #52b788;
+  --color-accent: #95d5b2;
+  --color-accent-light: #b7e4c7;
+  --color-footer-dark: #152a1e;
+  --radius-button: 10px;
+  --radius-default: 12px;
+  --radius-card: 16px;
+  --radius-panel: 20px;
+  --font-family-base: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 *,
 *::before,
 *::after {
   box-sizing: border-box;
+}
+
+/*
+ * Reserva espacio del scroll para evitar saltos de layout.
+ * El ancho del body durante Drawer/Modal lo corrige useScrollLockLayoutFix
+ * (rc-util inyecta width: calc(100% - scrollbar) de más con gutter activo).
+ */
+html {
+  scrollbar-gutter: stable;
 }
 
 html,
@@ -23,10 +53,9 @@ body,
 
 body {
   min-height: 100vh;
-  font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, Roboto,
-    "Helvetica Neue", Arial, sans-serif;
+  font-family: var(--font-family-base);
   background: var(--color-surface);
-  color: var(--color-primary-dark);
+  color: var(--color-text-primary);
   -webkit-font-smoothing: antialiased;
 }
 

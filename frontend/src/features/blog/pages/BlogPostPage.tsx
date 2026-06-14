@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
-import { Breadcrumb, Button, Card, Tag, Typography } from "antd";
+import { Breadcrumb, Button, Tag, Typography } from "antd";
 import {
   ArrowLeftOutlined,
   CalendarOutlined,
@@ -15,7 +15,7 @@ import { useCatalog } from "@/features/catalog/api/catalog.queries";
 import { getBlogPostBySlug } from "@/features/blog/data/blogPosts";
 import styles from "./BlogPostPage.module.css";
 
-const { Title, Paragraph, Text } = Typography;
+const { Title, Paragraph } = Typography;
 
 const FALLBACK_IMAGE =
   "https://images.unsplash.com/photo-1466781783364-36c667e68334?w=600&q=80";
@@ -44,47 +44,51 @@ const BlogPostPage = () => {
 
   return (
     <div className={styles.page}>
-      <div
+      <header
         className={styles.hero}
         style={{ backgroundImage: `url(${post.image})` }}
       >
-        <div className={styles.heroOverlay} />
-        <div className={styles.heroContent}>
-          <Breadcrumb
-            className={styles.breadcrumb}
-            items={[
-              {
-                title: (
-                  <Link to="/">
-                    <HomeOutlined /> Inicio
-                  </Link>
-                ),
-              },
-              {
-                title: <Link to="/blogs">Blog</Link>,
-              },
-              { title: post.title },
-            ]}
-          />
-          <Title level={1} className={styles.title}>
-            {post.title}
-          </Title>
-          <div className={styles.meta}>
-            <Text>
-              <UserOutlined /> {post.author}
-            </Text>
-            <Text>
-              <CalendarOutlined />{" "}
-              {new Date(post.date).toLocaleDateString("es-CL", {
-                day: "2-digit",
-                month: "long",
-                year: "numeric",
-              })}
-            </Text>
-            <Text>{post.readTime} de lectura</Text>
+        <div className={styles.heroOverlay} aria-hidden />
+        <div className={styles.heroInner}>
+          <nav className={styles.heroTop} aria-label="Ruta de navegación">
+            <Breadcrumb
+              className={styles.breadcrumb}
+              items={[
+                {
+                  title: (
+                    <Link to="/">
+                      <HomeOutlined aria-hidden /> Inicio
+                    </Link>
+                  ),
+                },
+                {
+                  title: <Link to="/blogs">Blog</Link>,
+                },
+                { title: post.title },
+              ]}
+            />
+          </nav>
+          <div className={styles.heroMain}>
+            <Title level={1} className={styles.title}>
+              {post.title}
+            </Title>
+            <div className={styles.meta}>
+              <span className={styles.metaItem}>
+                <UserOutlined aria-hidden /> {post.author}
+              </span>
+              <span className={styles.metaItem}>
+                <CalendarOutlined aria-hidden />{" "}
+                {new Date(post.date).toLocaleDateString("es-CL", {
+                  day: "2-digit",
+                  month: "long",
+                  year: "numeric",
+                })}
+              </span>
+              <span className={styles.metaItem}>{post.readTime} de lectura</span>
+            </div>
           </div>
         </div>
-      </div>
+      </header>
 
       <div className={styles.body}>
         <article className={styles.article}>

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Badge, Button, Drawer, Grid, Menu, Space, Typography } from "antd";
+import { Badge, Button, Drawer, Grid, Menu, Space } from "antd";
 import {
   MenuOutlined,
   ShoppingCartOutlined,
@@ -10,13 +10,15 @@ import {
   AppstoreOutlined,
   ReadOutlined,
   SettingOutlined,
-  BranchesOutlined,
 } from "@ant-design/icons";
 import { NavLink, useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "@/shared/context/AuthContext";
 import { useCart } from "@/shared/context/CartContext";
 import CartDrawer from "@/features/cart/components/CartDrawer";
+import GrassIcon from "@/shared/components/GrassIcon";
 import styles from "./Navbar.module.css";
+
+/** Icono de marca fijo — ver GrassIcon.tsx; no reemplazar. */
 
 const { useBreakpoint } = Grid;
 
@@ -43,11 +45,7 @@ const Navbar = () => {
     { key: "/catalogo", label: "Catálogo", icon: <AppstoreOutlined />, path: "/catalogo" },
     { key: "/blogs", label: "Blog", icon: <ReadOutlined />, path: "/blogs" },
     ...(isAuthenticated && userRole === "cliente"
-      ? [
-          // Carrito accesible solo desde el drawer lateral (icono en navbar)
-          // { key: "/cart", label: "Carrito", icon: <ShoppingCartOutlined />, path: "/cart" },
-          { key: "/profile", label: "Mi Perfil", icon: <UserOutlined />, path: "/profile" },
-        ]
+      ? [{ key: "/profile", label: "Mi Perfil", icon: <UserOutlined />, path: "/profile" }]
       : []),
     ...(isAuthenticated && userRole === "admin"
       ? [{ key: "/admin", label: "Admin", icon: <SettingOutlined />, path: "/admin" }]
@@ -78,28 +76,20 @@ const Navbar = () => {
       selectedKeys={[selectedKey]}
       items={navItems.map((item) => ({
         key: item.key,
-        icon: item.icon,
         label: (
           <NavLink
             to={item.path}
+            className={styles.navLink}
             onClick={() => setDrawerOpen(false)}
-            style={{ color: "inherit" }}
           >
-            {item.label}
+            <span className={styles.navLinkIcon} aria-hidden="true">
+              {item.icon}
+            </span>
+            <span className={styles.navLinkLabel}>{item.label}</span>
           </NavLink>
         ),
       }))}
-      style={
-        isCompactNav
-          ? { border: "none", background: "transparent" }
-          : {
-              flex: 1,
-              minWidth: 0,
-              justifyContent: "flex-end",
-              background: "transparent",
-              borderBottom: "none",
-            }
-      }
+      className={styles.menu}
     />
   );
 
@@ -111,10 +101,8 @@ const Navbar = () => {
           className={styles.brand}
           onClick={() => setDrawerOpen(false)}
         >
-          <Typography.Title level={3} className={styles.brandTitle}>
-            <BranchesOutlined className={styles.brandIcon} />
-            Jardin de los Sueños
-          </Typography.Title>
+          <GrassIcon className={styles.brandIcon} />
+          <span className={styles.brandTitle}>Jardin de los Sueños</span>
         </NavLink>
 
         {!isCompactNav && (
@@ -128,7 +116,8 @@ const Navbar = () => {
             <Badge count={cartCount} size="small" offset={[-2, 2]}>
               <Button
                 type="text"
-                icon={<ShoppingCartOutlined style={{ fontSize: 20, color: "#fff" }} />}
+                className={`${styles.actionBtn} ${styles.cartBtn}`}
+                icon={<ShoppingCartOutlined />}
                 onClick={openCartDrawer}
                 aria-label="Abrir carrito"
               />
@@ -138,9 +127,9 @@ const Navbar = () => {
           {isAuthenticated && (
             <Button
               type="text"
-              icon={<LogoutOutlined style={{ color: "#fff" }} />}
+              icon={<LogoutOutlined />}
               onClick={handleLogout}
-              className={isCompactNav ? undefined : styles.logoutBtn}
+              className={styles.actionBtn}
             >
               {!isCompactNav && "Cerrar sesión"}
             </Button>
@@ -149,9 +138,10 @@ const Navbar = () => {
           {isCompactNav && (
             <Button
               type="text"
-              icon={<MenuOutlined style={{ fontSize: 22, color: "#fff" }} />}
+              icon={<MenuOutlined />}
               onClick={() => setDrawerOpen(true)}
               aria-label="Abrir menú"
+              className={`${styles.actionBtn} ${styles.menuToggleBtn}`}
             />
           )}
         </Space>
@@ -162,12 +152,14 @@ const Navbar = () => {
         placement="right"
         onClose={() => setDrawerOpen(false)}
         open={drawerOpen}
-        styles={{ body: { padding: 0, background: "#1b4332" } }}
-        headerStyle={{ background: "#1b4332", color: "#fff", borderBottom: "1px solid rgba(255,255,255,0.1)" }}
+        classNames={{
+          header: styles.drawerHeader,
+          body: styles.drawerBody,
+        }}
       >
         {menuContent}
         {isAuthenticated && (
-          <div style={{ padding: "16px 24px" }}>
+          <div className={styles.drawerFooter}>
             <Button block danger onClick={handleLogout} icon={<LogoutOutlined />}>
               Cerrar sesión
             </Button>

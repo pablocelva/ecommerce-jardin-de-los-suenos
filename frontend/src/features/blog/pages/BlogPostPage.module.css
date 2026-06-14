@@ -1,55 +1,106 @@
 .page {
-  background: #f8faf7;
+  background: var(--color-surface);
   min-height: calc(100vh - 64px);
 }
 
 .hero {
   position: relative;
-  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  min-height: clamp(380px, 42vh, 520px);
   background-size: cover;
   background-position: center;
-  display: flex;
-  align-items: flex-end;
 }
 
 .heroOverlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
-    to top,
-    rgba(21, 42, 30, 0.92) 0%,
-    rgba(21, 42, 30, 0.45) 100%
+    180deg,
+    rgba(21, 42, 30, 0.55) 0%,
+    rgba(21, 42, 30, 0.72) 45%,
+    rgba(21, 42, 30, 0.94) 100%
   );
 }
 
-.heroContent {
+.heroInner {
   position: relative;
   z-index: 1;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
   width: 100%;
-  max-width: 900px;
+  max-width: 960px;
+  min-height: inherit;
   margin: 0 auto;
-  padding: 40px 24px;
+  padding: 28px 24px 72px;
+}
+
+.heroTop {
+  flex-shrink: 0;
+}
+
+.heroMain {
+  margin-top: auto;
+  padding-top: 32px;
+  max-width: 100%;
+}
+
+.breadcrumb:global(.ant-breadcrumb) {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.72);
 }
 
 .breadcrumb :global(.ant-breadcrumb-link),
+.breadcrumb :global(.ant-breadcrumb-link a),
+.breadcrumb :global(a) {
+  color: rgba(255, 255, 255, 0.88) !important;
+}
+
+.breadcrumb :global(.ant-breadcrumb-link a:hover),
+.breadcrumb :global(a:hover) {
+  color: var(--color-white) !important;
+}
+
 .breadcrumb :global(.ant-breadcrumb-separator) {
-  color: rgba(255, 255, 255, 0.85) !important;
+  color: rgba(255, 255, 255, 0.45) !important;
 }
 
-.breadcrumb a {
-  color: rgba(255, 255, 255, 0.85);
+.breadcrumb :global(li:last-child),
+.breadcrumb :global(li:last-child .ant-breadcrumb-link) {
+  color: rgba(255, 255, 255, 0.62) !important;
 }
 
-.title {
-  color: #fff !important;
-  margin-bottom: 12px !important;
+.breadcrumb :global(.anticon) {
+  color: inherit;
+}
+
+.title:global(.ant-typography) {
+  color: var(--color-white) !important;
+  margin: 0 0 16px !important;
+  font-size: clamp(1.75rem, 4vw, 2.5rem) !important;
+  line-height: 1.2 !important;
+  font-weight: 600 !important;
 }
 
 .meta {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
-  color: rgba(255, 255, 255, 0.9);
+  align-items: center;
+  gap: 12px 20px;
+}
+
+.metaItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.metaItem :global(.anticon) {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.9em;
 }
 
 .body {
@@ -57,15 +108,15 @@
 }
 
 .article {
-  background: #fff;
-  border-radius: 20px;
-  margin-top: -40px;
+  background: var(--color-white);
+  border-radius: var(--radius-panel);
+  margin-top: -48px;
   position: relative;
   z-index: 2;
   box-shadow: 0 8px 32px rgba(27, 67, 50, 0.08);
-  border: 1px solid #e9f5ee;
-  padding: 32px;
-  max-width: 900px;
+  border: 1px solid var(--color-border);
+  padding: 40px 36px 36px;
+  max-width: 960px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -77,15 +128,15 @@
 }
 
 .relatedInner {
-  background: #fff;
-  border-radius: 20px;
-  border: 1px solid #e9f5ee;
+  background: var(--color-white);
+  border-radius: var(--radius-panel);
+  border: 1px solid var(--color-border);
   padding: 32px 24px 16px;
   box-shadow: 0 4px 24px rgba(27, 67, 50, 0.06);
 }
 
 .relatedTitle {
-  color: #1b4332 !important;
+  color: var(--color-text-primary) !important;
   margin-bottom: 4px !important;
 }
 
@@ -99,14 +150,14 @@
 
 .excerpt {
   font-size: 1.1rem;
-  color: #2d6a4f;
+  color: var(--color-primary);
   margin-bottom: 24px !important;
 }
 
 .paragraph {
   font-size: 1rem;
   line-height: 1.8;
-  color: #444;
+  color: var(--color-text-secondary);
 }
 
 .backBtn {
@@ -114,12 +165,37 @@
 }
 
 @media (max-width: 991px) {
+  .heroInner {
+    padding: 24px 20px 64px;
+  }
+
+  .heroMain {
+    padding-top: 24px;
+  }
+
+  .article {
+    margin-top: -40px;
+    padding: 32px 24px 28px;
+  }
+
   .body {
-    padding-bottom: 48px;
+    padding: 0 16px 48px;
   }
 
   .related {
     padding: 0 16px;
     margin-top: 32px;
+  }
+}
+
+@media (max-width: 575px) {
+  .hero {
+    min-height: 340px;
+  }
+
+  .meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
   }
 }
