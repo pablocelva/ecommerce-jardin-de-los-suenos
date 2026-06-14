@@ -4,7 +4,7 @@ import { fileURLToPath } from "node:url";
 import type { Request, Response, NextFunction } from "express";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const logDir = path.join(__dirname, "..", "..", "logs");
+const logDir = path.join(__dirname, "..", "..", "..", "logs");
 const logFilePath = path.join(logDir, "consultas.log");
 
 if (!fs.existsSync(logDir)) {

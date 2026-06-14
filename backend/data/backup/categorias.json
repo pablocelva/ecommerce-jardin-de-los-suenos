@@ -1,0 +1,14 @@
+[
+    { "id_categoria": 1, "nombre_categoria": "Plantas de Interior" },
+    { "id_categoria": 2, "nombre_categoria": "Plantas de Exterior" },
+    { "id_categoria": 3, "nombre_categoria": "Suculentas" },
+    { "id_categoria": 4, "nombre_categoria": "Cactus" },
+    { "id_categoria": 5, "nombre_categoria": "Hierbas Aromáticas" },
+    { "id_categoria": 6, "nombre_categoria": "Plantas Trepadoras" },
+    { "id_categoria": 7, "nombre_categoria": "Flores Ornamentales" },
+    { "id_categoria": 8, "nombre_categoria": "Bonsáis" },
+    { "id_categoria": 9, "nombre_categoria": "Palmas" },
+    { "id_categoria": 10, "nombre_categoria": "Orquídeas" },
+    { "id_categoria": 11, "nombre_categoria": "Monsteras" },
+    { "id_categoria": 12, "nombre_categoria": "Helechos" }
+]

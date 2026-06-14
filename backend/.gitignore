@@ -3,5 +3,8 @@ node_modules
 .env
 package-lock.json
 dist
-./logs/consultas.log
-src/logs
+
+# Logs generados en runtime (no commitear)
+logs/
+src/logs/
+*.log
